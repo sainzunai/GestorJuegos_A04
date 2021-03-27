@@ -11,6 +11,11 @@ import java.awt.Color;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 public class VentanaPrincipal extends JFrame{
@@ -25,20 +30,30 @@ public class VentanaPrincipal extends JFrame{
 		panelContenedorMenu.setBackground(new Color(255, 255, 255));
 		panelContenedorMenu.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		getContentPane().add(panelContenedorMenu, BorderLayout.WEST);
-		panelContenedorMenu.setLayout(new GridLayout(4,1));
+		panelContenedorMenu.setLayout(new GridLayout(2,1));
 		
-		JPanel panelEntradaMenu2 = new JPanel();
-		panelEntradaMenu2.setBorder(new LineBorder(new Color(255, 0, 255), 3));
-		panelEntradaMenu2.setBackground(new Color(192, 192, 192));
-		panelContenedorMenu.add(panelEntradaMenu2);
+		JPanel panelEntradaMenuHome = new JPanel();
+		panelEntradaMenuHome.setBorder(new LineBorder(new Color(255, 0, 255), 3));
+		panelEntradaMenuHome.setBackground(new Color(192, 192, 192));
+		panelContenedorMenu.add(panelEntradaMenuHome);
+		panelEntradaMenuHome.setLayout(new GridLayout(4,1));
 		
-		JLabel lblNewLabel = new JLabel("MENU");
-		panelEntradaMenu2.add(lblNewLabel);
+		JPanel panelHome = new JPanel();
+		panelEntradaMenuHome.add(panelHome);
+		panelHome.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panelEntradaMenu = new JPanel();
-		panelEntradaMenu.setBackground(new Color(192, 192, 192));
-		panelEntradaMenu.setBorder(new LineBorder(new Color(128, 0, 128), 3));
-		panelContenedorMenu.add(panelEntradaMenu);
+		JLabel lblHome = new JLabel("HOME");
+		lblHome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHome.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panelHome.add(lblHome, BorderLayout.CENTER);
+		
+		JPanel panelEntradaMenuBiblioteca = new JPanel();
+		panelEntradaMenuBiblioteca.setBackground(new Color(192, 192, 192));
+		panelEntradaMenuBiblioteca.setBorder(new LineBorder(new Color(128, 0, 128), 3));
+		panelContenedorMenu.add(panelEntradaMenuBiblioteca);
+		
+		JButton btnNewButton_1 = new JButton("BIBLIOTECA");
+		panelEntradaMenuBiblioteca.add(btnNewButton_1);
 	}
 
 	public static void main(String[] args) {
