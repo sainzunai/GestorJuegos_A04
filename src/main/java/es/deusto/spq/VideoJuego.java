@@ -8,18 +8,17 @@ public class VideoJuego {
 	private String nombre; 
 	private String id; 
 	private String compania; 
+	private String caratula; 
 	private int edadRecomendada; 
+	
+	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
+	
 	
 	
 	private Plataforma plataforma; 
+	 
 	
-	//Aqui se añadiran atributos necesarios para la logica mas adelante. Ejemplo LINK hacia una foto. 
-	
-	private ArrayList<Calificacion> calificaciones;  //PUEDE QUE TENGA QUE SE UN HASH MAP. Iremos viendo
-	
-	
-	//Lista de reviews y lista de comentarios. 
-	
+	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
 	//Dos posibles metodos: Este lo utilizamos si no tenemos ninguna calificacion
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma p ) {
@@ -87,9 +86,8 @@ public class VideoJuego {
 			if(votacion == calificaciones.get(i).getNota()) {
 				
 				numeroNotas ++; 
-				
+	
 			}
-
 		}	
 		
 		return numeroNotas;
@@ -163,6 +161,14 @@ public class VideoJuego {
 
 	public void setPlataforma(Plataforma plataforma) {
 		this.plataforma = plataforma;
+	}
+
+	public String getCaratula() {
+		return caratula;
+	}
+
+	public void setCaratula(String caratula) {
+		this.caratula = caratula;
 	}
 
 
