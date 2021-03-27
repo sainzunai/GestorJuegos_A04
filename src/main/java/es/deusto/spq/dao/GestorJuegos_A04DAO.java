@@ -1,9 +1,9 @@
 package es.deusto.spq.dao;
 
-import java.awt.List;
+import java.util.List;
 
 import javax.management.Query;
-
+import es.deusto.spq.VideoJuego;
 public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	private PersistenceManagerFactory pmf;
 	
@@ -32,21 +32,21 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	}
 
 	@Override
-	public void getVideojuego(String name) {
+	public VideoJuego getVideojuego(String id) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(3);
 		
 		Transaction tx = pm.currentTransaction();
-		Videojuego videojuego = null;
+		VideoJuego videojuego = null;
 	    
 		try {
 			System.out.println ("   * Seleccionando videojuego: " + name);
 			
 	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT FROM " + Videojuego.class.getName() + " WHERE name == '" + name + "'");
+	    	Query<?> query = pm.newQuery("SELECT FROM " + VideoJuego.class.getName() + " WHERE id == '" + id + "'");
 	    	query.setUnique(true);
-	    	videojuego = (Videojuego)query.execute();	    
+	    	videojuego = (VideoJuego)query.execute();	    
  	    	tx.commit();
    	    
 	     } catch (Exception ex) {
@@ -62,19 +62,19 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	}
 
 	@Override
-	public void getAllVideojuegos() {
+	public List<VideoJuego> getAllVideojuegos() {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(3);
 		
 		Transaction tx = pm.currentTransaction();
-		List<Videojuego> listavideojuego = null;
+		List<VideoJuego> listavideojuego = null;
 	    
 		try {
 			System.out.println ("   * Seleccionando videojuegos: ");
 			
 	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT * FROM " + Videojuego.class.getName());
+	    	Query<?> query = pm.newQuery("SELECT * FROM " + VideoJuego.class.getName());
 	    	query.setUnique(true);
 	    	listavideojuego = query.executeList();	    
  	    	tx.commit();
@@ -92,7 +92,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	}
 
 	@Override
-	public void updateVideojuego(videojuego) {
+	public void updateVideojuego(VideoJuego videojuego) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx = pm.currentTransaction();
@@ -123,14 +123,14 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		tx.begin();
 		
 		
-		Extent<Videojuego> extentU = pm.getExtent(Videojuego.class, true);
-		for (Videojuego v : extentU) {
-			v.removeReservation();
+		Extent<VideoJuego> extentU = pm.getExtent(VideoJuego.class, true);
+		for (VideoJuego v : extentU) {
+			//Falta por hacer
 		}
-		// Updating the database so changes are considered before commit
+		
 		pm.flush();				
 			
-		Query<Videojuego> query3 = pm.newQuery(Videojuego.class);
+		Query<VideoJuego> query3 = pm.newQuery(VideoJuego.class);
 		System.out.println(" * '" + query3.deletePersistentAll() + "' videojuegos borrados de la BD.");
 		
 		tx.commit();
