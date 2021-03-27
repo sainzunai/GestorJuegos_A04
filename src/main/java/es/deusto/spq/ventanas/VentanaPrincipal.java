@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.JTextField;
+import java.awt.FlowLayout;
 
 
 public class VentanaPrincipal extends JFrame{
+	private JTextField tfBuscador;
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("ORIGIN");
@@ -75,6 +78,23 @@ public class VentanaPrincipal extends JFrame{
 		JLabel lblBibliotecaVideojuegos = new JLabel("Videojuegos");
 		lblBibliotecaVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
 		panelBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
+		
+		JPanel panelCentral = new JPanel();
+		panelCentral.setBorder(new LineBorder(new Color(128, 0, 128)));
+		getContentPane().add(panelCentral, BorderLayout.CENTER);
+		panelCentral.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelHeader = new JPanel();
+		panelHeader.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelHeader.setBackground(new Color(192, 192, 192));
+		panelCentral.add(panelHeader, BorderLayout.NORTH);
+		panelHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		tfBuscador = new JTextField();
+		tfBuscador.setText("Buscador");
+		tfBuscador.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelHeader.add(tfBuscador);
+		tfBuscador.setColumns(10);
 	}
 
 	public static void main(String[] args) {
