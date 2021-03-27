@@ -29,11 +29,6 @@ public class Calificacion {
 		
 	}
 	
-	
-	
-	public int getNota() {
-		return nota;
-	}
 
 
 	public void setNota(int nota, int dia, int  mes, int anyo) { //cuando asignamos una nueva nota guardaremos su fecha de guardado. 
@@ -46,6 +41,13 @@ public class Calificacion {
 		this.anyoAsignacion = anyo; 
 	}
 	
+	
+	
+	
+	public int getNota() {
+		return nota;
+	}
+
 
 	public int getDiaAsignacion() {
 		return diaAsignacion;
