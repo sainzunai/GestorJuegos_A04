@@ -1,21 +1,16 @@
 package es.deusto.spq.ventanas;
 
-import javax.swing.JFrame;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import javax.swing.JPanel;
-import java.awt.GridBagConstraints;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 
 public class VentanaPrincipal extends JFrame{
@@ -28,17 +23,18 @@ public class VentanaPrincipal extends JFrame{
 		
 		JPanel panelContenedorMenu = new JPanel();
 		panelContenedorMenu.setBackground(new Color(255, 255, 255));
-		panelContenedorMenu.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panelContenedorMenu.setBorder(new LineBorder(new Color(0, 0, 0)));
 		getContentPane().add(panelContenedorMenu, BorderLayout.WEST);
 		panelContenedorMenu.setLayout(new GridLayout(2,1));
 		
 		JPanel panelEntradaMenuHome = new JPanel();
-		panelEntradaMenuHome.setBorder(new LineBorder(new Color(255, 0, 255), 3));
+		panelEntradaMenuHome.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelEntradaMenuHome.setBackground(new Color(192, 192, 192));
 		panelContenedorMenu.add(panelEntradaMenuHome);
 		panelEntradaMenuHome.setLayout(new GridLayout(4,1));
 		
 		JPanel panelHome = new JPanel();
+		panelHome.setBorder(new LineBorder(new Color(128, 128, 128)));
 		panelEntradaMenuHome.add(panelHome);
 		panelHome.setLayout(new BorderLayout(0, 0));
 		
@@ -47,13 +43,38 @@ public class VentanaPrincipal extends JFrame{
 		lblHome.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panelHome.add(lblHome, BorderLayout.CENTER);
 		
+		JPanel panelVideojuegos = new JPanel();
+		panelVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
+		panelEntradaMenuHome.add(panelVideojuegos);
+		panelVideojuegos.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblVideojuegos = new JLabel("Videojuegos");
+		lblVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelVideojuegos.add(lblVideojuegos);
+		
 		JPanel panelEntradaMenuBiblioteca = new JPanel();
 		panelEntradaMenuBiblioteca.setBackground(new Color(192, 192, 192));
-		panelEntradaMenuBiblioteca.setBorder(new LineBorder(new Color(128, 0, 128), 3));
+		panelEntradaMenuBiblioteca.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelContenedorMenu.add(panelEntradaMenuBiblioteca);
+		panelEntradaMenuBiblioteca.setLayout(new GridLayout(4,1));
 		
-		JButton btnNewButton_1 = new JButton("BIBLIOTECA");
-		panelEntradaMenuBiblioteca.add(btnNewButton_1);
+		JPanel panelBiblioteca = new JPanel();
+		panelEntradaMenuBiblioteca.add(panelBiblioteca);
+		panelBiblioteca.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblBiblioteca = new JLabel("BIBLIOTECA");
+		lblBiblioteca.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panelBiblioteca.add(lblBiblioteca, BorderLayout.CENTER);
+		
+		JPanel panelBibliotecaVideojuegos = new JPanel();
+		panelBibliotecaVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
+		panelEntradaMenuBiblioteca.add(panelBibliotecaVideojuegos);
+		panelBibliotecaVideojuegos.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblBibliotecaVideojuegos = new JLabel("Videojuegos");
+		lblBibliotecaVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
 	}
 
 	public static void main(String[] args) {
