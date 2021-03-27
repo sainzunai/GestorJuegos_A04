@@ -15,7 +15,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("videojuegos")
-public class ServerVideojuegos {
+public class VideojuegosResource {
 
 	/**
 	 * Este método devolverá la lista completa de videojuegos que haya en la
@@ -25,17 +25,17 @@ public class ServerVideojuegos {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Videojuego> getVideojuegos() {
-	 // This data could be retrieved from a database
+	 
 		//PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		//PersistenceManager pm = pmf.getPersistenceManager();
 		
 		//Query<Videojuego> q = pm.newQuery(Videojuego.class);
 		//q.setOrdering("");
 		
-		List<Videojuego> users = q.executeList();
-		pm.close();
+		//List<Videojuego> videojuegos = q.executeList();
+		//pm.close();
 		
-		return users;
+		return videojuegos;
 	}
 	
 	
