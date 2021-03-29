@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class VideoJuego {
 	
 	
-	private String nombre; 
+	@PrimaryKey 
 	private String id; 
+	
+	private String nombre;
 	private String compania; 
 	private String caratula; 
 	private int edadRecomendada; 

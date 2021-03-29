@@ -1,8 +1,13 @@
 package es.deusto.spq.dao;
 
 import java.util.List;
+import javax.jdo.Extent;
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
+import javax.jdo.Transaction;
 
-import javax.management.Query;
 import es.deusto.spq.VideoJuego;
 public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	private PersistenceManagerFactory pmf;
@@ -41,7 +46,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		VideoJuego videojuego = null;
 	    
 		try {
-			System.out.println ("   * Seleccionando videojuego: " + name);
+			System.out.println ("   * Seleccionando videojuego: " + id);
 			
 	    	tx.begin();
 	    	Query<?> query = pm.newQuery("SELECT FROM " + VideoJuego.class.getName() + " WHERE id == '" + id + "'");
@@ -76,7 +81,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    	tx.begin();
 	    	Query<?> query = pm.newQuery("SELECT * FROM " + VideoJuego.class.getName());
 	    	query.setUnique(true);
-	    	listavideojuego = query.executeList();	    
+	    	listavideojuego = (List<VideoJuego>) query.executeList();	    
  	    	tx.commit();
    	    
 	     } catch (Exception ex) {
@@ -121,14 +126,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		Transaction tx = pm.currentTransaction();
 		try {		
 		tx.begin();
-		
-		
-		Extent<VideoJuego> extentU = pm.getExtent(VideoJuego.class, true);
-		for (VideoJuego v : extentU) {
-			//Falta por hacer
-		}
-		
-		pm.flush();				
+					
 			
 		Query<VideoJuego> query3 = pm.newQuery(VideoJuego.class);
 		System.out.println(" * '" + query3.deletePersistentAll() + "' videojuegos borrados de la BD.");
