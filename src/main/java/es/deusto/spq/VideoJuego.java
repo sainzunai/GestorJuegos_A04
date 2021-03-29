@@ -64,6 +64,25 @@ public class VideoJuego {
 		
 	}
 	
+	
+	public VideoJuego() {
+		
+		
+		this.nombre = ""; 
+		
+		this.id = ""; 
+		
+		this.compania = ""; 
+		
+		this.edadRecomendada = 0; 
+		
+		this.plataforma = new Plataforma();  
+		
+		this.calificaciones = new ArrayList<>(); 
+		
+		
+	}
+	
 	public double calculoNotaMedia() {
 		
 		
