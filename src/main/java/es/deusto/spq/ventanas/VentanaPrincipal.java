@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import javax.swing.JScrollBar;
 
 
 public class VentanaPrincipal extends JFrame{
@@ -36,24 +37,24 @@ public class VentanaPrincipal extends JFrame{
 		panelContenedorMenu.add(panelEntradaMenuHome);
 		panelEntradaMenuHome.setLayout(new GridLayout(4,1));
 		
-		JPanel panelHome = new JPanel();
-		panelHome.setBorder(new LineBorder(new Color(128, 128, 128)));
-		panelEntradaMenuHome.add(panelHome);
-		panelHome.setLayout(new BorderLayout(0, 0));
+		JPanel panelMenuHome = new JPanel();
+		panelMenuHome.setBorder(new LineBorder(new Color(128, 128, 128)));
+		panelEntradaMenuHome.add(panelMenuHome);
+		panelMenuHome.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblHome = new JLabel("HOME");
 		lblHome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHome.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		panelHome.add(lblHome, BorderLayout.CENTER);
+		panelMenuHome.add(lblHome, BorderLayout.CENTER);
 		
-		JPanel panelVideojuegos = new JPanel();
-		panelVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
-		panelEntradaMenuHome.add(panelVideojuegos);
-		panelVideojuegos.setLayout(new BorderLayout(0, 0));
+		JPanel panelMenuHomeVideojuegos = new JPanel();
+		panelMenuHomeVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
+		panelEntradaMenuHome.add(panelMenuHomeVideojuegos);
+		panelMenuHomeVideojuegos.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblVideojuegos = new JLabel("Videojuegos");
 		lblVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
-		panelVideojuegos.add(lblVideojuegos);
+		panelMenuHomeVideojuegos.add(lblVideojuegos);
 		
 		JPanel panelEntradaMenuBiblioteca = new JPanel();
 		panelEntradaMenuBiblioteca.setBackground(new Color(192, 192, 192));
@@ -61,23 +62,23 @@ public class VentanaPrincipal extends JFrame{
 		panelContenedorMenu.add(panelEntradaMenuBiblioteca);
 		panelEntradaMenuBiblioteca.setLayout(new GridLayout(4,1));
 		
-		JPanel panelBiblioteca = new JPanel();
-		panelEntradaMenuBiblioteca.add(panelBiblioteca);
-		panelBiblioteca.setLayout(new BorderLayout(0, 0));
+		JPanel panelMenuBiblioteca = new JPanel();
+		panelEntradaMenuBiblioteca.add(panelMenuBiblioteca);
+		panelMenuBiblioteca.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblBiblioteca = new JLabel("BIBLIOTECA");
 		lblBiblioteca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		panelBiblioteca.add(lblBiblioteca, BorderLayout.CENTER);
+		panelMenuBiblioteca.add(lblBiblioteca, BorderLayout.CENTER);
 		
-		JPanel panelBibliotecaVideojuegos = new JPanel();
-		panelBibliotecaVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
-		panelEntradaMenuBiblioteca.add(panelBibliotecaVideojuegos);
-		panelBibliotecaVideojuegos.setLayout(new BorderLayout(0, 0));
+		JPanel panelMenuBibliotecaVideojuegos = new JPanel();
+		panelMenuBibliotecaVideojuegos.setBorder(new LineBorder(new Color(128, 128, 128)));
+		panelEntradaMenuBiblioteca.add(panelMenuBibliotecaVideojuegos);
+		panelMenuBibliotecaVideojuegos.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblBibliotecaVideojuegos = new JLabel("Videojuegos");
 		lblBibliotecaVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
-		panelBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
+		panelMenuBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
 		
 		JPanel panelCentral = new JPanel();
 		panelCentral.setBorder(new LineBorder(new Color(128, 0, 128)));
@@ -95,6 +96,13 @@ public class VentanaPrincipal extends JFrame{
 		tfBuscador.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelHeader.add(tfBuscador);
 		tfBuscador.setColumns(10);
+		
+		JPanel panelCentralVideojuegos = new JPanel();
+		panelCentral.add(panelCentralVideojuegos, BorderLayout.CENTER);
+		panelCentralVideojuegos.setLayout(new BorderLayout(0, 0));
+		
+		JScrollBar scrollBarVideojuegos = new JScrollBar();
+		panelCentralVideojuegos.add(scrollBarVideojuegos, BorderLayout.EAST);
 	}
 
 	public static void main(String[] args) {
