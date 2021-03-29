@@ -197,6 +197,18 @@ public class VideoJuego {
 	}
 
 
+	
+	//IMPLEMENTACION DE VENTANAS  
+	
+	/*
+	 * public JPanelVideoJuego getJPanelVideoJuego() {
+	 * 
+	 * JPanelVideoJuego j = new JPanelVideoJuego(this.caratula);
+	 * 
+	 * return j;
+	 * 
+	 * }
+	 */
 
 
 }
