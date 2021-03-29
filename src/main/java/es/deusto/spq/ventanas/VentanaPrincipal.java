@@ -99,26 +99,20 @@ public class VentanaPrincipal extends JFrame{
 		panelHeader.add(tfBuscador);
 		tfBuscador.setColumns(10);
 		
-//		JPanel panelVideojuegos = new JPanel(new BorderLayout());
 		
 		
 		FlowLayout fl_panelVideojuegosConLayout = new FlowLayout();
 		fl_panelVideojuegosConLayout.setAlignment(FlowLayout.LEFT);
 		JPanel panelVideojuegosConLayout = new JPanel(fl_panelVideojuegosConLayout);
 	
-		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 1000));
+		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 10000));//TODO preguntar a jpanel videojuego sus dimensiones y ajustar el panel
+		
 		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		panelCentral.add(pScroll, BorderLayout.CENTER);
 
 		
-		
-		
-//		panelVideojuegos.add(panelVideojuegosConLayout, BorderLayout.CENTER);
-		
-		
-		
-		
+		//---------TEST
 		
 		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
 		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
@@ -126,6 +120,11 @@ public class VentanaPrincipal extends JFrame{
 		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
 		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
 		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		
 			
 	}
 
