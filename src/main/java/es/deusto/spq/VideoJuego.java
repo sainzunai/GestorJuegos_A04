@@ -139,6 +139,16 @@ public class VideoJuego {
 
 	}
 	
+	public void addCalificacion(Calificacion c) {
+		
+		this.calificaciones.add(c); 
+	}
+	
+	public boolean remCalificacion(Calificacion c) {
+		
+		return this.calificaciones.remove(c); 
+	}
+	
 
 	public String getNombre() {
 		return nombre;
