@@ -14,6 +14,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 
 public class VentanaPrincipal extends JFrame{
@@ -97,12 +99,34 @@ public class VentanaPrincipal extends JFrame{
 		panelHeader.add(tfBuscador);
 		tfBuscador.setColumns(10);
 		
-		JPanel panelCentralVideojuegos = new JPanel();
-		panelCentral.add(panelCentralVideojuegos, BorderLayout.CENTER);
-		panelCentralVideojuegos.setLayout(new BorderLayout(0, 0));
+//		JPanel panelVideojuegos = new JPanel(new BorderLayout());
 		
-		JScrollBar scrollBarVideojuegos = new JScrollBar();
-		panelCentralVideojuegos.add(scrollBarVideojuegos, BorderLayout.EAST);
+		
+		FlowLayout fl_panelVideojuegosConLayout = new FlowLayout();
+		fl_panelVideojuegosConLayout.setAlignment(FlowLayout.LEFT);
+		JPanel panelVideojuegosConLayout = new JPanel(fl_panelVideojuegosConLayout);
+	
+		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 100));
+		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout);
+		
+		panelCentral.add(pScroll, BorderLayout.NORTH);
+
+		
+		
+		
+//		panelVideojuegos.add(panelVideojuegosConLayout, BorderLayout.CENTER);
+		
+		
+		
+		
+		
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
+			
 	}
 
 	public static void main(String[] args) {
