@@ -106,10 +106,10 @@ public class VentanaPrincipal extends JFrame{
 		fl_panelVideojuegosConLayout.setAlignment(FlowLayout.LEFT);
 		JPanel panelVideojuegosConLayout = new JPanel(fl_panelVideojuegosConLayout);
 	
-		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 100));
-		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout);
+		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 1000));
+		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		panelCentral.add(pScroll, BorderLayout.NORTH);
+		panelCentral.add(pScroll, BorderLayout.CENTER);
 
 		
 		
