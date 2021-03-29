@@ -64,6 +64,25 @@ public class VideoJuego {
 		
 	}
 	
+	
+	public VideoJuego() {
+		
+		
+		this.nombre = ""; 
+		
+		this.id = ""; 
+		
+		this.compania = ""; 
+		
+		this.edadRecomendada = 0; 
+		
+		this.plataforma = new Plataforma();  
+		
+		this.calificaciones = new ArrayList<>(); 
+		
+		
+	}
+	
 	public double calculoNotaMedia() {
 		
 		
@@ -118,6 +137,16 @@ public class VideoJuego {
 		}		
 		return nota; 
 
+	}
+	
+	public void addCalificacion(Calificacion c) {
+		
+		this.calificaciones.add(c); 
+	}
+	
+	public boolean remCalificacion(Calificacion c) {
+		
+		return this.calificaciones.remove(c); 
 	}
 	
 
@@ -178,6 +207,18 @@ public class VideoJuego {
 	}
 
 
+	
+	//IMPLEMENTACION DE VENTANAS  
+	
+	/*
+	 * public JPanelVideoJuego getJPanelVideoJuego() {
+	 * 
+	 * JPanelVideoJuego j = new JPanelVideoJuego(this.caratula);
+	 * 
+	 * return j;
+	 * 
+	 * }
+	 */
 
 
 }
