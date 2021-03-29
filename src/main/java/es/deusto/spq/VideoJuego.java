@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class VideoJuego {
 	
 	
-	private String nombre; 
+	@PrimaryKey 
 	private String id; 
+	
+	private String nombre;
 	private String compania; 
 	private String caratula; 
 	private int edadRecomendada; 
@@ -60,6 +63,25 @@ public class VideoJuego {
 		this.plataforma = p; 
 		
 		this.calificaciones = calificaciones; 
+		
+		
+	}
+	
+	
+	public VideoJuego() {
+		
+		
+		this.nombre = ""; 
+		
+		this.id = ""; 
+		
+		this.compania = ""; 
+		
+		this.edadRecomendada = 0; 
+		
+		this.plataforma = new Plataforma();  
+		
+		this.calificaciones = new ArrayList<>(); 
 		
 		
 	}
@@ -120,6 +142,16 @@ public class VideoJuego {
 
 	}
 	
+	public void addCalificacion(Calificacion c) {
+		
+		this.calificaciones.add(c); 
+	}
+	
+	public boolean remCalificacion(Calificacion c) {
+		
+		return this.calificaciones.remove(c); 
+	}
+	
 
 	public String getNombre() {
 		return nombre;
@@ -178,6 +210,18 @@ public class VideoJuego {
 	}
 
 
+	
+	//IMPLEMENTACION DE VENTANAS  
+	
+	/*
+	 * public JPanelVideoJuego getJPanelVideoJuego() {
+	 * 
+	 * JPanelVideoJuego j = new JPanelVideoJuego(this.caratula);
+	 * 
+	 * return j;
+	 * 
+	 * }
+	 */
 
 
 }

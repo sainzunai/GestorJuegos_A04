@@ -27,6 +27,16 @@ public class Plataforma {  //PS4, NINTENDO etc.
 		this.urlLogo = url; 
 		
 	}
+	
+	public Plataforma() {
+		
+		this.setNombrePlataforma(""); 
+		
+		this.setIdPlataforma(""); 
+		
+		this.urlLogo = ""; 
+		
+	}
 
 	public String getNombrePlataforma() {
 		return nombrePlataforma;
