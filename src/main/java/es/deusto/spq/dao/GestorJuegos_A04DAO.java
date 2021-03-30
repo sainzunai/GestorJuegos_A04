@@ -31,8 +31,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    	if (tx != null && tx.isActive()) {
 	    		tx.rollback();
 	    	}
+	    	if (pm != null && !pm.isClosed()) {
+				pm.close();
 				
-    		pm.close();
+			}	
+    		
 	    }
 	}
 
@@ -104,7 +107,13 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    
 	    try {
 	    	tx.begin();
-	    	pm.makePersistent(videojuego);
+	    	VideoJuego j=(VideoJuego) pm.getObjectById(VideoJuego.class,videojuego.getId());
+	    	j.setCalificaciones(videojuego.getCalificaciones());
+	    	j.setCaratula(videojuego.getCaratula());
+	    	j.setCompania(videojuego.getCompania());
+	    	j.setEdadRecomendada(videojuego.getEdadRecomendada());
+	    	j.setNombre(videojuego.getNombre());
+	    	j.setPlataformas(videojuego.getPlataformas());
 	    	System.out.println("   * Actualizando videojuego: " + videojuego);
 	    	tx.commit();
 	     } catch (Exception ex) {
