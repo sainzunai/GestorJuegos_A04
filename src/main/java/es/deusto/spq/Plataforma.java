@@ -1,13 +1,20 @@
 package es.deusto.spq;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+@PersistenceCapable
 public class Plataforma {  //PS4, NINTENDO etc. 
 	
-	private String nombrePlataforma; 
-	
+	@PrimaryKey
 	private String idPlataforma;
 	
+	private String nombrePlataforma; 
 	private String urlLogo; //Posible futura implementacion 
 	
+
 	
 	
 	public Plataforma(String nombre, String id) {
@@ -61,5 +68,6 @@ public class Plataforma {  //PS4, NINTENDO etc.
 	public void setUrlLogo(String urlLogo) {
 		this.urlLogo = urlLogo;
 	}
-
+	
+	
 }

@@ -1,10 +1,13 @@
 package es.deusto.spq;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
@@ -20,17 +23,18 @@ public class VideoJuego {
 	private String caratula; 
 	private int edadRecomendada; 
 	
+	
+	
+	
+	@Join
+	private List<Plataforma> plataforma= new ArrayList<>(); 
+	
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
-	
-	
-	
-	private Plataforma plataforma; 
-	 
 	
 	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
 	//Dos posibles metodos: Este lo utilizamos si no tenemos ninguna calificacion
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma p ) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada ) {
 		
 		
 		this.nombre = nombre; 
@@ -40,16 +44,15 @@ public class VideoJuego {
 		this.compania = company; 
 		
 		this.edadRecomendada = edadRecomendada; 
-		
-		this.plataforma = p; 
+		 
 		
 		this.calificaciones  = new ArrayList<>(); 
 		
 		
 	}
-	
+
 	//Dos posibles metodos: Este lo utilizamos si tenemos la lista de calificaciones
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma p, ArrayList<Calificacion> calificaciones) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones) {
 		
 		
 		this.nombre = nombre; 
@@ -60,7 +63,7 @@ public class VideoJuego {
 		
 		this.edadRecomendada = edadRecomendada; 
 		
-		this.plataforma = p; 
+		
 		
 		this.calificaciones = calificaciones; 
 		
@@ -79,7 +82,7 @@ public class VideoJuego {
 		
 		this.edadRecomendada = 0; 
 		
-		this.plataforma = new Plataforma();  
+		
 		
 		this.calificaciones = new ArrayList<>(); 
 		
@@ -95,11 +98,11 @@ public class VideoJuego {
 		
 		for( i = 0; i < calificaciones.size(); i ++  ) {
 			
-			notaMedia = calificaciones.get(i).getNota();
+			notaMedia = notaMedia + calificaciones.get(i).getNota();
 
 		}
 
-		return notaMedia / ( i + 1 );
+		return notaMedia / ( i );
 		
 	}
 	
@@ -193,13 +196,6 @@ public class VideoJuego {
 		this.calificaciones = calificaciones;
 	}
 
-	public Plataforma getPlataforma() {
-		return plataforma;
-	}
-
-	public void setPlataforma(Plataforma plataforma) {
-		this.plataforma = plataforma;
-	}
 
 	public String getCaratula() {
 		return caratula;
@@ -208,8 +204,25 @@ public class VideoJuego {
 	public void setCaratula(String caratula) {
 		this.caratula = caratula;
 	}
+	
+	public void setPlataformas(List<Plataforma> p) {
+		this.plataforma = p;
+	}
+	public void addPlataforma(Plataforma p) {
+		plataforma.add(p);
+	}
 
+	public void removePlataforma(Plataforma p) {
+		plataforma.remove(p);
+	}
 
+	public List<Plataforma> getPlataformas() {
+		return plataforma;
+	}
+
+	public int getNumberOfPlataformas() {
+		return plataforma.size();
+	}
 	
 	//IMPLEMENTACION DE VENTANAS  
 	
