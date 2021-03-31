@@ -2,6 +2,8 @@ package es.deusto.spq.server;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -34,9 +36,12 @@ public class VideojuegosResourceTest {
 
 	@Test
 	public void test() {
-		//VideojuegosResource vr = new VideojuegosResource();
-		//assertEquals(vr.getVideojuegos(), null);
-		fail("Not yet implemented");
+		VideojuegosResource vr = new VideojuegosResource();
+		List<VideoJuego> v = vr.getVideojuegos();
+		System.out.println(v.get(1).getNombre());
+		
+		assertEquals(vr.getVideojuegos().get(0).getNombre(), "Fifa 20");
+		//fail("Not yet implemented");
 	}
 
 }
