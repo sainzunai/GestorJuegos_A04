@@ -92,11 +92,11 @@ public class VideoJuego {
 		
 		for( i = 0; i < calificaciones.size(); i ++  ) {
 			
-			notaMedia = calificaciones.get(i).getNota();
+			notaMedia = notaMedia + calificaciones.get(i).getNota();
 
 		}
 
-		return notaMedia / ( i + 1 );
+		return notaMedia / ( i );
 		
 	}
 	
