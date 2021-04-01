@@ -15,6 +15,7 @@ public class Biblioteca {
 	
 	private String bilioteca_id; 
 	private int numeroJuegos;
+
 	
 	@Persistent(table="Biblioteca_VideoJuego")
     @Join(column="biblioteca_id")
@@ -40,7 +41,7 @@ public class Biblioteca {
 	
 	
 	
-	public VideoJuego calcularVideojuegoAlto() {
+	public VideoJuego calcularVideojuegoAlto() {  //Calculamos el juego con la nota mas alta
 		VideoJuego v = new VideoJuego(); 
 		
 		 
@@ -62,7 +63,7 @@ public class Biblioteca {
 		return v; 
 	}
 	
-	public int numeroDeJuegos() {
+	public int numeroDeJuegos() {  //Devuelve el numero de juegos en la biblioteca. 
 		
 		return listaJuegos.size(); 
 		
@@ -91,15 +92,6 @@ public class Biblioteca {
 	public void setId(String id) {
 		this.bilioteca_id = id;
 	}
-	
-	public int getNumeroJuegos() {
-		return numeroJuegos;
-	}
-
-	public void setNumeroJuegos(int numeroJuegos) {
-		this.numeroJuegos = numeroJuegos;
-	}
-
 
 	public List<VideoJuego> getListaJuegos() {
 		return listaJuegos;

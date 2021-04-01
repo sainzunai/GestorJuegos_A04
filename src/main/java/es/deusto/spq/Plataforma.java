@@ -1,6 +1,8 @@
 package es.deusto.spq;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.jdo.annotations.Join;
