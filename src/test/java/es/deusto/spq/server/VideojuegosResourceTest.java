@@ -2,45 +2,43 @@ package es.deusto.spq.server;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Transaction;
 
 import org.junit.Test;
 
+import es.deusto.spq.Plataforma;
 import es.deusto.spq.VideoJuego;
+import es.deusto.spq.dao.GestorJuegos_A04DAO;
 
 public class VideojuegosResourceTest {
 	
-	private void prepareData() {
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			VideoJuego videojuego = new VideoJuego("Fifa 20", "fif20ps4", "Electronic Arts", 3, null);
-			pm.makePersistent(videojuego);
-			
-			tx.commit();
-		}finally {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-			pm.close();
-		}
-	}
-
+	GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
 	@Test
-	public void test() {
-		VideojuegosResource vr = new VideojuegosResource();
-		List<VideoJuego> v = vr.getVideojuegos();
-		System.out.println(v.get(1).getNombre());
+	public void test() throws InterruptedException {
 		
-		assertEquals(vr.getVideojuegos().get(0).getNombre(), "Fifa 20");
+		dao.deleteAll(); //Dejamos limpia la BD
+		
+		//Crear los objetos a introducir
+		Plataforma p = new Plataforma("PS4","1");
+		VideoJuego game = new VideoJuego("FIFA 20","1","EA",3, p);
+		//Introducirlos en BD
+		dao.introducirObjeto(game);
+		
+		//Lista esperada de videojuegos
+		List<VideoJuego> expected = new ArrayList<>();
+		expected.add(game);
+
+		//Creamos el resource del servidor
+		VideojuegosResource vr = new VideojuegosResource();
+		List<VideoJuego> actual = vr.getVideojuegos();
+		//System.out.println(v.get(1).getNombre());
+		
+		//System.out.println(expected);
+		
+		dao.deleteAll();
+		assertEquals(actual.get(0).getId(), expected.get(0).getId());
+	
 		//fail("Not yet implemented");
 	}
 
