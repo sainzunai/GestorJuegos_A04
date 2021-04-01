@@ -1,21 +1,30 @@
 package es.deusto.spq;
+
+import java.io.Serializable;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
-public class Plataforma {  //PS4, NINTENDO etc. 
+public class Plataforma implements Serializable{  //PS4, NINTENDO etc. 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@PrimaryKey
 	private String idPlataforma;
 	
 	private String nombrePlataforma; 
 	private String urlLogo; //Posible futura implementacion 
-	
-
-	
+	@Persistent(mappedBy="plataforma", dependentElement="true")
+	@Join
+	private List<VideoJuego> videojuegos = new ArrayList<>();
 	
 	public Plataforma(String nombre, String id) {
 		
@@ -69,5 +78,20 @@ public class Plataforma {  //PS4, NINTENDO etc.
 		this.urlLogo = urlLogo;
 	}
 	
+	public void addVideoJuego(VideoJuego v) {
+		videojuegos.add(v);
+	}
+
+	public void removeVideojuego(VideoJuego v) {
+		videojuegos.remove(v);
+	}
+
+	public List<VideoJuego> getVideoJuegos() {
+		return videojuegos;
+	}
+
+	public int getNumberOfVideojuegos() {
+		return videojuegos.size();
+	}
 	
 }
