@@ -11,16 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 
 public class VentanaPrincipal extends JFrame{
-	private JTextField tfBuscador;
+	ControladorVentanaPrincipal miControlador;
+	
+	
 	public VentanaPrincipal() {
+		miControlador = new ControladorVentanaPrincipal(this);
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("ORIGIN");
 		this.setSize(new Dimension(1233, 657));
@@ -82,49 +81,9 @@ public class VentanaPrincipal extends JFrame{
 		lblBibliotecaVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
 		panelMenuBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
 		
-		JPanel panelCentral = new JPanel();
-		panelCentral.setBorder(new LineBorder(new Color(128, 0, 128)));
-		getContentPane().add(panelCentral, BorderLayout.CENTER);
-		panelCentral.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panelHeader = new JPanel();
-		panelHeader.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panelHeader.setBackground(new Color(192, 192, 192));
-		panelCentral.add(panelHeader, BorderLayout.NORTH);
-		panelHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		tfBuscador = new JTextField();
-		tfBuscador.setText("Buscador");
-		tfBuscador.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panelHeader.add(tfBuscador);
-		tfBuscador.setColumns(10);
-		
-		
-		
-		FlowLayout fl_panelVideojuegosConLayout = new FlowLayout();
-		fl_panelVideojuegosConLayout.setAlignment(FlowLayout.LEFT);
-		JPanel panelVideojuegosConLayout = new JPanel(fl_panelVideojuegosConLayout);
-	
-		panelVideojuegosConLayout.setPreferredSize(new Dimension(600, 10000));//TODO preguntar a jpanel videojuego sus dimensiones y ajustar el panel
-		
-		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		
-		panelCentral.add(pScroll, BorderLayout.CENTER);
+		JPanel panelCentralCaratulas = new PanelCentralCaratulas();
+		getContentPane().add(panelCentralCaratulas, BorderLayout.CENTER);
 
-		
-		//---------TEST
-		
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		
 			
 	}
 

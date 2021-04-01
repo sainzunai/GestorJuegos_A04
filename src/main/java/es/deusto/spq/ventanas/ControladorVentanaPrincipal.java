@@ -7,5 +7,6 @@ VentanaPrincipal miVentana;
 		this.miVentana = miVentana;
 	}
 	
+	
 
 }
