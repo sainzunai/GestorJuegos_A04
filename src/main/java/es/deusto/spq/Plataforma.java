@@ -1,5 +1,5 @@
 package es.deusto.spq;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.jdo.annotations.Join;
