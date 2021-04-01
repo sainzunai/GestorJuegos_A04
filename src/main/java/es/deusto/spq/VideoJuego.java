@@ -1,5 +1,6 @@
 package es.deusto.spq;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,42 +10,50 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Order;
+import javax.jdo.annotations.Extension;
+
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
-public class VideoJuego {
+public class VideoJuego implements Serializable{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@PrimaryKey 
-	private String id; 
+	private String videoJuego_id; 
 	
 	private String nombre;
 	private String compania; 
 	private String caratula; 
 	private int edadRecomendada; 
-	
-	
-	
-	
-	@Join
-	private List<Plataforma> plataforma= new ArrayList<>(); 
-	
+	private Plataforma plataforma; 
+
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
-	
+	@Persistent
+    @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="id ASC"))
+    private List<Biblioteca> biblioteca= new ArrayList<>();
+    
+    
 	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
 	//Dos posibles metodos: Este lo utilizamos si no tenemos ninguna calificacion
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada ) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada,Plataforma plataforma ) {
 		
 		
 		this.nombre = nombre; 
 		
-		this.id = id; 
+		this.videoJuego_id = id; 
 		
 		this.compania = company; 
 		
 		this.edadRecomendada = edadRecomendada; 
-		 
+		
+		this.plataforma=plataforma;
 		
 		this.calificaciones  = new ArrayList<>(); 
 		
@@ -52,18 +61,18 @@ public class VideoJuego {
 	}
 
 	//Dos posibles metodos: Este lo utilizamos si tenemos la lista de calificaciones
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
 		
 		
 		this.nombre = nombre; 
 		
-		this.id = id; 
+		this.videoJuego_id = id; 
 		
 		this.compania = company; 
 		
 		this.edadRecomendada = edadRecomendada; 
 		
-		
+		this.plataforma=plataforma;
 		
 		this.calificaciones = calificaciones; 
 		
@@ -76,7 +85,7 @@ public class VideoJuego {
 		
 		this.nombre = ""; 
 		
-		this.id = ""; 
+		this.videoJuego_id = ""; 
 		
 		this.compania = ""; 
 		
@@ -165,11 +174,11 @@ public class VideoJuego {
 	}
 	
 	public String getId() {
-		return id;
+		return videoJuego_id;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.videoJuego_id = id;
 	} 
 	
 	public String getCompania() {
@@ -205,24 +214,6 @@ public class VideoJuego {
 		this.caratula = caratula;
 	}
 	
-	public void setPlataformas(List<Plataforma> p) {
-		this.plataforma = p;
-	}
-	public void addPlataforma(Plataforma p) {
-		plataforma.add(p);
-	}
-
-	public void removePlataforma(Plataforma p) {
-		plataforma.remove(p);
-	}
-
-	public List<Plataforma> getPlataformas() {
-		return plataforma;
-	}
-
-	public int getNumberOfPlataformas() {
-		return plataforma.size();
-	}
 	
 	//IMPLEMENTACION DE VENTANAS  
 	

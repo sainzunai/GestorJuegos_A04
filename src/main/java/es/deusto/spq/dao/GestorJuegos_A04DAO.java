@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import es.deusto.spq.Plataforma;
 import es.deusto.spq.VideoJuego;
 public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	private PersistenceManagerFactory pmf;
@@ -113,7 +114,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    	j.setCompania(videojuego.getCompania());
 	    	j.setEdadRecomendada(videojuego.getEdadRecomendada());
 	    	j.setNombre(videojuego.getNombre());
-	    	j.setPlataformas(videojuego.getPlataformas());
+	    	
 	    	System.out.println("   * Actualizando videojuego: " + videojuego);
 	    	tx.commit();
 	     } catch (Exception ex) {
@@ -154,6 +155,36 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			pm.close();
 		}
 	}
+	}
+	@Override
+	public void deleteAll() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+		try {
+			System.out.println("- Cleaning the DB...");			
+			
+			
+			
+			tx.begin();
+			
+			Query<Plataforma> query2 = pm.newQuery(Plataforma.class);
+			System.out.println(query2.deletePersistentAll() + "Eliminando Plataforma");
+			
+			//End the transaction
+			tx.commit();
+		} catch (Exception ex) {
+			System.err.println(" $ Error cleaning the DB: " + ex.getMessage());
+			ex.printStackTrace();
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		
 	}
 	
 }
