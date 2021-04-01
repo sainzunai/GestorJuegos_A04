@@ -6,7 +6,6 @@ public class Biblioteca {
 	
 	
 	private String id; 
-	private int numeroJuegos; 
 	private ArrayList<VideoJuego> listaJuegos;  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
 	
 	public Biblioteca(String id,ArrayList<VideoJuego> listaJuegos ) {
@@ -27,7 +26,7 @@ public class Biblioteca {
 	
 	
 	
-	public VideoJuego calcularVideojuegoAlto() {
+	public VideoJuego calcularVideojuegoAlto() {  //Calculamos el juego con la nota mas alta
 		VideoJuego v = new VideoJuego(); 
 		
 		 
@@ -49,7 +48,7 @@ public class Biblioteca {
 		return v; 
 	}
 	
-	public int numeroDeJuegos() {
+	public int numeroDeJuegos() {  //Devuelve el numero de juegos en la biblioteca. 
 		
 		return listaJuegos.size(); 
 		
@@ -78,15 +77,6 @@ public class Biblioteca {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public int getNumeroJuegos() {
-		return numeroJuegos;
-	}
-
-	public void setNumeroJuegos(int numeroJuegos) {
-		this.numeroJuegos = numeroJuegos;
-	}
-
 
 	public ArrayList<VideoJuego> getListaJuegos() {
 		return listaJuegos;
