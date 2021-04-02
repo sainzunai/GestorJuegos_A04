@@ -8,12 +8,12 @@ VentanaPrincipal miVentana;
 	}
 
 	public void mostrarHomeVideojuegos() {
-		// TODO Auto-generated method stub
+		miVentana.panelCentralCaratulas.setVisible(false);
 		
 	}
 
 	public void mostrarBibliotecaVideojuegos() {
-		// TODO Auto-generated method stub
+		miVentana.panelCentralCaratulas.setVisible(true);
 		
 	}
 	

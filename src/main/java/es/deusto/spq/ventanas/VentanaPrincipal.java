@@ -18,6 +18,7 @@ public class VentanaPrincipal extends JFrame {
 	ControladorVentanaPrincipal miControlador;
 	JPanel panelMenuHomeVideojuegos;
 	JPanel panelMenuBibliotecaVideojuegos;
+	JPanel panelCentralCaratulas;
 
 	public VentanaPrincipal() {
 		miControlador = new ControladorVentanaPrincipal(this);
@@ -84,7 +85,7 @@ public class VentanaPrincipal extends JFrame {
 		lblBibliotecaVideojuegos.setHorizontalAlignment(SwingConstants.RIGHT);
 		panelMenuBibliotecaVideojuegos.add(lblBibliotecaVideojuegos, BorderLayout.CENTER);
 
-		JPanel panelCentralCaratulas = new PanelCentralCaratulas();
+		panelCentralCaratulas = new PanelCentralCaratulas();
 		getContentPane().add(panelCentralCaratulas, BorderLayout.CENTER);
 
 		// ----------- CONFIGURACION DE LISTENERS DE LA VENTANA -----------
