@@ -54,7 +54,7 @@ public class PanelCentralCaratulas extends JPanel{
 	}
 	
 	
-			
+	//----------- TEST DEL PANEL -----------
 	public static void main(String[] args) {
 		JFrame ventana = new JFrame();
 		ventana.setSize(1000,1000);

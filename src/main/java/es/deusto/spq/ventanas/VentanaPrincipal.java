@@ -20,12 +20,14 @@ public class VentanaPrincipal extends JFrame{
 	public VentanaPrincipal() {
 		miControlador = new ControladorVentanaPrincipal(this);
 		
+		//----------- CONFIGURACION DE LA VENTANA -----------
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("ORIGIN");
 		this.setSize(new Dimension(1233, 657));
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		
+		//----------- COMPONENTES DE LA VENTANA -----------
 		JPanel panelContenedorMenu = new JPanel();
 		panelContenedorMenu.setBackground(new Color(255, 255, 255));
 		panelContenedorMenu.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -83,10 +85,10 @@ public class VentanaPrincipal extends JFrame{
 		
 		JPanel panelCentralCaratulas = new PanelCentralCaratulas();
 		getContentPane().add(panelCentralCaratulas, BorderLayout.CENTER);
-
 			
 	}
 
+	//----------- TEST DE LA VENTANA -----------
 	public static void main(String[] args) {
 		JFrame ventana = new VentanaPrincipal();
 		ventana.setVisible(true);
