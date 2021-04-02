@@ -2,7 +2,6 @@ package es.deusto.spq;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.Join;
@@ -12,10 +11,16 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class Biblioteca {
+
 	
 	@PrimaryKey
 	private String biblioteca_id; 
 	private int numeroJuegos;
+
+	//Que van a ir directamente a un USUARIO; 
+
+
+
 
 	
 	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true")
@@ -64,53 +69,25 @@ public class Biblioteca {
 		
 	}
 	
-	
-	
-	
-	public VideoJuego calcularVideojuegoAlto() {  //Calculamos el juego con la nota mas alta
-		VideoJuego v = new VideoJuego(); 
-		
-		 
-		v.getCalificaciones().add(new Calificacion(0, 0 ,0 ,0)); 
-		
-		for(int i = 0; i < listaJuegos.size(); i++) {
-			
-			if( listaJuegos.get(i).getCalificaciones().get(i).getNota() > v.getCalificaciones().get(0).getNota() ) {
-				
-				
-				v =  listaJuegos.get(i); 
-				
-				
-			}
-			
-			
-		}
-		
-		return v; 
-	}
-	
 	public int numeroDeJuegos() {  //Devuelve el numero de juegos en la biblioteca. 
 		
 		return listaJuegos.size(); 
 		
 	}
 	
-	public double calcularMediaNotas() { //NECESARIO CREAR CUANDO TENGAMOS UN USUARIO
-		//ASI SABREMOS QUE NOTA HA DADO CADA USUARIO 
+	public void addJuego(VideoJuego v) {
 		
-		double nota = 0.0; 
-		int i; 
-		for(i = 0; i < listaJuegos.size(); i++) {
-			
-			nota = nota +  listaJuegos.get(i).getCalificaciones().get(i).getNota(); 
-			
-			
-		}
+		listaJuegos.add(v); 
 		
-		return nota / i ; 
 	}
 	
-	
+	public void remJuego(VideoJuego v) {
+		
+		listaJuegos.remove(v); 
+		
+		
+		
+	}
 	public String getId() {
 		return biblioteca_id;
 	}
@@ -135,18 +112,6 @@ public class Biblioteca {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
 
 }
