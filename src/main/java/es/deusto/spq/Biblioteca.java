@@ -2,11 +2,12 @@ package es.deusto.spq;
 
 import java.util.ArrayList;
 
-public class Biblioteca {
+public class Biblioteca {  //PUEDE QUE FALTEN METODOS ADICIONALES PARA VENTANA. 
 	
 	
 	private String id; 
-	private ArrayList<VideoJuego> listaJuegos;  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
+	private ArrayList<VideoJuego> listaJuegos;  //arraylist de videojeugos. 
+	//Que van a ir directamente a un USUARIO; 
 	
 	public Biblioteca(String id,ArrayList<VideoJuego> listaJuegos ) {
 		
@@ -23,53 +24,25 @@ public class Biblioteca {
 		
 	}
 	
-	
-	
-	
-	public VideoJuego calcularVideojuegoAlto() {  //Calculamos el juego con la nota mas alta
-		VideoJuego v = new VideoJuego(); 
-		
-		 
-		v.getCalificaciones().add(new Calificacion(0, 0 ,0 ,0)); 
-		
-		for(int i = 0; i < listaJuegos.size(); i++) {
-			
-			if( listaJuegos.get(i).getCalificaciones().get(i).getNota() > v.getCalificaciones().get(0).getNota() ) {
-				
-				
-				v =  listaJuegos.get(i); 
-				
-				
-			}
-			
-			
-		}
-		
-		return v; 
-	}
-	
 	public int numeroDeJuegos() {  //Devuelve el numero de juegos en la biblioteca. 
 		
 		return listaJuegos.size(); 
 		
 	}
 	
-	public double calcularMediaNotas() { //NECESARIO CREAR CUANDO TENGAMOS UN USUARIO
-		//ASI SABREMOS QUE NOTA HA DADO CADA USUARIO 
+	public void addJuego(VideoJuego v) {
 		
-		double nota = 0.0; 
-		int i; 
-		for(i = 0; i < listaJuegos.size(); i++) {
-			
-			nota = nota +  listaJuegos.get(i).getCalificaciones().get(i).getNota(); 
-			
-			
-		}
+		listaJuegos.add(v); 
 		
-		return nota / i ; 
 	}
 	
-	
+	public void remJuego(VideoJuego v) {
+		
+		listaJuegos.remove(v); 
+		
+		
+		
+	}
 	public String getId() {
 		return id;
 	}
@@ -88,18 +61,6 @@ public class Biblioteca {
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
 
 }
