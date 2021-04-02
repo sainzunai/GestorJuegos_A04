@@ -9,23 +9,49 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class Biblioteca {
 	
-	
-	private String bilioteca_id; 
+	@PrimaryKey
+	private String biblioteca_id; 
 	private int numeroJuegos;
 
 	
-	@Persistent(table="Biblioteca_VideoJuego")
+	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true")
     @Join(column="biblioteca_id")
     @Element(column="videoJuego_id")
     @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="id ASC"))
 	private List<VideoJuego> listaJuegos= new ArrayList<>();  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((biblioteca_id == null) ? 0 : biblioteca_id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Biblioteca other = (Biblioteca) obj;
+		if (biblioteca_id == null) {
+			if (other.biblioteca_id != null)
+				return false;
+		} else if (!biblioteca_id.equals(other.biblioteca_id))
+			return false;
+		return true;
+	}
+
 	public Biblioteca(String id,ArrayList<VideoJuego> listaJuegos ) {
 		
-		this.bilioteca_id = id; 
+		this.biblioteca_id = id; 
 		this.listaJuegos = listaJuegos;  
 		
 		
@@ -86,18 +112,18 @@ public class Biblioteca {
 	
 	
 	public String getId() {
-		return bilioteca_id;
+		return biblioteca_id;
 	}
 
 	public void setId(String id) {
-		this.bilioteca_id = id;
+		this.biblioteca_id = id;
 	}
 
 	public List<VideoJuego> getListaJuegos() {
 		return listaJuegos;
 	}
 
-	public void setListaJuegos(ArrayList<VideoJuego> listaJuegos) {
+	public void setListaJuegos(List<VideoJuego> listaJuegos) {
 		this.listaJuegos = listaJuegos;
 	}
 	public void addVideoJuego(VideoJuego v) {

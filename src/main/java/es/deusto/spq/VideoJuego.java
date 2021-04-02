@@ -34,11 +34,38 @@ public class VideoJuego implements Serializable{
 	private Plataforma plataforma; 
 
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
-	@Persistent
+	@Persistent(defaultFetchGroup="true")
     @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="id ASC"))
     private List<Biblioteca> biblioteca= new ArrayList<>();
     
     
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((videoJuego_id == null) ? 0 : videoJuego_id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VideoJuego other = (VideoJuego) obj;
+		if (videoJuego_id == null) {
+			if (other.videoJuego_id != null)
+				return false;
+		} else if (!videoJuego_id.equals(other.videoJuego_id))
+			return false;
+		return true;
+	}
+
 	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
 	//Dos posibles metodos: Este lo utilizamos si no tenemos ninguna calificacion
@@ -214,7 +241,24 @@ public class VideoJuego implements Serializable{
 		this.caratula = caratula;
 	}
 	
-	
+	public void addBiblioteca(Biblioteca b) {
+		biblioteca.add(b);
+	}
+
+	public void removeBiblioteca(Biblioteca b) {
+		biblioteca.remove(b);
+	}
+
+	public List<Biblioteca> getBiblioteca() {
+		return biblioteca;
+	}
+
+	public int getNumberOfBiblioteca() {
+		return biblioteca.size();
+	}
+	public void setBiblioteca(List<Biblioteca> b) {
+		biblioteca=b;
+	}
 	//IMPLEMENTACION DE VENTANAS  
 	
 	/*

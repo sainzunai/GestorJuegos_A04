@@ -27,8 +27,13 @@ public class DaoTest implements Serializable{
 		dao.introducirObjeto(p);
 		dao.introducirObjeto(p1);
 		Biblioteca b= new Biblioteca("1");
-		b.addVideoJuego(game);
 		dao.introducirObjeto(b);
+		b.addVideoJuego(game);
+		System.out.println(game);
+		System.out.println(b.getListaJuegos());
+		game.addBiblioteca(b);
+		dao.updateBiblioteca(b,game);
+	
 		//dao.deleteAll();
 		
 		assertTrue(true);

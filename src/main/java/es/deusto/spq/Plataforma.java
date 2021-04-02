@@ -22,7 +22,7 @@ public class Plataforma implements Serializable{  //PS4, NINTENDO etc.
 	
 	private String nombrePlataforma; 
 	private String urlLogo; //Posible futura implementacion 
-	@Persistent(mappedBy="plataforma", dependentElement="true")
+	@Persistent(mappedBy="plataforma", dependentElement="true",defaultFetchGroup="true")
 	@Join
 	private List<VideoJuego> videojuegos = new ArrayList<>();
 	
@@ -93,5 +93,7 @@ public class Plataforma implements Serializable{  //PS4, NINTENDO etc.
 	public int getNumberOfVideojuegos() {
 		return videojuegos.size();
 	}
-	
+	public void setVideojuego(List<VideoJuego> v) {
+		videojuegos=v;
+	}
 }

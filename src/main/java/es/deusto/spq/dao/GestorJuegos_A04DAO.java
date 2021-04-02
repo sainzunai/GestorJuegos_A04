@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
 import es.deusto.spq.VideoJuego;
 public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
@@ -114,7 +115,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    	j.setCompania(videojuego.getCompania());
 	    	j.setEdadRecomendada(videojuego.getEdadRecomendada());
 	    	j.setNombre(videojuego.getNombre());
-	    	
+	    	j.setBiblioteca(videojuego.getBiblioteca());
 	    	System.out.println("   * Actualizando videojuego: " + videojuego);
 	    	tx.commit();
 	     } catch (Exception ex) {
@@ -185,6 +186,31 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}
 		}
 		
+	}
+	@Override
+	public void updateBiblioteca(Biblioteca biblioteca,VideoJuego videojuego) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+	    
+	    try {
+	    	tx.begin();
+	    	Biblioteca b=(Biblioteca) pm.getObjectById(Biblioteca.class,biblioteca.getId());
+	    	VideoJuego j =(VideoJuego)pm.getObjectById(VideoJuego.class,videojuego.getId());
+	    	b.setListaJuegos(biblioteca.getListaJuegos());
+	    	System.out.println(b.getListaJuegos());
+	    	j.setBiblioteca(videojuego.getBiblioteca());
+	    	System.out.println("   * Actualizando biblioteca: " + biblioteca);
+	    	tx.commit();
+	     } catch (Exception ex) {
+		   	System.out.println("   $ Error al actulizar : " + ex.getMessage());
+	     } finally {
+		   	if (tx != null && tx.isActive()) {
+		   		tx.rollback();
+		   	}
+				
+	   		pm.close();
+	     }
 	}
 	
 }
