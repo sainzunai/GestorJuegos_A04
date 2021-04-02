@@ -10,4 +10,5 @@ public interface IGestorJuegos_A04DAO {
 	public List<VideoJuego> getAllVideojuegos();
 	public void updateVideojuego(VideoJuego videojuego);
 	public void deleteAllVideojuegos();
+	public void deleteAll();
 }
