@@ -23,29 +23,22 @@ public class PrepararDatos {
 		VideoJuego v5 = new VideoJuego("Horizon Zero Dawn", "5", "Guerrilla Games", 18, p1);
 		VideoJuego v6 = new VideoJuego("Horizon Zero Dawn", "6", "Guerrilla Games", 18, p3);
 		VideoJuego v7 = new VideoJuego("The Binding of Isaac", "7", "Nicalis", 16, p1);
-		VideoJuego v8 = new VideoJuego("The Binding of Isaac", "7", "Nicalis", 16, p2);
-		VideoJuego v9 = new VideoJuego("The Binding of Isaac", "7", "Nicalis", 16, p3);
-		VideoJuego v10 = new VideoJuego("The Binding of Isaac", "7", "Nicalis", 16, p4);
+		VideoJuego v8 = new VideoJuego("The Binding of Isaac", "8", "Nicalis", 16, p2);
+		VideoJuego v9 = new VideoJuego("The Binding of Isaac", "9", "Nicalis", 16, p3);
+		VideoJuego v10 = new VideoJuego("The Binding of Isaac", "10", "Nicalis", 16, p4);
 		
 		//System.out.println("Creando Biblioteca...");
 		//Biblioteca b = new Biblioteca("1");
 		
 		p1.addVideoJuego(v1); p1.addVideoJuego(v5); p1.addVideoJuego(v7); 
 		p2.addVideoJuego(v2); p2.addVideoJuego(v8); 
-		p3.addVideoJuego(v3); p3.addVideoJuego(v6); p2.addVideoJuego(v9);
+		p3.addVideoJuego(v3); p3.addVideoJuego(v6); p3.addVideoJuego(v9);
 		p4.addVideoJuego(v4); p4.addVideoJuego(v10);
 		
 		GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
 		
-		System.out.println("Añadiendo Plataformas a BD...");
+		System.out.println("Añadiendo Plataformas y Videojuegos a BD...");
 		dao.introducirObjeto(p1); dao.introducirObjeto(p2); dao.introducirObjeto(p3); dao.introducirObjeto(p4);
-		
-		System.out.println("Añadiendo Videojuegos a BD...");
-		dao.introducirObjeto(v1); dao.introducirObjeto(v2); 
-		dao.introducirObjeto(v3); dao.introducirObjeto(v4);
-		dao.introducirObjeto(v5); dao.introducirObjeto(v6);
-		dao.introducirObjeto(v7); dao.introducirObjeto(v8);
-		dao.introducirObjeto(v9); dao.introducirObjeto(v10);
 		
 		//System.out.println("Añadiendo Biblioteca a BD...");
 		//dao.introducirObjeto(b);
