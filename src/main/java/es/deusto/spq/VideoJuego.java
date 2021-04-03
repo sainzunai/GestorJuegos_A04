@@ -23,19 +23,23 @@ public class VideoJuego implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	@Persistent
 	@PrimaryKey 
 	private String videoJuego_id; 
-	
+	@Persistent
 	private String nombre;
-	private String compania; 
+	@Persistent
+	private String compania;
+	@Persistent
 	private String caratula; 
+	@Persistent
 	private int edadRecomendada; 
+	@Persistent
 	private Plataforma plataforma; 
 
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
 	@Persistent(defaultFetchGroup="true")
-    @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="id ASC"))
+    @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="biblioteca_id ASC"))
     private List<Biblioteca> biblioteca= new ArrayList<>();
     
     

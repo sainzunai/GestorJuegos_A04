@@ -19,8 +19,9 @@ public class Plataforma implements Serializable{  //PS4, NINTENDO etc.
 
 	@PrimaryKey
 	private String idPlataforma;
-	
+	@Persistent
 	private String nombrePlataforma; 
+	@Persistent
 	private String urlLogo; //Posible futura implementacion 
 	@Persistent(mappedBy="plataforma", dependentElement="true",defaultFetchGroup="true")
 	@Join

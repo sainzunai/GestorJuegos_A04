@@ -16,7 +16,7 @@ public class VideojuegosResourceTest {
 	GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
 	@Test
 	public void test() throws InterruptedException {
-		/*
+		
 		dao.deleteAll(); //Dejamos limpia la BD
 		
 		//Crear los objetos a introducir
@@ -40,7 +40,7 @@ public class VideojuegosResourceTest {
 		assertEquals(actual.get(0).getId(), expected.get(0).getId());
 	
 		//fail("Not yet implemented");
-		 * */
+		 
 		 
 	}
 

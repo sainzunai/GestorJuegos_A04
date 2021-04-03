@@ -54,7 +54,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			System.out.println ("   * Seleccionando videojuego: " + id);
 			
 	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT FROM " + VideoJuego.class.getName() + " WHERE id == '" + id + "'");
+	    	Query<?> query = pm.newQuery("SELECT FROM " + VideoJuego.class.getName() + " WHERE videoJuego_id == '" + id + "'");
 	    	query.setUnique(true);
 	    	videojuego = (VideoJuego)query.execute();	    
  	    	tx.commit();
@@ -170,7 +170,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			
 			Query<Plataforma> query2 = pm.newQuery(Plataforma.class);
 			System.out.println(query2.deletePersistentAll() + "Eliminando Plataforma");
-			
+		
 			//End the transaction
 			tx.commit();
 		} catch (Exception ex) {
@@ -195,10 +195,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	    
 	    try {
 	    	tx.begin();
+	    	System.out.println("Accediendo a la biblioteca");
 	    	Biblioteca b=(Biblioteca) pm.getObjectById(Biblioteca.class,biblioteca.getId());
+	    	System.out.println("Accediendo a videojuego");
 	    	VideoJuego j =(VideoJuego)pm.getObjectById(VideoJuego.class,videojuego.getId());
 	    	b.setListaJuegos(biblioteca.getListaJuegos());
-	    	System.out.println(b.getListaJuegos());
+	    
 	    	j.setBiblioteca(videojuego.getBiblioteca());
 	    	System.out.println("   * Actualizando biblioteca: " + biblioteca);
 	    	tx.commit();
