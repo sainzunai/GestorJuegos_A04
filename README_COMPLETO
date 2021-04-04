@@ -1,0 +1,8 @@
+Pasos para la ejecución del proyecto en maven:
+
+1. Crear BD en MySql usando el script que se encuentra en src/main/resources/database.sql
+2. Ejecutar el comando --> mvn clean compile 
+3. Ejecutar el comando --> mvn datanucleus:schema-create 
+4. Lanzar el script para generar datos en BD --> mvn exec:java -Pdatos
+
+//TODO Seguir añadiendo info 
