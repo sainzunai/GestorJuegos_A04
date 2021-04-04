@@ -3,3 +3,4 @@
 .project
 .settings
 datanucleus.log
+/bin/
