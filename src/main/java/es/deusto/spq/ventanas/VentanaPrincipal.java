@@ -18,7 +18,7 @@ public class VentanaPrincipal extends JFrame {
 	ControladorVentanaPrincipal miControlador;
 	JPanel panelMenuHomeVideojuegos;
 	JPanel panelMenuBibliotecaVideojuegos;
-	JPanel panelCentralCaratulas;
+	PanelCentralCaratulas panelCentralCaratulas;
 
 	public VentanaPrincipal() {
 		miControlador = new ControladorVentanaPrincipal(this);

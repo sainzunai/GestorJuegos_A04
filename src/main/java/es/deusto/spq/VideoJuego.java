@@ -10,6 +10,9 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
+import es.deusto.spq.ventanas.JPanelVideojuego;
+
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.Extension;
 
@@ -265,15 +268,15 @@ public class VideoJuego implements Serializable{
 	}
 	//IMPLEMENTACION DE VENTANAS  
 	
-	/*
-	 * public JPanelVideoJuego getJPanelVideoJuego() {
-	 * 
-	 * JPanelVideoJuego j = new JPanelVideoJuego(this.caratula);
-	 * 
-	 * return j;
-	 * 
-	 * }
-	 */
+	
+	  public JPanelVideojuego getJPanelVideojuego() {
+	  
+	  JPanelVideojuego j = new JPanelVideojuego(this.caratula);
+	  
+	  return j;
+	  
+	  }
+	 
 
 
 }
