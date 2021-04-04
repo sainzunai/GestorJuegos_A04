@@ -106,13 +106,7 @@ public class Biblioteca {
 	public void setListaJuegos(List<VideoJuego> listaJuegos) {
 		this.listaJuegos = listaJuegos;
 	}
-	public void addVideoJuego(VideoJuego v) {
-		listaJuegos.add(v);
-	}
 
-	public void removeVideojuego(VideoJuego v) {
-		listaJuegos.remove(v);
-	}
 	
 	
 

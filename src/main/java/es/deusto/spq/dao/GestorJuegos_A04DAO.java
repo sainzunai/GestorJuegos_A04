@@ -71,22 +71,25 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		return(videojuego);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<VideoJuego> getAllVideojuegos() {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
+		pm.getFetchPlan().setMaxFetchDepth(2);
 		
 		Transaction tx = pm.currentTransaction();
-		List<VideoJuego> listavideojuego = null;
+		List<VideoJuego> listavideojuego=null;
 	    
 		try {
 			System.out.println ("   * Seleccionando videojuegos: ");
 			
 	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT * FROM " + VideoJuego.class.getName());
-	    	query.setUnique(true);
-	    	listavideojuego = (List<VideoJuego>) query.executeList();	    
+	    	Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
+			q.orderBy("videoJuego_id asc");
+			listavideojuego = q.executeList();
+	 
+	    	System.out.println(listavideojuego);
  	    	tx.commit();
    	    
 	     } catch (Exception ex) {
@@ -170,7 +173,8 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			
 			Query<Plataforma> query2 = pm.newQuery(Plataforma.class);
 			System.out.println(query2.deletePersistentAll() + "Eliminando Plataforma");
-		
+			Query<Biblioteca> query4 = pm.newQuery(Biblioteca.class);
+			System.out.println(" * '" + query4.deletePersistentAll() + "' biblioteca borrados de la BD.");
 			//End the transaction
 			tx.commit();
 		} catch (Exception ex) {

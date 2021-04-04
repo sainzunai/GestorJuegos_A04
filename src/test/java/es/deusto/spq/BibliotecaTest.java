@@ -23,7 +23,7 @@ public class BibliotecaTest {
 	
     @Before                                         
     public void setUp() throws Exception {
-    	
+    	b = new Biblioteca("1");
     	v1 = new VideoJuego();
     	v2 = new VideoJuego();
     	v3 = new VideoJuego();
