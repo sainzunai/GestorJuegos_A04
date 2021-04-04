@@ -33,6 +33,8 @@ public class Plataforma implements Serializable{  //PS4, NINTENDO etc.
 		
 		this.setIdPlataforma(id); 
 		
+		this.urlLogo = ""; 
+		
 	}
 	
 	public Plataforma(String nombre, String id, String url) {
