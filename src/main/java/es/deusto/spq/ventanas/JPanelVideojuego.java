@@ -1,9 +1,11 @@
 package es.deusto.spq.ventanas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -24,6 +26,17 @@ public class JPanelVideojuego extends JPanel{
 		this.setBackground(Color.white);
 	}
 
+	public JPanelVideojuego(String nombre, int loquesea) {
+		JPanel panel = new JPanel();
+		panel.setSize(new Dimension(13*20, 15*20));
+		JLabel lbl = new JLabel(nombre);
+		panel.add(lbl);
+		this.add(panel);
+		this.setPreferredSize(new Dimension(13*20, 15*20));
+		this.setBorder(new LineBorder(Color.black));
+		this.setBackground(Color.white);
+	}
+	
 	
 	
 	public static void main(String[] args) {
@@ -32,7 +45,7 @@ public class JPanelVideojuego extends JPanel{
 		ventana.setVisible(true);
 		ventana.setSize(500,500);
 		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JPanelVideojuego p = new JPanelVideojuego("recursos_test/Battlefield.jpg");
+		JPanelVideojuego p = new JPanelVideojuego("FIFA20", 1);
 		ventana.add(p);
 		ventana.revalidate();
 
