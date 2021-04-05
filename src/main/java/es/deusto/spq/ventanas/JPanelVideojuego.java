@@ -1,51 +1,101 @@
 package es.deusto.spq.ventanas;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-public class JPanelVideojuego extends JPanel{
+import es.deusto.spq.Biblioteca;
+import es.deusto.spq.VideoJuego;
+
+public class JPanelVideojuego extends JPanel {
 	JLabelGraficoAjustado lImagen;
-	
-	public JPanelVideojuego(String rutaImagen) {
-		lImagen = new JLabelGraficoAjustado(rutaImagen, 13*20, 15*20);
-		this.add(lImagen);
+	JButton btn;
+	String textoBtn = "Add";
+
+
+	public JPanelVideojuego(final VideoJuego v, final Biblioteca b) {
+		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
+		this.setLayout(new BorderLayout());
+		this.add(lImagen, BorderLayout.CENTER);
+		btn = new JButton(textoBtn);
+		this.add(btn, BorderLayout.SOUTH);
 		this.setBorder(new LineBorder(Color.black));
 		this.setBackground(Color.white);
-	}
-	
-	public JPanelVideojuego() {
-		lImagen = new JLabelGraficoAjustado("", 13*20, 15*20);
-		this.add(lImagen);
-		this.setBorder(new LineBorder(Color.black));
-		this.setBackground(Color.white);
+
+		btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				b.addJuego(v);
+				
+
+			}
+		});
 	}
 
-	public JPanelVideojuego(String nombre, int loquesea) {
+//	public JPanelVideojuego(final Biblioteca b) {
+//		lImagen = new JLabelGraficoAjustado("", 13 * 20, 15 * 20);
+//		this.setLayout(new BorderLayout());
+//		this.add(lImagen, BorderLayout.CENTER);
+//		btn = new JButton(textoBtn);
+//		this.add(btn, BorderLayout.SOUTH);
+//		this.setBorder(new LineBorder(Color.black));
+//		this.setBackground(Color.white);
+//		btn.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				b.addJuego(v);
+//
+//			}
+//		});
+//
+//	}
+
+	public JPanelVideojuego(final VideoJuego v, int loquesea, final Biblioteca b) {
 		JPanel panel = new JPanel();
-		panel.setSize(new Dimension(13*20, 15*20));
-		JLabel lbl = new JLabel(nombre);
+		panel.setSize(new Dimension(13 * 20, 15 * 20));
+		JLabel lbl = new JLabel(v.getNombre());
 		panel.add(lbl);
+		this.setLayout(new BorderLayout());
+		btn = new JButton(textoBtn);
+		this.add(btn, BorderLayout.SOUTH);
 		this.add(panel);
-		this.setPreferredSize(new Dimension(13*20, 15*20));
+		this.setPreferredSize(new Dimension(13 * 20, 15 * 20));
 		this.setBorder(new LineBorder(Color.black));
 		this.setBackground(Color.white);
+
+		btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+					
+				b.addJuego(v);
+
+			}
+		});
 	}
-	
-	
-	
+
 	public static void main(String[] args) {
 		JFrame ventana = new JFrame();
 		ventana.getContentPane().setLayout(new FlowLayout());
 		ventana.setVisible(true);
-		ventana.setSize(500,500);
+		ventana.setSize(500, 500);
 		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JPanelVideojuego p = new JPanelVideojuego("FIFA20", 1);
+		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
+		Biblioteca b = new Biblioteca("www"); 
+		JPanelVideojuego p = v.getJPanelVideojuego(b); 
 		ventana.add(p);
 		ventana.revalidate();
 

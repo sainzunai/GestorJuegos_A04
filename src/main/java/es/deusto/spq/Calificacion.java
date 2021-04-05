@@ -31,7 +31,7 @@ public class Calificacion {
 	
 
 
-	public void setNota(int nota, int dia, int  mes, int anyo) { //cuando asignamos una nueva nota guardaremos su fecha de guardado. 
+	public void setNota(int nota, int anyo, int  mes, int dia) { //cuando asignamos una nueva nota guardaremos su fecha de guardado. 
 		this.nota = nota;
 		
 		this.diaAsignacion = dia; 

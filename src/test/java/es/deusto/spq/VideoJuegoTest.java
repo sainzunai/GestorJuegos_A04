@@ -16,6 +16,8 @@ public class VideoJuegoTest {
 	
 	private VideoJuego v; 
 	
+	private VideoJuego v2; 
+	
     @Before                                         
     public void setUp() throws Exception {
     	
@@ -30,6 +32,8 @@ public class VideoJuegoTest {
     	cList.add(c3);
     	
     	v = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null); 
+    	
+    	v2 = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null, "hola"); 
     	
     	v.setCalificaciones(cList);
 
@@ -50,7 +54,7 @@ public class VideoJuegoTest {
 		
 		assertEquals(3, v.getCalificaciones().size());
 		
-		//No tenemos un constructor donde metamos una caratula (URL)
+		assertEquals(" ", v.getCaratula());
 		
 		v.setCaratula("foto_caratula.png");
 		
