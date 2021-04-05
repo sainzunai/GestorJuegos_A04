@@ -46,6 +46,7 @@ public class VideoJuego implements Serializable{
     private List<Biblioteca> biblioteca= new ArrayList<>();
     
     
+	JPanelVideojuego j;
 	
 
 	@Override
@@ -307,20 +308,18 @@ public class VideoJuego implements Serializable{
 	//IMPLEMENTACION DE VENTANAS  
 	
 	
-	  public JPanelVideojuego getJPanelVideojuego() {
-	
-	  
-	  JPanelVideojuego j;
+	  public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
+
 	  
 	  if(caratula == " ") {
 		  
-		  j = new JPanelVideojuego(nombre, edadRecomendada); 
+		  j = new JPanelVideojuego(this, 1, b); 
 		  
 	  }
 	  
 	  else {
 	  
-		  j = new JPanelVideojuego(this.caratula);
+		  j = new JPanelVideojuego(this, b);
 	  
 	  }
 	  

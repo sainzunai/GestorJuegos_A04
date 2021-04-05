@@ -13,13 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import es.deusto.spq.Biblioteca;
+import es.deusto.spq.VideoJuego;
+
 public class JPanelVideojuego extends JPanel {
 	JLabelGraficoAjustado lImagen;
 	JButton btn;
 	String textoBtn = "Add";
 
-	public JPanelVideojuego(String rutaImagen) {
-		lImagen = new JLabelGraficoAjustado(rutaImagen, 13 * 20, 15 * 20);
+
+	public JPanelVideojuego(final VideoJuego v, final Biblioteca b) {
+		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
 		this.setLayout(new BorderLayout());
 		this.add(lImagen, BorderLayout.CENTER);
 		btn = new JButton(textoBtn);
@@ -31,33 +35,38 @@ public class JPanelVideojuego extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				b.addJuego(v);
+				
 
 			}
 		});
 	}
 
-	public JPanelVideojuego() {
-		lImagen = new JLabelGraficoAjustado("", 13 * 20, 15 * 20);
-		this.setLayout(new BorderLayout());
-		this.add(lImagen, BorderLayout.CENTER);
-		btn = new JButton(textoBtn);
-		this.add(btn, BorderLayout.SOUTH);
-		this.setBorder(new LineBorder(Color.black));
-		this.setBackground(Color.white);
-		btn.addActionListener(new ActionListener() {
+//	public JPanelVideojuego(final Biblioteca b) {
+//		lImagen = new JLabelGraficoAjustado("", 13 * 20, 15 * 20);
+//		this.setLayout(new BorderLayout());
+//		this.add(lImagen, BorderLayout.CENTER);
+//		btn = new JButton(textoBtn);
+//		this.add(btn, BorderLayout.SOUTH);
+//		this.setBorder(new LineBorder(Color.black));
+//		this.setBackground(Color.white);
+//		btn.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				b.addJuego(v);
+//
+//			}
+//		});
+//
+//	}
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-		});
-
-	}
-
-	public JPanelVideojuego(String nombre, int loquesea) {
+	public JPanelVideojuego(final VideoJuego v, int loquesea, final Biblioteca b) {
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(13 * 20, 15 * 20));
-		JLabel lbl = new JLabel(nombre);
+		JLabel lbl = new JLabel(v.getNombre());
 		panel.add(lbl);
 		this.setLayout(new BorderLayout());
 		btn = new JButton(textoBtn);
@@ -71,6 +80,8 @@ public class JPanelVideojuego extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+					
+				b.addJuego(v);
 
 			}
 		});
@@ -82,7 +93,9 @@ public class JPanelVideojuego extends JPanel {
 		ventana.setVisible(true);
 		ventana.setSize(500, 500);
 		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JPanelVideojuego p = new JPanelVideojuego();
+		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
+		Biblioteca b = new Biblioteca("www"); 
+		JPanelVideojuego p = v.getJPanelVideojuego(b); 
 		ventana.add(p);
 		ventana.revalidate();
 

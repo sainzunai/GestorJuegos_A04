@@ -31,7 +31,7 @@ public class Biblioteca {
     @Element(column="videoJuego_id")
 	@Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="videoJuego_id ASC"))
 	private List<VideoJuego> listaJuegos= new ArrayList<>();  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,8 +80,22 @@ public class Biblioteca {
 	
 	public void addJuego(VideoJuego v) {
 		
-		listaJuegos.add(v); 
+		boolean add = true; 
 		
+		for(int i = 0; i < listaJuegos.size(); i ++) {
+			
+			if (listaJuegos.get(i).getId() == v.getId()) {
+				
+				add = false; 
+				
+			} 
+			
+		}
+		
+		if(add == true) {
+			listaJuegos.add(v); 
+		
+		}
 	}
 	
 	public void remJuego(VideoJuego v) {
