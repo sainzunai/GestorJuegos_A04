@@ -75,8 +75,7 @@ public class VideoJuego implements Serializable{
 
 	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
-	//Dos posibles metodos: Este lo utilizamos si no tenemos ninguna calificacion
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada,Plataforma plataforma ) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma, String caratula ) {
 		
 		
 		this.nombre = nombre; 
@@ -91,10 +90,29 @@ public class VideoJuego implements Serializable{
 		
 		this.calificaciones  = new ArrayList<>(); 
 		
+		this.caratula = caratula; 
 		
 	}
-
-	//Dos posibles metodos: Este lo utilizamos si tenemos la lista de calificaciones
+	
+	
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma) {
+		
+		
+		this.nombre = nombre; 
+		
+		this.videoJuego_id = id; 
+		
+		this.compania = company; 
+		
+		this.edadRecomendada = edadRecomendada; 
+		
+		this.plataforma=plataforma;
+		
+		this.calificaciones  = new ArrayList<>(); 
+		
+		this.caratula = " "; 
+		
+	}
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
 		
 		
@@ -110,6 +128,26 @@ public class VideoJuego implements Serializable{
 		
 		this.calificaciones = calificaciones; 
 		
+		this.caratula = " "; 
+		
+	}
+	
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
+		
+		
+		this.nombre = nombre; 
+		
+		this.videoJuego_id = id; 
+		
+		this.compania = company; 
+		
+		this.edadRecomendada = edadRecomendada; 
+		
+		this.plataforma=plataforma;
+		
+		this.calificaciones = calificaciones; 
+		
+		this.caratula = caratula; 
 		
 	}
 	
@@ -125,9 +163,9 @@ public class VideoJuego implements Serializable{
 		
 		this.edadRecomendada = 0; 
 		
-		
-		
 		this.calificaciones = new ArrayList<>(); 
+		
+		this.caratula = " "; 
 		
 		
 	}
@@ -270,8 +308,22 @@ public class VideoJuego implements Serializable{
 	
 	
 	  public JPanelVideojuego getJPanelVideojuego() {
+	
 	  
-	  JPanelVideojuego j = new JPanelVideojuego(this.caratula);
+	  JPanelVideojuego j;
+	  
+	  if(caratula == " ") {
+		  
+		  j = new JPanelVideojuego(nombre, edadRecomendada); 
+		  
+	  }
+	  
+	  else {
+	  
+		  j = new JPanelVideojuego(this.caratula);
+	  
+	  }
+	  
 	  
 	  return j;
 	  
