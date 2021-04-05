@@ -83,7 +83,22 @@ public class DaoTest implements Serializable{
 		
 		dao.deleteAll();
 	}
-
-	
+	/*
+	@Test
+	public void updateTest() {
+		System.out.println("Realizando update");
+		List<VideoJuego> lista = new ArrayList<>();
+		p= new Plataforma("PS4","1");
+		game= new VideoJuego("Battlefield","1","EA",18,p);
+		b=new Biblioteca("1",lista );
+		dao.introducirObjeto(b);
+		p.addVideoJuego(game);
+		dao.introducirObjeto(p);
+		System.out.println(b);
+		b.addJuego(game);
+		System.out.println(b.getListaJuegos());
+		dao.updateBiblioteca(b, game);
+	}
+	*/
 	
 }

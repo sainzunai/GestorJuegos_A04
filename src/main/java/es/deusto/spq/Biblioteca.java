@@ -57,7 +57,7 @@ public class Biblioteca {
 		return true;
 	}
 
-	public Biblioteca(String id,ArrayList<VideoJuego> listaJuegos ) {
+	public Biblioteca(String id,List<VideoJuego> listaJuegos ) {
 		
 		this.biblioteca_id = id; 
 		this.listaJuegos = listaJuegos;  
@@ -88,8 +88,6 @@ public class Biblioteca {
 		
 		listaJuegos.remove(v); 
 		
-		
-		
 	}
 	public String getId() {
 		return biblioteca_id;
@@ -106,9 +104,4 @@ public class Biblioteca {
 	public void setListaJuegos(List<VideoJuego> listaJuegos) {
 		this.listaJuegos = listaJuegos;
 	}
-
-	
-	
-
-
 }
