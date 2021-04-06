@@ -45,6 +45,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         for (VideoJuego juego : juegos) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
         }
+        miVentana.panelCentralCaratulas.setVisible(true);
 
 	}
 
