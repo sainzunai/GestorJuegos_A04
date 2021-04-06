@@ -37,7 +37,7 @@ public class DaoTest implements Serializable{
 	}
 	@Test
 	public void testIntroducir() {
-				
+		System.out.println("Realizando insert");
 			p.addVideoJuego(game);
 			p.addVideoJuego(game1);
 			
@@ -55,6 +55,7 @@ public class DaoTest implements Serializable{
 
 	@Test
 	public void getTest(){
+		System.out.println("Realizando select");
 		Plataforma p2 = new Plataforma("Nintendo","3");
 		VideoJuego v1 = new VideoJuego("Battlefield4","3","EA",18,p2);
 		p2.addVideoJuego(v1);
@@ -68,6 +69,7 @@ public class DaoTest implements Serializable{
 	
 	@Test
 	public void getAllTest(){
+		System.out.println("Realizando select all");
 		videojuegos.clear();
 		p.addVideoJuego(game);
 		p.addVideoJuego(game1);
@@ -87,17 +89,16 @@ public class DaoTest implements Serializable{
 	@Test
 	public void updateTest() {
 		System.out.println("Realizando update");
-		List<VideoJuego> lista = new ArrayList<>();
-		p= new Plataforma("PS4","1");
-		game= new VideoJuego("Battlefield","1","EA",18,p);
-		b=new Biblioteca("1",lista );
-		dao.introducirObjeto(b);
-		p.addVideoJuego(game);
-		dao.introducirObjeto(p);
-		System.out.println(b);
-		b.addJuego(game);
-		System.out.println(b.getListaJuegos());
-		dao.updateBiblioteca(b, game);
+		Biblioteca b1 = new Biblioteca("2");
+		Plataforma p1 = new Plataforma("PS4","2");
+		VideoJuego v1 = new VideoJuego("Battlefield4","3","EA",18,p1);
+		v1.addBiblioteca(b1);
+		dao.introducirObjeto(b1);
+		p1.addVideoJuego(v1);
+		dao.introducirObjeto(p1);
+		b1.addJuego(v1);
+		System.out.println(b1.getListaJuegos());
+		dao.updateBiblioteca(b1, v1);
 	}
 	*/
 	

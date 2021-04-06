@@ -94,7 +94,7 @@ public class Biblioteca {
 		
 		if(add == true) {
 			listaJuegos.add(v); 
-		
+			
 		}
 	}
 	

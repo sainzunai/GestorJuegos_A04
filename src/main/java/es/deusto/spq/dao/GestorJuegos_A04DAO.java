@@ -17,6 +17,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public  GestorJuegos_A04DAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
+	
 	@Override
 	public void introducirObjeto(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();

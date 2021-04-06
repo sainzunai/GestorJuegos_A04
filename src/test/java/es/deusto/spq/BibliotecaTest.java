@@ -24,10 +24,10 @@ public class BibliotecaTest {
     @Before                                         
     public void setUp() throws Exception {
     	b = new Biblioteca("1");
-    	v1 = new VideoJuego();
-    	v2 = new VideoJuego();
-    	v3 = new VideoJuego();
-    	v4 = new VideoJuego();
+    	v1 = new VideoJuego("Battlefield","1","EA",18,new Plataforma());
+    	v2 = new VideoJuego("Battlefield","2","EA",18,new Plataforma());
+    	v3 = new VideoJuego("Battlefield","3","EA",18,new Plataforma());
+    	v4 = new VideoJuego("Battlefield","4","EA",18,new Plataforma());
     	
     	b.addJuego(v1);
     	b.addJuego(v2);

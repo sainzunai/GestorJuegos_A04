@@ -75,10 +75,10 @@ public class PanelCentralCaratulas extends JPanel{
 		ventana.getContentPane().add(panel);
 		VideoJuego juego = new VideoJuego();
 		juego.setCaratula("recursos_test/Battlefield.jpg");
-		panel.anyadirCaratula(juego.getJPanelVideojuego());
+		//panel.anyadirCaratula(juego.getJPanelVideojuego());
 		panel.borrarPanel();
-		panel.anyadirCaratula(juego.getJPanelVideojuego());
-		panel.anyadirCaratula(juego.getJPanelVideojuego());
+		//panel.anyadirCaratula(juego.getJPanelVideojuego());
+		//panel.anyadirCaratula(juego.getJPanelVideojuego());
 		ventana.revalidate();
 		ventana.repaint();
 		
