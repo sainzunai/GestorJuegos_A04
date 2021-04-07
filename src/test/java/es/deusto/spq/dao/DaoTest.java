@@ -35,6 +35,7 @@ public class DaoTest implements Serializable{
 		game1= new VideoJuego("Battlefield4","2","EA",18,p);
 		b= new Biblioteca("1");	
 	}
+	
 	@Test
 	public void testIntroducir() {
 		System.out.println("Realizando insert");
@@ -88,17 +89,28 @@ public class DaoTest implements Serializable{
 	/*
 	@Test
 	public void updateTest() {
-		System.out.println("Realizando update");
-		Biblioteca b1 = new Biblioteca("2");
-		Plataforma p1 = new Plataforma("PS4","2");
-		VideoJuego v1 = new VideoJuego("Battlefield4","3","EA",18,p1);
-		v1.addBiblioteca(b1);
-		dao.introducirObjeto(b1);
-		p1.addVideoJuego(v1);
-		dao.introducirObjeto(p1);
-		b1.addJuego(v1);
-		System.out.println(b1.getListaJuegos());
-		dao.updateBiblioteca(b1, v1);
+		
+		try {
+			  System.out.println("Realizando update");
+			  Biblioteca b1 = new Biblioteca("1");
+			  Plataforma p1 = new Plataforma("PS4","2");
+			  VideoJuego v1 = new VideoJuego("Battlefield4","3","EA",18,p1);
+			  System.out.println(b1.getListaJuegos());
+			  dao.introducirObjeto(b1);
+			  p1.addVideoJuego(v1);
+			  dao.introducirObjeto(p1);
+			  System.out.println(v1);
+			  v1.addBiblioteca(b1);
+			  List<VideoJuego> lista= new ArrayList<>();
+			  lista.add(v1);
+			  b1.setListaJuegos(lista);
+			  System.out.println(b1.getListaJuegos());
+			  dao.updateBiblioteca(b1, v1);
+			 
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
 	}
 	*/
 	

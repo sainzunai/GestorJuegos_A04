@@ -17,7 +17,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public  GestorJuegos_A04DAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
-	
+	/**
+	 * Descripción del método
+	 * Introducimos una clase dentro de la base de datos.Con las correspondientes anotaciones y atributos.
+	 * @param nos pide un Objecto cualquiera
+	 * @return No devuelve nada
+	 */
 	@Override
 	public void introducirObjeto(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -41,7 +46,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
     		
 	    }
 	}
-
+	/**
+	 * Descripción del método
+	 * Coger un videojuego de la base de datos pasando el parametro primary key
+	 * @param Se pide el id del objeto
+	 * @return Se devuelve el videojuego pedido a la base de datos
+	 */
 	@Override
 	public VideoJuego getVideojuego(String id) {
 		// TODO Auto-generated method stub
@@ -71,7 +81,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	     }
 		return(videojuego);
 	}
-
+	/**
+	 * Descripción del método
+	 * Le pedimos a la base de datos todos los videojuegos de la base de datos
+	 * @return Devuelve una lista de videojuegos
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<VideoJuego> getAllVideojuegos() {
@@ -104,7 +118,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	     }
 		return(listavideojuego);
 	}
-
+	/**
+	 * Descripción del método
+	 * Se actualiza el videojuego en la base de datos; sus atributos y relaciones.
+	 * @param Se pasa un videojuego.
+	 */
 	@Override
 	public void updateVideojuego(VideoJuego videojuego) {
 		// TODO Auto-generated method stub
@@ -132,7 +150,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	   		pm.close();
 	     }
 	}
-
+	/**
+	 * Descripción del método
+	 * Se elimina todos los videojuegos de la base de datos
+	 */
 	@Override
 	public void deleteAllVideojuegos() {
 		// No terminada
@@ -161,6 +182,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 	}
 	}
+	/**
+	 * Descripción del método
+	 * Se elimina todo de la base de datos
+	 */
 	@Override
 	public void deleteAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -192,6 +217,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 		
 	}
+	/**
+	 * Descripción del método
+	 * Actualiza la biblioteca en la base de datos
+	 * @param Se le pasa una biblioteca, la objetivo.
+	 * @param Se le pasa el elemento a meter en la biblioteca
+	 */
 	@Override
 	public void updateBiblioteca(Biblioteca biblioteca,VideoJuego videojuego) {
 		// TODO Auto-generated method stub
