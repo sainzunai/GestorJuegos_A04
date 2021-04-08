@@ -32,7 +32,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	}
 
 	public void mostrarHomeVideojuegos() {
-		miVentana.panelCentralCaratulas.setVisible(false);
+		//miVentana.panelCentralCaratulas.setVisible(false);
 		//TODO: llamada a servidor y descargar los videojuegos
 //		ArrayList<VideoJuego> listaJuegos = new ArrayList<>();
 //		listaJuegos.add(new VideoJuego("Animal crossing", "", "", 10, new Plataforma("", "")));
@@ -50,7 +50,12 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	}
 
 	public void mostrarBibliotecaVideojuegos() {
-		miVentana.panelCentralCaratulas.setVisible(true);
+        
+		miVentana.panelCentralCaratulas.borrarPanel();
+        for (VideoJuego juego : b.getListaJuegos()) {
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+        }
+        miVentana.panelCentralCaratulas.setVisible(true);
 		
 	}
 	
