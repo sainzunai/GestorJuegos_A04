@@ -12,13 +12,13 @@ Crear la base de datos y dar permisos al usuario por defecto
     CREATE USER IF NOT EXISTS 'spq'@'localhost' IDENTIFIED BY 'spq';
     GRANT ALL ON gestorjuegos.* TO 'spq'@'localhost';
 
-**Creación de las tablas**
-
-    mvn compile datanucleus:schema-create
-
 **Limpiar y compilar**
 
     mvn clean compile
+
+**Creación de las tablas**
+
+    mvn datanucleus:schema-create
 
 **Lanzar los tests**
 
