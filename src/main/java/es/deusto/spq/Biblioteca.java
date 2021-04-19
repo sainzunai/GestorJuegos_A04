@@ -2,6 +2,8 @@ package es.deusto.spq;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.ForeignKey;
@@ -17,15 +19,18 @@ public class Biblioteca {
 	
 	@PrimaryKey
 	private String biblioteca_id; 
-	@Persistent
+	
 	private int numeroJuegos;
 
 	//Que van a ir directamente a un USUARIO; 
 
 
 
-
+	@Column(name="gmail")
+    Usuario user;
 	
+	
+
 	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true")
     @Join(column="biblioteca_id")
     @Element(column="videoJuego_id")
@@ -117,5 +122,12 @@ public class Biblioteca {
 
 	public void setListaJuegos(List<VideoJuego> listaJuegos) {
 		this.listaJuegos = listaJuegos;
+	}
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 }

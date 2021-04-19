@@ -10,6 +10,7 @@ import javax.jdo.Transaction;
 
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
+import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	private PersistenceManagerFactory pmf;
@@ -249,6 +250,65 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 				
 	   		pm.close();
 	     }
+	}
+	@Override
+	public Usuario getUsuario(String email) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(3);
+		
+		Transaction tx = pm.currentTransaction();
+		Usuario usuario = null;
+	    
+		try {
+			System.out.println ("   * Seleccionando Usuario: " + email);
+			
+	    	tx.begin();
+	    	Query<?> query = pm.newQuery("SELECT FROM " + Usuario.class.getName() + " WHERE gmail == '" + email + "'");
+	    
+	    	usuario = (Usuario) query.execute();	    
+ 	    	tx.commit();
+ 	    	
+	     } catch (Exception ex) {
+		   	System.out.println("   $ Error retreiving an extent: " + ex.getMessage());
+	     } finally {
+		   	if (tx != null && tx.isActive()) {
+		   		tx.rollback();
+		 }
+				
+	   		pm.close();
+	     }
+		System.out.println(usuario.getContrasena());
+		return(usuario);
+		
+	}
+	@Override
+	public Biblioteca getBiblioteca_Usuario(Usuario user) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(3);
+		
+		Transaction tx = pm.currentTransaction();
+		Biblioteca biblioteca = null;
+	    
+		try {
+			System.out.println ("   * Seleccionando Biblioteca con email: " + user.getGmail());
+			
+	    	tx.begin();
+	    	Query<?> query = pm.newQuery("SELECT FROM " + Biblioteca.class.getName() + " WHERE gmail == '" + user.getGmail() + "'");
+	    	query.setUnique(true);
+	    	biblioteca = (Biblioteca)query.execute();	    
+ 	    	tx.commit();
+   	    
+	     } catch (Exception ex) {
+		   	System.out.println("   $ Error retreiving an extent: " + ex.getMessage());
+	     } finally {
+		   	if (tx != null && tx.isActive()) {
+		   		tx.rollback();
+		 }
+				
+	   		pm.close();
+	     }
+		return(biblioteca);
+		
 	}
 	
 }
