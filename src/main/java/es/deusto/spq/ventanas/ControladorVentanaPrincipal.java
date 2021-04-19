@@ -25,7 +25,10 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 
 
 	Biblioteca b = new Biblioteca("Mi biblioteca"); //Biblioteca 
+	
+	boolean carga = true; 
 
+	ArrayList<VideoJuego> v = new ArrayList<>(); 
 	
 	ControladorVentanaPrincipal(VentanaPrincipal miVentana){
 		this.miVentana = miVentana;
@@ -38,13 +41,31 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 //		listaJuegos.add(new VideoJuego("Animal crossing", "", "", 10, new Plataforma("", "")));
 		
 		//Conexion a server -- peticion
+		
+		if(carga == true ) {
 		GenericType<List<VideoJuego>> genericType = new GenericType<List<VideoJuego>>() {};
         List<VideoJuego> juegos = videoJuegosTarget.request(MediaType.APPLICATION_JSON).get(genericType);
-
+        System.out.println("Leemos de Base Datos");
         miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : juegos) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            v.add(juego); 
         }
+        
+        carga = false; 
+       
+		}
+		
+		else {
+			
+			System.out.println("NO Leemos de Base Datos");
+	        miVentana.panelCentralCaratulas.borrarPanel();
+	        for (VideoJuego juego : v) {
+	            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+	        }			
+			
+			
+		}
         miVentana.panelCentralCaratulas.setVisible(true);
 
 	}
