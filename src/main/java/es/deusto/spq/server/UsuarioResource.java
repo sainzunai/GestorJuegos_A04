@@ -21,7 +21,11 @@ public class UsuarioResource {
 		this.dao = dao;
 	}
 
-	//Método que devuelve un usuario con su Biblioteca correspondiente
+	/**
+	 * Método que devuelve un usuario con su Biblioteca correspondiente
+	 * @param email String que indica el email del usuario
+	 * @return Objeto Usuario recogido de BD con ese mismo email
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Usuario getUser(String email) {
@@ -33,7 +37,10 @@ public class UsuarioResource {
 		return user;
 	}
 	
-	//Método que inserta un usuario en BD
+	/**
+	 * Método que inserta un usuario en BD
+	 * @param user Objeto Usuario a insertar en BD
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addUser(Usuario user) {

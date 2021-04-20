@@ -3,16 +3,13 @@ package es.deusto.spq.server;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import es.deusto.spq.Usuario;
-import es.deusto.spq.VideoJuego;
 import es.deusto.spq.dao.GestorJuegos_A04DAO;
-import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
 public class UsuarioResourceTest {
 
