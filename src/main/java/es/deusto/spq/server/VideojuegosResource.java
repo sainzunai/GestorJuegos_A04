@@ -8,6 +8,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import es.deusto.spq.VideoJuego;
+import es.deusto.spq.dao.GestorJuegos_A04DAO;
+import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,6 +18,8 @@ import jakarta.ws.rs.core.MediaType;
 @Path("videojuegos")
 public class VideojuegosResource {
 
+	GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
+	
 	/**
 	 * Este método devolverá la lista completa de videojuegos que haya en la
 	 * BD al usuario. Se devolverá en formato JSON
@@ -25,14 +29,17 @@ public class VideojuegosResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<VideoJuego> getVideojuegos() {
 	 
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
+//		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		
+//		Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
+//		q.setOrdering("nombre desc");
+//		
+//		List<VideoJuego> videojuegos = q.executeList();
+//		pm.close();
 		
-		Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
-		q.setOrdering("nombre desc");
+		List<VideoJuego> videojuegos = dao.getAllVideojuegos();
 		
-		List<VideoJuego> videojuegos = q.executeList();
-		pm.close();
 		return videojuegos;
 	}
 	
