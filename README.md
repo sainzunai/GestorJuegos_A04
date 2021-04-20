@@ -16,13 +16,17 @@ Crear la base de datos y dar permisos al usuario por defecto
 
     mvn clean compile
 
-**Creación de las tablas**
-
-    mvn datanucleus:schema-create
-
 **Lanzar los tests**
 
     mvn test
+    
+**Enhance de las clases para JDO**
+
+    mvn datanucleus:enhance   
+
+**Creación de las tablas**
+
+    mvn datanucleus:schema-create
 
 **Datos de prueba**
 
