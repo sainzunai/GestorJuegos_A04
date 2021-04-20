@@ -1,5 +1,6 @@
 package es.deusto.spq;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,9 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.Key;
 import javax.jdo.annotations.Order;
@@ -14,10 +18,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
-public class Biblioteca {
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+public class Biblioteca implements Serializable{
 
 	
 	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private String biblioteca_id; 
 	
 	private int numeroJuegos;
@@ -62,17 +68,15 @@ public class Biblioteca {
 		return true;
 	}
 
-	public Biblioteca(String id,List<VideoJuego> listaJuegos ) {
-		
-		this.biblioteca_id = id; 
+	public Biblioteca(List<VideoJuego> listaJuegos ) {
+		 
 		this.listaJuegos = listaJuegos;  
 		
 		
 	}
 	
-	public Biblioteca(String id) {  //Creamos solo con un id; 
-		
-		this.setId(id); 
+	public Biblioteca() {  //Creamos solo con un id; 
+		 
 		this.listaJuegos = new ArrayList<>(); 
 		
 	}

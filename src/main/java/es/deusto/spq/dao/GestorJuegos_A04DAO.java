@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
 import es.deusto.spq.Usuario;
@@ -28,7 +29,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public void introducirObjeto(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx = pm.currentTransaction();
-	   
 	    try {
 	       tx.begin();
 	       System.out.println("   * Introducciendo un objeto: " + object);
@@ -253,60 +253,54 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	}
 	@Override
 	public Usuario getUsuario(String email) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
 		
-		Transaction tx = pm.currentTransaction();
-		Usuario usuario = null;
+		 PersistenceManager pm = pmf.getPersistenceManager();
+		 Usuario users=null;
+			System.out.println("Obteniendo el usuario con email: "+email);
+	        Query<Usuario> q = pm.newQuery(Usuario.class);
+	        q.setUnique(true);
+	        q.setFilter("gmail == gmailParam");
+	        q.declareParameters("String gmailParam");
+
+	        try {
+	           users = (Usuario) q.execute(email);
+	           System.out.println("Usuario:"+users.getGmail()+" "+users.getContrasena()+" "+users.getBiblioteca().getId());
+	        } finally {
+	            q.closeAll();
+	        }
+
+	        pm.close();
+
 	    
-		try {
-			System.out.println ("   * Seleccionando Usuario: " + email);
-			
-	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT FROM " + Usuario.class.getName() + " WHERE gmail == '" + email + "'");
-	    
-	    	usuario = (Usuario) query.execute();	    
- 	    	tx.commit();
- 	    	
-	     } catch (Exception ex) {
-		   	System.out.println("   $ Error retreiving an extent: " + ex.getMessage());
-	     } finally {
-		   	if (tx != null && tx.isActive()) {
-		   		tx.rollback();
-		 }
-				
-	   		pm.close();
-	     }
-		System.out.println(usuario.getContrasena());
-		return(usuario);
+		return(users);
 		
 	}
 	@Override
 	public Biblioteca getBiblioteca_Usuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
+		
 		
 		Transaction tx = pm.currentTransaction();
 		Biblioteca biblioteca = null;
 	    
-		try {
-			System.out.println ("   * Seleccionando Biblioteca con email: " + user.getGmail());
-			
-	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT FROM " + Biblioteca.class.getName() + " WHERE gmail == '" + user.getGmail() + "'");
-	    	query.setUnique(true);
-	    	biblioteca = (Biblioteca)query.execute();	    
- 	    	tx.commit();
-   	    
-	     } catch (Exception ex) {
-		   	System.out.println("   $ Error retreiving an extent: " + ex.getMessage());
-	     } finally {
-		   	if (tx != null && tx.isActive()) {
-		   		tx.rollback();
-		 }
-				
-	   		pm.close();
-	     }
+		
+		 
+			System.out.println("Obteniendo la biblioteca con email: "+user.getBiblioteca().getId());
+	        Query<Biblioteca> q = pm.newQuery(Biblioteca.class);
+	        q.setUnique(true);
+	        q.setFilter("biblioteca_id == idParam");
+	        q.declareParameters("String idParam");
+
+	        try {
+	           biblioteca = (Biblioteca) q.execute(user.getBiblioteca().getId());
+	           System.out.println("Biblioteca: "+ biblioteca.getId()+" ");
+	        } finally {
+	            q.closeAll();
+	        }
+
+	        pm.close();
+
+	    
 		return(biblioteca);
 		
 	}

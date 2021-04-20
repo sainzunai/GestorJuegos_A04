@@ -1,11 +1,16 @@
 package es.deusto.spq;
 
+import java.io.Serializable;
+
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Usuario {
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+public class Usuario implements Serializable{
 
 	@PrimaryKey
 	private String gmail;

@@ -94,7 +94,7 @@ public class JPanelVideojuego extends JPanel {
 		ventana.setSize(500, 500);
 		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
-		Biblioteca b = new Biblioteca("www"); 
+		Biblioteca b = new Biblioteca(); //Lo he cambiado
 		JPanelVideojuego p = v.getJPanelVideojuego(b); 
 		ventana.add(p);
 		ventana.revalidate();

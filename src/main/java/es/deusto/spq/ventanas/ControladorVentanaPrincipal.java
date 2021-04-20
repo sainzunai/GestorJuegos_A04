@@ -24,7 +24,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 //----------------------------------------------------------------------
 
 
-	Biblioteca b = new Biblioteca("Mi biblioteca"); //Biblioteca 
+	Biblioteca b = new Biblioteca(); //Biblioteca 
 	
 	boolean carga = true; 
 

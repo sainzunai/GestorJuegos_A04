@@ -28,14 +28,16 @@ public class DaoTest implements Serializable{
 	}
 	@Test
 	public void testIntroducir() {
-		
+	/*	
 	Usuario user = new Usuario("themrguiller@gmail.com", "Hackeado");
-	Biblioteca biblio= new Biblioteca("1");
+	Biblioteca biblio= new Biblioteca();
 	biblio.setUser(user);
 	user.setBiblioteca(biblio);
 	dao.introducirObjeto(user);
-	Usuario prueba=(Usuario)dao.getUsuario(user.getGmail());
-	System.out.println("El usuario introducido es:"+prueba.getGmail()+"\t"+prueba.getContrasena()+"\t"+" ");
+	Usuario prueba=dao.getUsuario(user.getGmail());
+	System.out.println("El usuario introducido es:"+prueba.getGmail()+"\t"+prueba.getContrasena()+"\t"+prueba.getBiblioteca().getId());
+	Biblioteca pruebabb= dao.getBiblioteca_Usuario(prueba);
+	*/
 	}
 
 	
