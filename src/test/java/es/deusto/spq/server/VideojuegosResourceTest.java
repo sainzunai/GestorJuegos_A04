@@ -1,11 +1,16 @@
 package es.deusto.spq.server;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 
 import es.deusto.spq.Plataforma;
 import es.deusto.spq.VideoJuego;
@@ -13,35 +18,23 @@ import es.deusto.spq.dao.GestorJuegos_A04DAO;
 
 public class VideojuegosResourceTest {
 	
-	GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
-	@Test
-	public void test() throws InterruptedException {
-		/*
-		dao.deleteAll(); //Dejamos limpia la BD
-		
-		//Crear los objetos a introducir
-		Plataforma p = new Plataforma("PS4","1");
-		VideoJuego game = new VideoJuego("FIFA 20","1","EA",3, p);
-		//Introducirlos en BD
-		dao.introducirObjeto(game);
-		
-		//Lista esperada de videojuegos
-		List<VideoJuego> expected = new ArrayList<>();
-		expected.add(game);
-
-		//Creamos el resource del servidor
-		VideojuegosResource vr = new VideojuegosResource();
-		List<VideoJuego> actual = vr.getVideojuegos();
-		//System.out.println(v.get(1).getNombre());
-		
-		//System.out.println(expected);
-		
-		dao.deleteAll();
-		assertEquals(actual.get(0).getId(), expected.get(0).getId());
+	private GestorJuegos_A04DAO dao = Mockito.mock(GestorJuegos_A04DAO.class);
+	private VideojuegosResource vr;
+	private List<VideoJuego> v;
 	
-		//fail("Not yet implemented");
-		 
-		 */
+	@Before
+	public void setUp() {
+		vr = new VideojuegosResource(dao);
+		v = new ArrayList<VideoJuego>();
+		v.add(new VideoJuego("FIFA", "1", "EA", 3, null));
+	}
+	
+	@Test
+	public void testGetVideojuegos() throws InterruptedException {
+		
+		when(dao.getAllVideojuegos()).thenReturn(v);
+		
+		assertEquals("FIFA", vr.getVideojuegos().get(0).getNombre());
 	}
 
 }

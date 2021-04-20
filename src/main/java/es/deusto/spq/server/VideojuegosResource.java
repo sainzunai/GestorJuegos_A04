@@ -18,7 +18,11 @@ import jakarta.ws.rs.core.MediaType;
 @Path("videojuegos")
 public class VideojuegosResource {
 
-	GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
+	private GestorJuegos_A04DAO dao;
+	
+	public VideojuegosResource(GestorJuegos_A04DAO dao) {
+		this.dao = dao;
+	}
 	
 	/**
 	 * Este método devolverá la lista completa de videojuegos que haya en la
