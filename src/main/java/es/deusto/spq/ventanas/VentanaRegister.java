@@ -11,8 +11,11 @@ public class VentanaRegister extends JFrame implements ActionListener {
     private JLabel title;
     private JLabel lNombre;
     private JTextField tfNombre;
-    private JLabel lTelefono;
-    private JTextField tfTelefono;
+    private JLabel lEmail;
+    private JTextField tfEmail;
+    private JLabel lContrasenya;
+    private JPasswordField tfContrasenya;
+    private JPasswordField tfRepetirContrasenya;
     private JLabel lGenero;
     private JRadioButton rbHombre;
     private JRadioButton rbMujer;
@@ -71,8 +74,8 @@ public class VentanaRegister extends JFrame implements ActionListener {
   
         lNombre = new JLabel("Nombre");
         lNombre.setFont(new Font("Arial", Font.PLAIN, 20));
-        lNombre.setSize(100, 20);
-        lNombre.setLocation(100, 100);
+        lNombre.setSize(120, 20);
+        lNombre.setLocation(59, 100);
         c.add(lNombre);
   
         tfNombre = new JTextField();
@@ -80,37 +83,55 @@ public class VentanaRegister extends JFrame implements ActionListener {
         tfNombre.setSize(190, 20);
         tfNombre.setLocation(200, 100);
         c.add(tfNombre);
+        
+        lEmail = new JLabel("Correo");
+        lEmail.setFont(new Font("Arial", Font.PLAIN, 20));
+        lEmail.setSize(120, 20);
+        lEmail.setLocation(59, 150);
+        c.add(lEmail);
   
-        lTelefono = new JLabel("Telefono movil");
-        lTelefono.setFont(new Font("Arial", Font.PLAIN, 20));
-        lTelefono.setSize(100, 20);
-        lTelefono.setLocation(100, 150);
-        c.add(lTelefono);
+        tfEmail = new JTextField();
+        tfEmail.setFont(new Font("Arial", Font.PLAIN, 15));
+        tfEmail.setSize(190, 20);
+        tfEmail.setLocation(200, 150);
+        c.add(tfEmail);
   
-        tfTelefono = new JTextField();
-        tfTelefono.setFont(new Font("Arial", Font.PLAIN, 15));
-        tfTelefono.setSize(150, 20);
-        tfTelefono.setLocation(200, 150);
-        c.add(tfTelefono);
+        lContrasenya = new JLabel("Contraseña");
+        lContrasenya.setFont(new Font("Arial", Font.PLAIN, 20));
+        lContrasenya.setSize(120, 20);
+        lContrasenya.setLocation(59, 200);
+        c.add(lContrasenya);
+  
+        tfContrasenya = new JPasswordField();
+        tfContrasenya.setFont(new Font("Arial", Font.PLAIN, 15));
+        tfContrasenya.setSize(100, 20);
+        tfContrasenya.setLocation(200, 200);
+        c.add(tfContrasenya);
+        
+        tfRepetirContrasenya = new JPasswordField();
+        tfRepetirContrasenya.setFont(new Font("Arial", Font.PLAIN, 15));
+        tfRepetirContrasenya.setSize(100, 20);
+        tfRepetirContrasenya.setLocation(323, 202);
+        c.add(tfRepetirContrasenya);
   
         lGenero = new JLabel("Genero");
         lGenero.setFont(new Font("Arial", Font.PLAIN, 20));
-        lGenero.setSize(100, 20);
-        lGenero.setLocation(100, 200);
+        lGenero.setSize(120, 20);
+        lGenero.setLocation(59, 250);
         c.add(lGenero);
   
         rbHombre = new JRadioButton("Masculino");
         rbHombre.setFont(new Font("Arial", Font.PLAIN, 15));
         rbHombre.setSelected(true);
         rbHombre.setSize(75, 20);
-        rbHombre.setLocation(200, 200);
+        rbHombre.setLocation(200, 250);
         c.add(rbHombre);
   
         rbMujer = new JRadioButton("Femenino");
         rbMujer.setFont(new Font("Arial", Font.PLAIN, 15));
         rbMujer.setSelected(false);
         rbMujer.setSize(80, 20);
-        rbMujer.setLocation(275, 200);
+        rbMujer.setLocation(275, 250);
         c.add(rbMujer);
   
         gengp = new ButtonGroup();
@@ -119,58 +140,58 @@ public class VentanaRegister extends JFrame implements ActionListener {
   
         lFechaNacimiento = new JLabel("F.Nacimiento");
         lFechaNacimiento.setFont(new Font("Arial", Font.PLAIN, 20));
-        lFechaNacimiento.setSize(100, 20);
-        lFechaNacimiento.setLocation(100, 250);
+        lFechaNacimiento.setSize(120, 20);
+        lFechaNacimiento.setLocation(59, 300);
         c.add(lFechaNacimiento);
   
         cbFecha = new JComboBox(dias);
         cbFecha.setFont(new Font("Arial", Font.PLAIN, 15));
         cbFecha.setSize(50, 20);
-        cbFecha.setLocation(200, 250);
+        cbFecha.setLocation(200, 300);
         c.add(cbFecha);
   
         cbMes = new JComboBox(meses);
         cbMes.setFont(new Font("Arial", Font.PLAIN, 15));
         cbMes.setSize(60, 20);
-        cbMes.setLocation(250, 250);
+        cbMes.setLocation(250, 300);
         c.add(cbMes);
   
         cbAnyo = new JComboBox(anyos);
         cbAnyo.setFont(new Font("Arial", Font.PLAIN, 15));
         cbAnyo.setSize(60, 20);
-        cbAnyo.setLocation(320, 250);
+        cbAnyo.setLocation(320, 300);
         c.add(cbAnyo);
   
         lAnyadir = new JLabel("Direccion");
         lAnyadir.setFont(new Font("Arial", Font.PLAIN, 20));
-        lAnyadir.setSize(100, 20);
-        lAnyadir.setLocation(100, 300);
+        lAnyadir.setSize(120, 20);
+        lAnyadir.setLocation(59, 350);
         c.add(lAnyadir);
   
         taAnyadir = new JTextArea();
         taAnyadir.setFont(new Font("Arial", Font.PLAIN, 15));
         taAnyadir.setSize(200, 75);
-        taAnyadir.setLocation(200, 300);
+        taAnyadir.setLocation(200, 350);
         taAnyadir.setLineWrap(true);
         c.add(taAnyadir);
   
         cbTerminos = new JCheckBox("Aceptar terminos y condiciones");
         cbTerminos.setFont(new Font("Arial", Font.PLAIN, 15));
         cbTerminos.setSize(250, 20);
-        cbTerminos.setLocation(150, 400);
+        cbTerminos.setLocation(150, 450);
         c.add(cbTerminos);
   
         sub = new JButton("Enviar");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
-        sub.setLocation(150, 450);
+        sub.setLocation(150, 500);
         sub.addActionListener(this);
         c.add(sub);
   
         reset = new JButton("Reset");
         reset.setFont(new Font("Arial", Font.PLAIN, 15));
         reset.setSize(100, 20);
-        reset.setLocation(270, 450);
+        reset.setLocation(270, 500);
         reset.addActionListener(this);
         c.add(reset);
   
@@ -185,13 +206,13 @@ public class VentanaRegister extends JFrame implements ActionListener {
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
         res.setSize(500, 25);
-        res.setLocation(100, 500);
+        res.setLocation(100, 530);
         c.add(res);
   
         resadd = new JTextArea();
         resadd.setFont(new Font("Arial", Font.PLAIN, 15));
         resadd.setSize(200, 75);
-        resadd.setLocation(580, 175);
+        resadd.setLocation(580, 225);
         resadd.setLineWrap(true);
         c.add(resadd);
   
@@ -210,7 +231,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
                     = "Name : "
                       + tfNombre.getText() + "\n"
                       + "Movil : "
-                      + tfTelefono.getText() + "\n";
+                      + tfContrasenya.getText() + "\n";
                 if (rbHombre.isSelected())
                     data1 = "Genero : Macho del norte"
                             + "\n";
@@ -240,7 +261,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
             String def = "";
             tfNombre.setText(def);
             taAnyadir.setText(def);
-            tfTelefono.setText(def);
+            tfContrasenya.setText(def);
             res.setText(def);
             tout.setText(def);
             cbTerminos.setSelected(false);
