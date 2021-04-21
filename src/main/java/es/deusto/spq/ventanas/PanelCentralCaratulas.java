@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +19,7 @@ import es.deusto.spq.VideoJuego;
 public class PanelCentralCaratulas extends JPanel{
 	public JTextField tfBuscador;
 	JPanel panelVideojuegosConLayout;
+	JButton bBuscar;
 	
 	public PanelCentralCaratulas() {
 		this.setBorder(new LineBorder(new Color(128, 0, 128)));
@@ -34,6 +36,8 @@ public class PanelCentralCaratulas extends JPanel{
 		tfBuscador.setText("Buscador");
 		tfBuscador.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelHeader.add(tfBuscador);
+		bBuscar = new JButton("Buscar");
+		panelHeader.add(bBuscar);
 		tfBuscador.setColumns(10);
 		
 		
