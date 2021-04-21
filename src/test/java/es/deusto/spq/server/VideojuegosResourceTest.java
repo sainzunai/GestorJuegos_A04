@@ -10,6 +10,7 @@ import org.junit.Before; import org.junit.Test; import org.mockito.Mockito;
 
 import es.deusto.spq.Plataforma; import es.deusto.spq.VideoJuego; import
 es.deusto.spq.dao.GestorJuegos_A04DAO;
+import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
 public class VideojuegosResourceTest {
 
@@ -22,16 +23,29 @@ public class VideojuegosResourceTest {
 		
 		vr = new VideojuegosResource();
 		
-		vr.setDAO(dao);
+		vr.setDao(dao);
 		
 		v = new ArrayList<VideoJuego>(); 
 		
 		v.add(new VideoJuego("FIFA", "1", "EA", 3, null)); 
 		
 	}
+	
+	@Test 
+	public void testSetDao() {
+		IGestorJuegos_A04DAO daoTest = new GestorJuegos_A04DAO();
+		vr.setDao(daoTest);
+		assertEquals(daoTest, vr.getDao()); 
+	}
+	
+	@Test 
+	public void testGetDao() {
+		
+		assertEquals(dao, vr.getDao()); 
+	}
 
 	@Test 
-	public void testGetVideojuegos() throws InterruptedException {
+	public void testGetVideojuegos() {
 
 		when(dao.getAllVideojuegos()).thenReturn(v);
 

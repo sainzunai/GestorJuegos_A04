@@ -10,14 +10,19 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Usuario;
+import es.deusto.spq.dao.GestorJuegos_A04DAO;
 import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
 @Path("usuarios")
 public class UsuarioResource {
 	
-	private IGestorJuegos_A04DAO dao;
+	private IGestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
 	
-	public UsuarioResource(IGestorJuegos_A04DAO dao) {
+	public IGestorJuegos_A04DAO getDao() {
+		return dao;
+	}
+
+	public void setDao(IGestorJuegos_A04DAO dao) {
 		this.dao = dao;
 	}
 
@@ -31,8 +36,6 @@ public class UsuarioResource {
 	public Usuario getUser(String email) {
 		Usuario user = dao.getUsuario(email);
 		System.out.println("Obteniedo el usuario con email: " + user.getGmail());
-		Biblioteca b = dao.getBiblioteca_Usuario(user);
-		user.setBiblioteca(b);
 		
 		return user;
 	}

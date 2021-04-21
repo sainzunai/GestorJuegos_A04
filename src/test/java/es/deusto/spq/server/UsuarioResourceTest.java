@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import es.deusto.spq.Usuario;
 import es.deusto.spq.dao.GestorJuegos_A04DAO;
+import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
 public class UsuarioResourceTest {
 
@@ -19,8 +20,22 @@ public class UsuarioResourceTest {
 	
 	@Before
 	public void setUp() {
-		ur = new UsuarioResource(dao);
+		ur = new UsuarioResource();
+		ur.setDao(dao);
 		u = new Usuario("javi@gmail.com", "1234","Javi");
+	}
+	
+	@Test 
+	public void testSetDao() {
+		IGestorJuegos_A04DAO daoTest = new GestorJuegos_A04DAO();
+		ur.setDao(daoTest);
+		assertEquals(daoTest, ur.getDao()); 
+	}
+	
+	@Test 
+	public void testGetDao() {
+		
+		assertEquals(dao, ur.getDao()); 
 	}
 	
 	@Test

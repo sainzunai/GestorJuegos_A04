@@ -29,11 +29,12 @@ public class VideojuegosResource {
 		return videojuegos;
 	}
 	
-	public void setDAO(GestorJuegos_A04DAO dao) {
+	public void setDao(IGestorJuegos_A04DAO dao) {
 		this.dao = dao; 
-		
-		
 	}
 	
+	public IGestorJuegos_A04DAO getDao() {
+		return dao;
+	}
 	
 }
