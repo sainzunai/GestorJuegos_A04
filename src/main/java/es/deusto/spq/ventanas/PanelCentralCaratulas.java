@@ -29,7 +29,7 @@ public class PanelCentralCaratulas extends JPanel{
 	 * @param controlador: controlador de la ventana principal, para poder llamar al evento de busqueda del boton.
 	 * Poner NULL si es test.
 	 */
-	public PanelCentralCaratulas(ControladorVentanaPrincipal controlador) {
+	public PanelCentralCaratulas(final ControladorVentanaPrincipal controlador) {
 		this.controlador = controlador;
 		
 		
@@ -75,7 +75,7 @@ public class PanelCentralCaratulas extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (controlador != null) {	//en vez de hacer otro constructor ponemos este filtro
-					controlador.accionBotonBuscar();
+					controlador.accionBotonBuscar(tfBuscador.getText());
 				}
 				
 			}

@@ -49,6 +49,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : juegos) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            System.out.println(juego.getNombre());
             v.add(juego); 
         }
         
@@ -80,9 +81,21 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 	}
 	
-	public void accionBotonBuscar() {
+	public void accionBotonBuscar(String textoBuscar) {
 		//TODO
-		System.out.println("Accion boton buscar :)");
+		
+		ArrayList<VideoJuego> buscador = new ArrayList<>(); //Se genera una lista donde vamos a guardar todas las que coincidan con el nombre 
+		
+
+		for(int i = 0; i < v.size(); i ++) {
+			if(v.get(i).getNombre().contains(textoBuscar)) {
+				
+				buscador.add(v.get(i)); 
+				System.out.println("Anyadiendo videjuego a la lista: " + v.get(i).getNombre());
+			}
+			
+		}
+		System.out.println(buscador.size());
 	}
 	
 	
