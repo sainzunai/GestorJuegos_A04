@@ -26,16 +26,16 @@ public class VideoJuego implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Persistent
+	
 	@PrimaryKey 
 	private String videoJuego_id; 
-	@Persistent
+	
 	private String nombre;
-	@Persistent
+	
 	private String compania;
-	@Persistent
+	
 	private String caratula; 
-	@Persistent
+	
 	private int edadRecomendada; 
 	@Persistent
 	private Plataforma plataforma; 

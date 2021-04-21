@@ -2,6 +2,7 @@ package es.deusto.spq.dao;
 
 import java.util.List;
 import javax.jdo.Extent;
+import javax.jdo.FetchGroup;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -256,6 +257,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		
 		 PersistenceManager pm = pmf.getPersistenceManager();
 		 Usuario users=null;
+		 
 			System.out.println("Obteniendo el usuario con email: "+email);
 	        Query<Usuario> q = pm.newQuery(Usuario.class);
 	        q.setUnique(true);
@@ -271,7 +273,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 
 	        pm.close();
 
-	    
+	    users.setBiblioteca(this.getBiblioteca_Usuario(users));
 		return(users);
 		
 	}
@@ -293,7 +295,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 
 	        try {
 	           biblioteca = (Biblioteca) q.execute(user.getBiblioteca().getId());
-	           System.out.println("Biblioteca: "+ biblioteca.getId()+" ");
+	           System.out.println("Biblioteca: "+ biblioteca.getId()+" "+biblioteca.getListaJuegos());
 	        } finally {
 	            q.closeAll();
 	        }

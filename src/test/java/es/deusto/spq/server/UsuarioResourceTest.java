@@ -20,7 +20,7 @@ public class UsuarioResourceTest {
 	@Before
 	public void setUp() {
 		ur = new UsuarioResource(dao);
-		u = new Usuario("javi@gmail.com", "1234");
+		u = new Usuario("javi@gmail.com", "1234","Javi");
 	}
 	
 	@Test

@@ -96,7 +96,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
         tfEmail.setLocation(200, 150);
         c.add(tfEmail);
   
-        lContrasenya = new JLabel("Contraseña");
+        lContrasenya = new JLabel("Contrasena");//Lo he tocado no compilaba con lo otro
         lContrasenya.setFont(new Font("Arial", Font.PLAIN, 20));
         lContrasenya.setSize(120, 20);
         lContrasenya.setLocation(59, 200);

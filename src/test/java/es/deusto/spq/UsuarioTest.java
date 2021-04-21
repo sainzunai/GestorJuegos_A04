@@ -16,7 +16,7 @@ public class UsuarioTest {
     @Before                                         
     public void setUp() throws Exception {
 
-    	u = new Usuario("cboasierg", "Seguridad"); 
+    	u = new Usuario("cboasierg", "Seguridad","Asier"); 
     	
     	b = new Biblioteca(); 
     	

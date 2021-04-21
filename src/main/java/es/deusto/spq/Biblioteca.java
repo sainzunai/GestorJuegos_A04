@@ -26,8 +26,6 @@ public class Biblioteca implements Serializable{
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private String biblioteca_id; 
 	
-	private int numeroJuegos;
-
 	//Que van a ir directamente a un USUARIO; 
 
 

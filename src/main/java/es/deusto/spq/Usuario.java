@@ -20,9 +20,10 @@ public class Usuario implements Serializable{
 	@Persistent(mappedBy="user")
     Biblioteca biblioteca;
 	
-	public Usuario(String gmail, String contrasena) {
+	public Usuario(String gmail, String contrasena,String nombre) {
 		this.gmail = gmail;
 		this.contrasena = contrasena;
+		this.nombre=nombre;
 	}
 	
 	
