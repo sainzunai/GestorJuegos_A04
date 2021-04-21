@@ -80,6 +80,11 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 	}
 	
+	public void accionBotonBuscar() {
+		//TODO
+		System.out.println("Accion boton buscar :)");
+	}
+	
 	
 
 }

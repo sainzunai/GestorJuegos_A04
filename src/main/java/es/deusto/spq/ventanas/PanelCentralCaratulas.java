@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,8 +22,17 @@ public class PanelCentralCaratulas extends JPanel{
 	public JTextField tfBuscador;
 	JPanel panelVideojuegosConLayout;
 	JButton bBuscar;
+	ControladorVentanaPrincipal controlador;
 	
-	public PanelCentralCaratulas() {
+	
+	/**
+	 * @param controlador: controlador de la ventana principal, para poder llamar al evento de busqueda del boton.
+	 * Poner NULL si es test.
+	 */
+	public PanelCentralCaratulas(ControladorVentanaPrincipal controlador) {
+		this.controlador = controlador;
+		
+		
 		this.setBorder(new LineBorder(new Color(128, 0, 128)));
 		
 		this.setLayout(new BorderLayout(0, 0));
@@ -41,7 +52,6 @@ public class PanelCentralCaratulas extends JPanel{
 		tfBuscador.setColumns(10);
 		
 		
-		
 		FlowLayout fl_panelVideojuegosConLayout = new FlowLayout();
 		fl_panelVideojuegosConLayout.setAlignment(FlowLayout.LEFT);
 		panelVideojuegosConLayout = new JPanel(fl_panelVideojuegosConLayout);
@@ -59,6 +69,17 @@ public class PanelCentralCaratulas extends JPanel{
 //		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
 //		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
 		
+		
+		bBuscar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (controlador != null) {	//en vez de hacer otro constructor ponemos este filtro
+					controlador.accionBotonBuscar();
+				}
+				
+			}
+		});
 	}
 	
 	public void anyadirCaratula(JPanelVideojuego caratula) {
@@ -75,7 +96,7 @@ public class PanelCentralCaratulas extends JPanel{
 		ventana.setSize(1000,1000);
 		ventana.setVisible(true);
 		ventana.getContentPane().setLayout(new BorderLayout());
-		PanelCentralCaratulas panel = new PanelCentralCaratulas();
+		PanelCentralCaratulas panel = new PanelCentralCaratulas(null);
 		ventana.getContentPane().add(panel);
 		VideoJuego juego = new VideoJuego();
 		juego.setCaratula("recursos_test/Battlefield.jpg");
