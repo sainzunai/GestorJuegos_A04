@@ -33,10 +33,13 @@ public class UsuarioTest {
 		assertEquals(u.getBiblioteca().getId(), b.getId());
 		assertEquals(u.getContrasena(), "Seguridad"); 
 		u.setContrasena("Seg");
-		assertEquals(u.getContrasena(), "Seguridad");
+		assertEquals(u.getContrasena(), "Seg");
 		assertEquals(u.getGmail(), "cboasierg");
 		u.setGmail("JavierLazaro");
 		assertEquals(u.getGmail(), "JavierLazaro"); 
+		u.setNombre("PEPE");
+		assertEquals(u.getNombre(), "PEPE"); 
+		
 		
 
 		

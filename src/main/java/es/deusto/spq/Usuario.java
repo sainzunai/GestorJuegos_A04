@@ -10,19 +10,22 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+
 public class Usuario implements Serializable{
 
 	@PrimaryKey
 	private String gmail;
+	private String nombre; 
 	private String contrasena;
 	@Persistent(mappedBy="user")
     Biblioteca biblioteca;
 	
-	//Asier añade lo que quieras, esto es solo una base para la base de datos
 	public Usuario(String gmail, String contrasena) {
 		this.gmail = gmail;
 		this.contrasena = contrasena;
 	}
+	
+	
 	public String getGmail() {
 		return gmail;
 	}
@@ -41,5 +44,10 @@ public class Usuario implements Serializable{
 	public void setBiblioteca(Biblioteca biblioteca) {
 		this.biblioteca = biblioteca;
 	}
-	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }
