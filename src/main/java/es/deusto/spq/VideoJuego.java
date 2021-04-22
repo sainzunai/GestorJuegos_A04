@@ -28,7 +28,7 @@ public class VideoJuego implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@PrimaryKey 
-	private String videoJuego_id; 
+	private String videojuego_id; 
 	
 	private String nombre;
 	
@@ -53,7 +53,7 @@ public class VideoJuego implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((videoJuego_id == null) ? 0 : videoJuego_id.hashCode());
+		result = prime * result + ((videojuego_id == null) ? 0 : videojuego_id.hashCode());
 		return result;
 	}
 
@@ -66,10 +66,10 @@ public class VideoJuego implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		VideoJuego other = (VideoJuego) obj;
-		if (videoJuego_id == null) {
-			if (other.videoJuego_id != null)
+		if (videojuego_id == null) {
+			if (other.videojuego_id != null)
 				return false;
-		} else if (!videoJuego_id.equals(other.videoJuego_id))
+		} else if (!videojuego_id.equals(other.videojuego_id))
 			return false;
 		return true;
 	}
@@ -81,7 +81,7 @@ public class VideoJuego implements Serializable{
 		
 		this.nombre = nombre; 
 		
-		this.videoJuego_id = id; 
+		this.videojuego_id = id; 
 		
 		this.compania = company; 
 		
@@ -101,7 +101,7 @@ public class VideoJuego implements Serializable{
 		
 		this.nombre = nombre; 
 		
-		this.videoJuego_id = id; 
+		this.videojuego_id = id; 
 		
 		this.compania = company; 
 		
@@ -119,7 +119,7 @@ public class VideoJuego implements Serializable{
 		
 		this.nombre = nombre; 
 		
-		this.videoJuego_id = id; 
+		this.videojuego_id = id; 
 		
 		this.compania = company; 
 		
@@ -138,7 +138,7 @@ public class VideoJuego implements Serializable{
 		
 		this.nombre = nombre; 
 		
-		this.videoJuego_id = id; 
+		this.videojuego_id = id; 
 		
 		this.compania = company; 
 		
@@ -158,7 +158,7 @@ public class VideoJuego implements Serializable{
 		
 		this.nombre = ""; 
 		
-		this.videoJuego_id = ""; 
+		this.videojuego_id = ""; 
 		
 		this.compania = ""; 
 		
@@ -247,11 +247,11 @@ public class VideoJuego implements Serializable{
 	}
 	
 	public String getId() {
-		return videoJuego_id;
+		return videojuego_id;
 	}
 
 	public void setId(String id) {
-		this.videoJuego_id = id;
+		this.videojuego_id = id;
 	} 
 	
 	public String getCompania() {

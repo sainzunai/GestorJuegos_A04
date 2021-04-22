@@ -37,8 +37,8 @@ public class Biblioteca implements Serializable{
 
 	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true")
     @Join(column="biblioteca_id")
-    @Element(column="videoJuego_id")
-	@Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="videoJuego_id ASC"))
+    @Element(column="videojuego_id")
+	@Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="videojuego_id ASC"))
 	private List<VideoJuego> listaJuegos= new ArrayList<>();  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
 	
 	@Override

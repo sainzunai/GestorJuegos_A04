@@ -58,29 +58,23 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public VideoJuego getVideojuego(String id) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
-		
-		Transaction tx = pm.currentTransaction();
-		VideoJuego videojuego = null;
-	    
-		try {
-			System.out.println ("   * Seleccionando videojuego: " + id);
-			
-	    	tx.begin();
-	    	Query<?> query = pm.newQuery("SELECT FROM " + VideoJuego.class.getName() + " WHERE videoJuego_id == '" + id + "'");
-	    	query.setUnique(true);
-	    	videojuego = (VideoJuego)query.execute();	    
- 	    	tx.commit();
-   	    
-	     } catch (Exception ex) {
-		   	System.out.println("   $ Error retreiving an extent: " + ex.getMessage());
-	     } finally {
-		   	if (tx != null && tx.isActive()) {
-		   		tx.rollback();
-		 }
-				
-	   		pm.close();
-	     }
+
+		 VideoJuego videojuego=null;
+		 
+			System.out.println("Obteniendo el Videojuego con id: "+id);
+	        Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
+	        q.setUnique(true);
+	        q.setFilter("videoJuego_id == idParam");
+	        q.declareParameters("String idParam");
+
+	        try {
+	        	videojuego = (VideoJuego) q.execute(id);
+	           
+	        } finally {
+	            q.closeAll();
+	        }
+
+	        pm.close();
 		return(videojuego);
 	}
 	/**
@@ -120,38 +114,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	     }
 		return(listavideojuego);
 	}
-	/**
-	 * Descripción del método
-	 * Se actualiza el videojuego en la base de datos; sus atributos y relaciones.
-	 * @param Se pasa un videojuego.
-	 */
-	@Override
-	public void updateVideojuego(VideoJuego videojuego) {
-		// TODO Auto-generated method stub
-		PersistenceManager pm = pmf.getPersistenceManager();
-	    Transaction tx = pm.currentTransaction();
-	    
-	    try {
-	    	tx.begin();
-	    	VideoJuego j=(VideoJuego) pm.getObjectById(VideoJuego.class,videojuego.getId());
-	    	j.setCalificaciones(videojuego.getCalificaciones());
-	    	j.setCaratula(videojuego.getCaratula());
-	    	j.setCompania(videojuego.getCompania());
-	    	j.setEdadRecomendada(videojuego.getEdadRecomendada());
-	    	j.setNombre(videojuego.getNombre());
-	    	j.setBiblioteca(videojuego.getBiblioteca());
-	    	System.out.println("   * Actualizando videojuego: " + videojuego);
-	    	tx.commit();
-	     } catch (Exception ex) {
-		   	System.out.println("   $ Error al actulizar : " + ex.getMessage());
-	     } finally {
-		   	if (tx != null && tx.isActive()) {
-		   		tx.rollback();
-		   	}
-				
-	   		pm.close();
-	     }
-	}
+	
 	/**
 	 * Descripción del método
 	 * Se elimina todos los videojuegos de la base de datos
@@ -203,6 +166,8 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			System.out.println(query2.deletePersistentAll() + "Eliminando Plataforma");
 			Query<Biblioteca> query4 = pm.newQuery(Biblioteca.class);
 			System.out.println(" * '" + query4.deletePersistentAll() + "' biblioteca borrados de la BD.");
+			Query<Usuario> query3 = pm.newQuery(Usuario.class);
+			System.out.println(query3.deletePersistentAll() + "Eliminando Plataforma");
 			//End the transaction
 			tx.commit();
 		} catch (Exception ex) {
@@ -229,6 +194,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public void updateBiblioteca(Biblioteca biblioteca,VideoJuego videojuego) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
+		/*
 	    Transaction tx = pm.currentTransaction();
 	    
 	    try {
@@ -251,6 +217,39 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 				
 	   		pm.close();
 	     }
+	     */
+		Transaction tx = pm.currentTransaction();
+		System.out.println("Obteniendo la biblioteca con Id: "+biblioteca.getId());
+        Query<Biblioteca> q = pm.newQuery(Biblioteca.class);
+        q.extension("datanucleus.query.flushBeforeExecution","true");
+        q.setUnique(true);
+        q.setFilter("biblioteca_id == idParam");
+        q.declareParameters("String idParam");
+        
+        System.out.println("Obteniendo el Videojuego con id: "+videojuego.getId());
+        Query<VideoJuego> query = pm.newQuery(VideoJuego.class);
+        query.extension("datanucleus.query.flushBeforeExecution","true");
+        q.setUnique(true);
+        q.setFilter("videojuego_id == id1Param");
+        q.declareParameters("String id1Param");
+        try {
+        	tx.begin();
+            biblioteca = (Biblioteca) q.execute(biblioteca.getId());
+            videojuego = (VideoJuego) query.execute(videojuego.getId());
+            biblioteca.addJuego(videojuego);
+            videojuego.addBiblioteca(biblioteca);
+            tx.commit();
+        } finally {
+            q.closeAll();
+        }
+
+        pm.close();
+        
+
+       
+        	
+           
+        
 	}
 	@Override
 	public Usuario getUsuario(String email) {
@@ -281,8 +280,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public Biblioteca getBiblioteca_Usuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		
-		
-		Transaction tx = pm.currentTransaction();
 		Biblioteca biblioteca = null;
 	    
 		
