@@ -46,9 +46,21 @@ public class DaoTest implements Serializable{
 	Usuario prueba=dao.getUsuario(user.getGmail());
 	System.out.println("El usuario introducido es:"+prueba.getGmail()+"\t"+prueba.getContrasena()+"\t"+prueba.getNombre()+"\t"+prueba.getBiblioteca().getId()+"\t"+prueba.getBiblioteca().getListaJuegos());
 	
-	dao.updateBiblioteca(prueba.getBiblioteca(), v2);
+	dao.updateBiblioteca_Videojuego(prueba.getBiblioteca(), v2);
+	prueba.setBiblioteca(dao.getBiblioteca_Usuario(prueba));
+	System.out.println("Biblioteca actualizada,lista de videojuegos:"+prueba.getBiblioteca().getListaJuegos());
+	Biblioteca b= new Biblioteca();
+	Usuario user1 = new Usuario("themrguiller22@gmail.com", "Hackeado","Guillermo");
+	user1.setBiblioteca(b);
+	b.setUser(user1);
+	dao.introducirObjeto(user1); 
+	user1=dao.getUsuario(user1.getGmail());
+	user1.getBiblioteca().addJuego(new VideoJuego("Juego de mofeta", "4", "MierdiJuegos", 0, p1));
+	user1.getBiblioteca().addJuego(new VideoJuego("Juego de mofeta:La venganza", "5", "MierdiJuegos", 0, p1));
+	dao.updateBiblioteca(user1.getBiblioteca());
 	*/
 	}
+	
 
 	
 	

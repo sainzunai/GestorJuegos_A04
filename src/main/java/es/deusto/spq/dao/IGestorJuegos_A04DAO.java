@@ -10,7 +10,8 @@ public interface IGestorJuegos_A04DAO {
 	public void introducirObjeto(Object object);
 	public VideoJuego getVideojuego(String name);
 	public List<VideoJuego> getAllVideojuegos();
-	public void updateBiblioteca(Biblioteca biblioteca,VideoJuego videojuego);
+	public void updateBiblioteca_Videojuego(Biblioteca biblioteca,VideoJuego videojuego);
+	public void updateBiblioteca(Biblioteca biblioteca);
 	public void deleteAllVideojuegos();
 	public void deleteAll();
 	public Usuario getUsuario(String email);
