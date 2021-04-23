@@ -54,8 +54,10 @@ public class VentanaRegister extends JFrame implements ActionListener {
             "2015", "2016", "2017", "2018",
             "2019" };
   
-    // constructor, to initialize the components
-    // with default values.
+  
+    /**
+     * Lanza la ventana de registro
+     */
     public VentanaRegister()
     {
         setTitle("Formulario de registro");
@@ -219,9 +221,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
         setVisible(true);
     }
   
-    // method actionPerformed()
-    // to get the action performed
-    // by the user and act accordingly
+    
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == sub) {
@@ -230,7 +230,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
                 String data
                     = "Name : "
                       + tfNombre.getText() + "\n"
-                      + "Movil : "
+                      + "Pass : "
                       + tfContrasenya.getText() + "\n";
                 if (rbHombre.isSelected())
                     data1 = "Genero : Macho del norte"
@@ -249,6 +249,24 @@ public class VentanaRegister extends JFrame implements ActionListener {
                 tout.setText(data + data1 + data2 + data3);
                 tout.setEditable(false);
                 res.setText("Regisro OK");
+                
+                //TODO completar registro con BD.
+                //1. Comprobar contrasenyas
+                if(tfContrasenya.getText().equals(tfRepetirContrasenya.getText()) || tfContrasenya.getText().equals("")) {
+                	//LLamar a BD
+                	if(tfNombre.getText().equals("")) {
+                		System.out.println("Es necesario rellenar los campos");
+                		JOptionPane.showMessageDialog(
+                 			   this,
+                 			  "Es necesario rellenar los campos");
+                	}
+                } else {
+                	System.out.println("Contrasenyas no coinciden");
+                	JOptionPane.showMessageDialog(
+                			   this,
+                			   "Las constrasenyas no coinciden");
+                }
+                
             }
             else {
                 tout.setText("");
