@@ -1,11 +1,25 @@
 package es.deusto.spq.ventanas;
 
 import javax.swing.*;
+
+import es.deusto.spq.Usuario;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+
 import java.awt.*;
 import java.awt.event.*;
 
 public class VentanaRegister extends JFrame implements ActionListener {
 
+	//Variables Server
+	Client client = ClientBuilder.newClient();
+	 
+	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
+	final WebTarget usersTarget = appTarget.path("usuarios");
+	
 	// Components of the Form
 	private Container c;
 	private JLabel title;
@@ -233,6 +247,9 @@ public class VentanaRegister extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(this, "Es necesario rellenar los campos");
 					} else {
 						// LLamar a BD
+						Usuario newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
+						System.out.println(newUser);
+						usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
 						
 					}
 				} else {
@@ -275,7 +292,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 			// Implementaciï¿½n (2)
 			StringBuffer ret = new StringBuffer();
 			for (char c : string.toCharArray()) {
-				if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZï¿?.,:;-_(){}[]-+*=<>'\"¡!&%$@#/\\0123456789".indexOf(c)>=0) ret.append(c);
+				if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@/\\0123456789".indexOf(c)>=0) ret.append(c);
 			}
 			return ret.toString();
 		}
