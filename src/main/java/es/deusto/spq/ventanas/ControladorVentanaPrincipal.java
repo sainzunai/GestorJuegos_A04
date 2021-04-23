@@ -27,6 +27,10 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	Biblioteca b = new Biblioteca(); //Biblioteca 
 	
 	boolean carga = true; 
+	
+	boolean estamosEnHome = false;
+	
+	boolean estamosEnBiblio = false;
 
 	ArrayList<VideoJuego> v = new ArrayList<>(); 
 	
@@ -45,7 +49,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		if(carga == true ) {
 		GenericType<List<VideoJuego>> genericType = new GenericType<List<VideoJuego>>() {};
         List<VideoJuego> juegos = videoJuegosTarget.request(MediaType.APPLICATION_JSON).get(genericType);
-        System.out.println("Leemos de Base Datos");
+        System.out.println("Leemos de Base Datos. Numero de Juegos:" + juegos.size());
         miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : juegos) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
@@ -54,6 +58,9 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         }
         
         carga = false; 
+        
+        estamosEnBiblio = false; 
+        estamosEnHome = true; 
        
 		}
 		
@@ -72,6 +79,9 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	}
 
 	public void mostrarBibliotecaVideojuegos() {
+		
+		estamosEnBiblio = false; 
+        estamosEnHome = true; 
         
 		miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : b.getListaJuegos()) {
@@ -81,21 +91,39 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 	}
 	
-	public void accionBotonBuscar(String textoBuscar) {
+	public void accionBotonBuscar(String textoBuscar) {  //Para el boton buscar. 
 		//TODO
 		
 		ArrayList<VideoJuego> buscador = new ArrayList<>(); //Se genera una lista donde vamos a guardar todas las que coincidan con el nombre 
+		//La creamos cada vez que damos al boton asi se eliminara una vez se entre dentro. 
 		
+		if(estamosEnHome) { //Estamos colocados en la ventana de home
 
 		for(int i = 0; i < v.size(); i ++) {
 			if(v.get(i).getNombre().contains(textoBuscar)) {
 				
 				buscador.add(v.get(i)); 
-				System.out.println("Anyadiendo videjuego a la lista: " + v.get(i).getNombre());
+				System.out.println("HOME: Anyadiendo videjuego a la lista: " + v.get(i).getNombre());
 			}
 			
 		}
-		System.out.println(buscador.size());
+		
+		}
+		
+		if(estamosEnBiblio) {  //Estamos colocados en la ventana de biblioteca
+			
+			
+			for(int i = 0; i < b.numeroDeJuegos(); i ++) {
+				if(b.getListaJuegos().get(i).getNombre().contains(textoBuscar)) {
+					
+					buscador.add(b.getListaJuegos().get(i)); 
+					System.out.println("BIBLIO: Anyadiendo videjuego a la lista: " + v.get(i).getNombre());
+				}				
+			}			
+
+		}
+		
+		System.out.println("Numero total de juegos encontrador:" + buscador.size());
 	}
 	
 	
