@@ -32,8 +32,8 @@ public class UsuarioResource {
 	 * Metodo REST que pide a BD un usuario, comprueba si coincide con
 	 * la contraseña enviada y lo devuelve
 	 * @param email email del usuario a recoger
-	 * @param pass contraseña introducida por el usuario
-	 * @return Si la contraseña es correcta se devuelve el usuario y si no se devuelve null
+	 * @param pass contrasena introducida por el usuario
+	 * @return Si la contrasena es correcta se devuelve el usuario y si no se devuelve null
 	 */
 	@GET
 	@Path("getUsuario")
@@ -43,10 +43,10 @@ public class UsuarioResource {
 		System.out.println("Obteniedo el usuario con email: " + user.getGmail());
 		
 		if (user.getContrasena().equals(pass)) {
-			System.out.println("Contraseña correcta, devolviendo usuario...");
+			System.out.println("Contrasena correcta, devolviendo usuario...");
 			return user;
 		}else {
-			System.out.println("Error, contraseña incorrecta, devolviendo null...");
+			System.out.println("Error, contrasena incorrecta, devolviendo null...");
 			return null;
 		}
 	}
