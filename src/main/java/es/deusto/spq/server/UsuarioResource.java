@@ -30,7 +30,7 @@ public class UsuarioResource {
 	
 	/**
 	 * Metodo REST que pide a BD un usuario, comprueba si coincide con
-	 * la contraseña enviada y lo devuelve
+	 * la contrasena enviada y lo devuelve
 	 * @param email email del usuario a recoger
 	 * @param pass contrasena introducida por el usuario
 	 * @return Si la contrasena es correcta se devuelve el usuario y si no se devuelve null
@@ -58,7 +58,7 @@ public class UsuarioResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addUser(Usuario user) {
-	 System.out.println("Añadiendo un nuevo usuario con email: " + user.getGmail());
+	 System.out.println("Anadiendo un nuevo usuario con email: " + user.getGmail());
 	 dao.introducirObjeto(user);
 	}
 }
