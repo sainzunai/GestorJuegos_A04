@@ -7,6 +7,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Usuario;
@@ -26,28 +27,38 @@ public class UsuarioResource {
 		this.dao = dao;
 	}
 
+	
 	/**
-	 * MÃ©todo que devuelve un usuario con su Biblioteca correspondiente
-	 * @param email String que indica el email del usuario
-	 * @return Objeto Usuario recogido de BD con ese mismo email
+	 * Metodo REST que pide a BD un usuario, comprueba si coincide con
+	 * la contraseña enviada y lo devuelve
+	 * @param email email del usuario a recoger
+	 * @param pass contraseña introducida por el usuario
+	 * @return Si la contraseña es correcta se devuelve el usuario y si no se devuelve null
 	 */
 	@GET
+	@Path("getUsuario")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario getUser(String email) {
+	public Usuario getUser(@QueryParam("email")String email, @QueryParam("passw") String pass) {
 		Usuario user = dao.getUsuario(email);
 		System.out.println("Obteniedo el usuario con email: " + user.getGmail());
 		
-		return user;
+		if (user.getContrasena().equals(pass)) {
+			System.out.println("Contraseña correcta, devolviendo usuario...");
+			return user;
+		}else {
+			System.out.println("Error, contraseña incorrecta, devolviendo null...");
+			return null;
+		}
 	}
 	
 	/**
-	 * MÃ©todo que inserta un usuario en BD
+	 * Metodo REST que inserta un usuario en BD
 	 * @param user Objeto Usuario a insertar en BD
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addUser(Usuario user) {
-	 System.out.println("AÃ±adiendo un nuevo usuario con email: " + user.getGmail());
+	 System.out.println("Añadiendo un nuevo usuario con email: " + user.getGmail());
 	 dao.introducirObjeto(user);
 	}
 }

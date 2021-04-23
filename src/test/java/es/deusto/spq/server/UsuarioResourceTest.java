@@ -22,7 +22,7 @@ public class UsuarioResourceTest {
 	public void setUp() {
 		ur = new UsuarioResource();
 		ur.setDao(dao);
-		u = new Usuario("javi@gmail.com", "1234","Javi");
+		u = new Usuario("javi@gmail.com", "1234", "Javi");
 	}
 	
 	@Test 
@@ -39,11 +39,18 @@ public class UsuarioResourceTest {
 	}
 	
 	@Test
-	public void testGetUser() {
+	public void testGetUserOK() {
 		when(dao.getUsuario("javi@gmail.com")).thenReturn(u);
-		when(dao.getBiblioteca_Usuario(u)).thenReturn(null);
 		
-		assertEquals("javi@gmail.com", ur.getUser("javi@gmail.com").getGmail());
+		assertEquals("javi@gmail.com", ur.getUser("javi@gmail.com", "1234").getGmail());
+		
+	}
+	
+	@Test
+	public void testGetUserNull() {
+		when(dao.getUsuario("javi@gmail.com")).thenReturn(u);
+		
+		assertEquals(null, ur.getUser("javi@gmail.com", "123"));
 		
 	}
 	
