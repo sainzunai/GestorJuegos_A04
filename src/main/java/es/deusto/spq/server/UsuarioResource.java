@@ -59,7 +59,10 @@ public class UsuarioResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addUser(Usuario user) {
 	 System.out.println("Anadiendo un nuevo usuario con email: " + user.getGmail());
-	 //Aqui javi crea una biblioteca y metela en user.Despues en la biblioteca metele el user.Asi dejas todas las relaciones bien puestas
+	 //Creamos una biblioteca vacia y relacionamos el usuario y la biblioteca entre si para guardar en BD 
+	 Biblioteca b = new Biblioteca();
+	 user.setBiblioteca(b);
+	 b.setUser(user);
 	 dao.introducirObjeto(user);
 	}
 }
