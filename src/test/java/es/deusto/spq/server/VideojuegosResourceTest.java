@@ -1,17 +1,22 @@
 
 package es.deusto.spq.server;
 
-import static org.junit.Assert.*; import static org.mockito.Mockito.when;
+import static org.junit.Assert.*; 
+import static org.mockito.Mockito.when;
 
-import java.util.ArrayList; import java.util.Arrays; import java.util.List;
+import java.util.ArrayList; 
+import java.util.List;
 
-import org.junit.Before; import org.junit.Test; import org.mockito.Mockito;
+import org.junit.Before; import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.mockito.Mockito;
 
-
-import es.deusto.spq.Plataforma; import es.deusto.spq.VideoJuego; import
-es.deusto.spq.dao.GestorJuegos_A04DAO;
+import categories.IntegrationTest;
+import es.deusto.spq.VideoJuego; 
+import es.deusto.spq.dao.GestorJuegos_A04DAO;
 import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
+@Category(IntegrationTest.class)
 public class VideojuegosResourceTest {
 
 	private GestorJuegos_A04DAO dao = Mockito.mock(GestorJuegos_A04DAO.class);

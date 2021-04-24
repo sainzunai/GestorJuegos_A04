@@ -6,12 +6,15 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
+import categories.IntegrationTest;
 import es.deusto.spq.Usuario;
 import es.deusto.spq.dao.GestorJuegos_A04DAO;
 import es.deusto.spq.dao.IGestorJuegos_A04DAO;
 
+@Category(IntegrationTest.class)
 public class UsuarioResourceTest {
 
 	private GestorJuegos_A04DAO dao = Mockito.mock(GestorJuegos_A04DAO.class);

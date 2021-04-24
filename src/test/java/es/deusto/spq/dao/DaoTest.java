@@ -2,18 +2,24 @@ package es.deusto.spq.dao;
 
 import static org.junit.Assert.*;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import categories.IntegrationTest;
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
 import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import es.deusto.spq.dao.*;
+
+
+@Category(IntegrationTest.class)
 public class DaoTest implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
