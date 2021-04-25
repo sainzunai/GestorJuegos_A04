@@ -80,8 +80,8 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 
 	public void mostrarBibliotecaVideojuegos() {
 		
-		estamosEnBiblio = false; 
-        estamosEnHome = true; 
+		estamosEnBiblio = true; 
+        estamosEnHome = false; 
         
 		miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : b.getListaJuegos()) {
