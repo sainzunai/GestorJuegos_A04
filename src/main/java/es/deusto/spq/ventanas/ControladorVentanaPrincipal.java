@@ -97,6 +97,8 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		ArrayList<VideoJuego> buscador = new ArrayList<>(); //Se genera una lista donde vamos a guardar todas las que coincidan con el nombre 
 		//La creamos cada vez que damos al boton asi se eliminara una vez se entre dentro. 
 		
+		miVentana.panelCentralCaratulas.borrarPanel();
+		
 		if(estamosEnHome) { //Estamos colocados en la ventana de home
 
 		for(int i = 0; i < v.size(); i ++) {
@@ -124,6 +126,12 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		}
 		
 		System.out.println("Numero total de juegos encontrador:" + buscador.size());
+		
+        for (VideoJuego juego : buscador) {
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+        }
+        
+        System.out.println("Añadiendo Juegos al panel");
 	}
 	
 	
