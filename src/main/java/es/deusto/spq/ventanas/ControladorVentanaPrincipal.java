@@ -99,6 +99,9 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 		miVentana.panelCentralCaratulas.borrarPanel();
 		
+		System.out.println("Estamos en home: " + estamosEnHome);
+		System.out.println("Estamos en biblio: " + estamosEnBiblio);
+		
 		if(estamosEnHome) { //Estamos colocados en la ventana de home
 
 		for(int i = 0; i < v.size(); i ++) {

@@ -97,7 +97,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			
 	    	tx.begin();
 	    	Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
-			q.orderBy("videoJuego_id asc");
+			q.orderBy("videojuego_id asc");
 			listavideojuego = q.executeList();
 	 
 	    	System.out.println(listavideojuego);
