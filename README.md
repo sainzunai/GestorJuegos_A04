@@ -17,6 +17,7 @@ Crear la base de datos y dar permisos al usuario por defecto
     mvn clean compile
 
 **Lanzar los tests unitarios**
+
 Estos son los test unitarios de las clases con funcionalidad lógica, se expluyen ventanas, servidor y BD
 
     mvn test
@@ -36,6 +37,7 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
     mvn exec:java -Pdatos
 
 **Lanzar los tests de integración**
+
 Estos son los test de integración y de performance para probar el servidor y la BD
 
     mvn verify -Pintegracion
