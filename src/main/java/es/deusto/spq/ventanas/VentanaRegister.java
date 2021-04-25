@@ -61,7 +61,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 	public VentanaRegister() {
 		setTitle("Formulario de registro");
 		setBounds(300, 90, 900, 600);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 
 		c = getContentPane();
@@ -218,6 +218,8 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		c.add(resadd);
 
 		setVisible(true);
+		
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -297,6 +299,8 @@ public class VentanaRegister extends JFrame implements ActionListener {
 			return ret.toString();
 		}
 
+		
+	
 	public static void main(String[] args) throws Exception {
 		VentanaRegister f = new VentanaRegister();
 	}

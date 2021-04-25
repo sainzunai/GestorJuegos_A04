@@ -91,7 +91,7 @@ public class VentanaInicioSesion extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-//				VentanaCrearUsuario v = new VentanaCrearUsuario();
+				VentanaRegister v = new VentanaRegister();
 //				v.setVisible(true);
 
 			}
@@ -128,8 +128,8 @@ public class VentanaInicioSesion extends JFrame{
 			@SuppressWarnings({ "unlikely-arg-type", "deprecation" })
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-							dispose();
+				//TODO llamada a BD
+				//dispose();
 
 			}
 
@@ -151,7 +151,7 @@ public class VentanaInicioSesion extends JFrame{
 
 			@Override
 			public void mouseEntered(MouseEvent e) { // para cuando el raton salga del jpanel ajustado al texto, este se
-				// vuelva m�s pequenyo
+				// vuelva mas pequenyo
 				lEntrar.setFont(new Font("Arial", Font.PLAIN, 14));
 				Font font1 = lEntrar.getFont();
 				Map attributes1 = font1.getAttributes();
