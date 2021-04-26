@@ -24,15 +24,15 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 //----------------------------------------------------------------------
 
 
-	Biblioteca b = new Biblioteca(); //Biblioteca 
+	private Biblioteca b = new Biblioteca(); //Biblioteca 
 	
-	boolean carga = true; 
+	private boolean carga = true; 
 	
-	boolean estamosEnHome = false;
+	private boolean estamosEnHome = false;
 	
-	boolean estamosEnBiblio = false;
+	private boolean estamosEnBiblio = false;
 
-	ArrayList<VideoJuego> v = new ArrayList<>(); 
+	private ArrayList<VideoJuego> v = new ArrayList<>(); 
 	
 	ControladorVentanaPrincipal(VentanaPrincipal miVentana){
 		this.miVentana = miVentana;
@@ -150,7 +150,41 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         miVentana.panelCentralCaratulas.revalidate();
         
 	}
-	
-	
+
+	public Biblioteca getB() {
+		return b;
+	}
+
+	public void setB(Biblioteca b) {
+		this.b = b;
+	}
+
+	public boolean isCarga() {
+		return carga;
+	}
+
+	public void setCarga(boolean carga) {
+		this.carga = carga;
+	}
+
+	public boolean isEstamosEnHome() {
+		return estamosEnHome;
+	}
+
+	public void setEstamosEnHome(boolean estamosEnHome) {
+		this.estamosEnHome = estamosEnHome;
+	}
+
+	public boolean isEstamosEnBiblio() {
+		return estamosEnBiblio;
+	}
+
+	public void setEstamosEnBiblio(boolean estamosEnBiblio) {
+		this.estamosEnBiblio = estamosEnBiblio;
+	}
+
+
+
+
 
 }
