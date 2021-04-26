@@ -46,6 +46,11 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 		//Conexion a server -- peticion
 		
+        
+        estamosEnBiblio = false; 
+        estamosEnHome = true; 
+       
+		
 		if(carga == true ) {
 		GenericType<List<VideoJuego>> genericType = new GenericType<List<VideoJuego>>() {};
         List<VideoJuego> juegos = videoJuegosTarget.request(MediaType.APPLICATION_JSON).get(genericType);
@@ -58,10 +63,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         }
         
         carga = false; 
-        
-        estamosEnBiblio = false; 
-        estamosEnHome = true; 
-       
+
 		}
 		
 		else {
@@ -74,6 +76,9 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 			
 			
 		}
+		
+        miVentana.panelCentralCaratulas.repaint();
+        miVentana.panelCentralCaratulas.revalidate();
         miVentana.panelCentralCaratulas.setVisible(true);
 
 	}
@@ -86,7 +91,12 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : b.getListaJuegos()) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            
+            
         }
+        
+        miVentana.panelCentralCaratulas.repaint();
+        miVentana.panelCentralCaratulas.revalidate();
         miVentana.panelCentralCaratulas.setVisible(true);
 		
 	}
@@ -135,6 +145,10 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         }
         
         System.out.println("Añadiendo Juegos al panel");
+        	
+        miVentana.panelCentralCaratulas.repaint();
+        miVentana.panelCentralCaratulas.revalidate();
+        
 	}
 	
 	

@@ -51,15 +51,15 @@ public class VentanaInicioSesion extends JFrame{
 		pEntrar.add(pEntrarMini); // Asi se podra hacer un link mas preciso
 
 		// para subrayar el label
-		JLabel lNuevoUsuario = new JLabel("Crear nuevo usuario");
+		final JLabel lNuevoUsuario = new JLabel("Crear nuevo usuario");
 		lNuevoUsuario.setFont(new Font("Arial", Font.PLAIN, 14));
-		Font font = lNuevoUsuario.getFont();
+		final Font font = lNuevoUsuario.getFont();
 		Map attributes = font.getAttributes();
 		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 		lNuevoUsuario.setFont(font.deriveFont(attributes));
 
 		// para crear otro label
-		JLabel lEntrar = new JLabel("Entrar");
+		final JLabel lEntrar = new JLabel("Entrar");
 		lEntrar.setFont(new Font("Arial", Font.PLAIN, 14));
 		Font font1 = lEntrar.getFont();
 		Map attributes1 = font1.getAttributes();
