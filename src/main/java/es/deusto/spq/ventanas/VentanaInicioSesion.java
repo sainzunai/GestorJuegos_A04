@@ -15,7 +15,20 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import es.deusto.spq.Usuario;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+
 public class VentanaInicioSesion extends JFrame{
+	//Variables Server
+	Client client = ClientBuilder.newClient();
+	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
+	final WebTarget usersTarget = appTarget.path("usuarios");
+//	final WebTarget getUsersTarget = usersTarget.path("getUsuario");
+	
 	public VentanaInicioSesion() {
 
 		///////////////////////////////////
@@ -67,10 +80,10 @@ public class VentanaInicioSesion extends JFrame{
 		lEntrar.setFont(font1.deriveFont(attributes1));
 
 		pUsuario.add(new JLabel("Nombre usuario:"));
-		JTextField usu = new JTextField(7);
+		final JTextField usu = new JTextField(7);
 		pUsuario.add(usu);
 		pContrasenya.add(new JLabel("Contrasenya: "));
-		JPasswordField pCon = new JPasswordField(7);
+		final JPasswordField pCon = new JPasswordField(7);
 		pContrasenya.add(pCon);
 		pEntrarMini.add(lEntrar);
 		pNuevoUserMini.add(lNuevoUsuario);
@@ -128,8 +141,24 @@ public class VentanaInicioSesion extends JFrame{
 			@SuppressWarnings({ "unlikely-arg-type", "deprecation" })
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Usuario u = new Usuario(null, null, null);
 				//TODO llamada a BD
-				//dispose();
+				WebTarget usernameTarget = usersTarget.path("getUsuario").queryParam("email", usu.getText()).queryParam("passw", pCon.getText());
+				System.out.println(usernameTarget);
+				GenericType<Usuario> gtUsu = new GenericType<Usuario>(){};
+				u = usernameTarget.request(MediaType.APPLICATION_JSON).get(gtUsu);
+				if(u!= null) {
+					System.out.println("usuario correcto: "+u);
+					VentanaPrincipal v = new VentanaPrincipal();//creacion de la ventana principal
+					v.setVisible(true);
+					dispose();
+
+				}
+				else {
+					System.err.println("Credenciales incorrectas :(");
+				}
+				
+				dispose();
 
 			}
 
