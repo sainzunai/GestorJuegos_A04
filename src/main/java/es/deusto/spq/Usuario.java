@@ -17,7 +17,8 @@ public class Usuario implements Serializable{
 	private String gmail;
 	private String nombre; 
 	private String contrasena;
-	@Persistent(mappedBy="user")
+	
+	@Persistent(mappedBy="user", dependentElement="true",defaultFetchGroup="true")
     Biblioteca biblioteca;
 	
 	public Usuario(String gmail, String contrasena,String nombre) {

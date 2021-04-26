@@ -35,7 +35,7 @@ public class Biblioteca implements Serializable{
 	
 	
 
-	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true")
+	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true",dependentElement="true")
     @Join(column="biblioteca_id")
     @Element(column="videojuego_id")
 	@Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="videojuego_id ASC"))

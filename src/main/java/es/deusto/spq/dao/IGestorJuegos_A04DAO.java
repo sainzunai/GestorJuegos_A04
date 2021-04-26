@@ -16,4 +16,5 @@ public interface IGestorJuegos_A04DAO {
 	public void deleteAll();
 	public Usuario getUsuario(String email);
 	public Biblioteca getBiblioteca_Usuario(Usuario user);
+	public void deleteUsuario(Usuario user);
 }

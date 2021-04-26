@@ -64,7 +64,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			System.out.println("Obteniendo el Videojuego con id: "+id);
 	        Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
 	        q.setUnique(true);
-	        q.setFilter("videoJuego_id == idParam");
+	        q.setFilter("videojuego_id == idParam");
 	        q.declareParameters("String idParam");
 
 	        try {
@@ -167,7 +167,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			Query<Biblioteca> query4 = pm.newQuery(Biblioteca.class);
 			System.out.println(" * '" + query4.deletePersistentAll() + "' biblioteca borrados de la BD.");
 			Query<Usuario> query3 = pm.newQuery(Usuario.class);
-			System.out.println(query3.deletePersistentAll() + "Eliminando Plataforma");
+			System.out.println(query3.deletePersistentAll() + "Eliminando Usuario");
 			//End the transaction
 			tx.commit();
 		} catch (Exception ex) {
@@ -287,6 +287,46 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
         for(int i=0;i<biblioteca.getListaJuegos().size();i++) {
         	this.updateBiblioteca_Videojuego(biblioteca, biblioteca.getListaJuegos().get(i));
         }
+	}
+	@Override
+	public void deleteUsuario(Usuario user) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+		try {
+			System.out.println("- Cleaning the DB...");			
+			
+			
+			
+			tx.begin();
+			Query<Usuario> q = pm.newQuery(Usuario.class);
+	        q.setUnique(true);
+	        q.setFilter("gmail == gmailParam");
+	        q.declareParameters("String gmailParam");
+	        Usuario users = (Usuario) q.execute(user.getGmail());
+	        pm.deletePersistent(users);
+	        
+	        Query<Biblioteca> q1 = pm.newQuery(Biblioteca.class);
+	        q1.extension("datanucleus.query.flushBeforeExecution","true");
+	        q1.setUnique(true);
+	        q1.setFilter("biblioteca_id == idParam");
+	        q1.declareParameters("String idParam");
+	        Biblioteca biblioteca = (Biblioteca) q1.execute(user.getBiblioteca().getId());
+	        pm.deletePersistent(biblioteca);
+	        
+			tx.commit();
+		} catch (Exception ex) {
+			System.err.println(" $ Error cleaning the DB: " + ex.getMessage());
+			ex.printStackTrace();
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		
 	}
 	
 }
