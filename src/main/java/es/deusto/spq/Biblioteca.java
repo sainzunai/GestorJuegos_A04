@@ -67,14 +67,16 @@ public class Biblioteca implements Serializable{
 	}
 
 	public Biblioteca(List<VideoJuego> listaJuegos ) {
-		 
+		
+		this.user = null;  
 		this.listaJuegos = listaJuegos;  
 		
 		
 	}
 	
 	public Biblioteca() {  //Creamos solo con un id; 
-		 
+		
+		this.user = null; 
 		this.listaJuegos = new ArrayList<>(); 
 		
 	}

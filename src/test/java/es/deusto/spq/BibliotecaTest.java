@@ -18,6 +18,8 @@ public class BibliotecaTest {
 	VideoJuego v3;
 	
 	VideoJuego v4;
+	
+	ArrayList<VideoJuego> v; 
 
 	
 	
@@ -32,19 +34,93 @@ public class BibliotecaTest {
     	b.addJuego(v1);
     	b.addJuego(v2);
     	b.addJuego(v3);
-    	b.addJuego(v4);
+    	
+    	
+    	//b.addJuego(v4);
+    	
+    	v = new ArrayList<>(); 
+    	
+    	v.add(v1);
+    	v.add(v2);
+    	v.add(v3);
     	
 
     }
 
 	@Test
-	public void test() {
-		
-		assertEquals(4, b.numeroDeJuegos());
+	public void testRemJuego() {
 		
 		b.remJuego(v1);
 		
-		assertEquals(3, b.numeroDeJuegos());
+		assertEquals(2, b.numeroDeJuegos());
 	}
 
+	@Test
+	public void testAddJuego() {
+		
+		b.addJuego(v4);
+		assertEquals(4, b.numeroDeJuegos());		
+		
+	}
+	
+	@Test
+	public void testGetId() {
+		
+	}
+	
+	@Test
+	public void testSetId() {
+		b.setId("HOLA");
+		
+		assertEquals("HOLA", b.getId());		
+		
+		
+	}
+	
+	@Test	
+	public void testGetListaJuegos() {
+		
+		assertEquals(3, b.getListaJuegos().size());
+		
+	}
+	
+	@Test
+	public void testSetListaJuegos() {
+		
+		b.setListaJuegos(v);
+		assertNotNull(b.getListaJuegos());
+		
+		
+	}
+	
+	@Test	
+	public void testGetUser() {
+		
+		assertNull(b.getUser());
+		
+	}
+	
+	@Test
+	public void testSetUser() {
+		
+		b.setUser(new Usuario("HOLA", "HOLA", "PRUEBA"));
+		
+		assertNotNull(b.getUser());
+		
+	}
+	
+	@Test
+	public void testNumeroDeJuegos() {
+		
+		
+		assertEquals(3, b.numeroDeJuegos());
+		
+	}
+	
+	
+	
+
+	
+
+	
 }
