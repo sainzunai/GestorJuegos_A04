@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -64,5 +65,17 @@ public class UsuarioResource {
 	 user.setBiblioteca(b);
 	 b.setUser(user);
 	 dao.introducirObjeto(user);
+	}
+	
+	//TODO Implementar la llamada a put cuando se cierre la aplicación
+	/**
+	 * Metodo REST para realizar el update de la Biblioteca en BD
+	 * @param userBiblio Objeto Biblioteca que realizar el update
+	 */
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void updateUser(Biblioteca userBiblio) {
+		System.out.println("Realizando el update de la biblioteca para el usuario");
+		dao.updateBiblioteca(userBiblio);
 	}
 }
