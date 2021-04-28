@@ -1,35 +1,30 @@
 package es.deusto.spq;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import es.deusto.spq.ventanas.JPanelVideojuego;
 
 public class VideoJuegoTest {
 	
 	private List<Biblioteca> biblioteca= new ArrayList<>();
 	private ArrayList<Calificacion> cList;
 	private ArrayList<Calificacion> cList2;
-	private Calificacion c;
-	private Calificacion c1;
-	private Calificacion c2;
-	private Calificacion c3;
 	
-	private Biblioteca b; 
-	
-	private Biblioteca b2;
-	
-	private VideoJuego v; 
-	
+	private Biblioteca b = Mockito.mock(Biblioteca.class);
+	private Calificacion c = Mockito.mock(Calificacion.class);
+	private Calificacion c1 = Mockito.mock(Calificacion.class);
+	private VideoJuego v; 	
 	private VideoJuego v2; 
-	
 	private VideoJuego v3; 
-	
 	private VideoJuego v4; 
-	
 	private VideoJuego v5; 
     @Before                                         
     public void setUp() throws Exception {
@@ -37,23 +32,10 @@ public class VideoJuegoTest {
     	
     	cList = new ArrayList<>(); 
     	cList2 = new ArrayList<>(); 
-    	c1 = new Calificacion(10, 2021, 3, 29); 
-    	c2= new Calificacion(7, 2020, 8, 12); 
-    	c3 = new Calificacion(4, 2021, 1, 29); 
-    	c = new Calificacion(3, 2018, 2, 5); 
-    	b = new Biblioteca(); 
-    	b2 = new Biblioteca(); 
-    	cList.add(c1);
-    	cList2.add(c1);
-    	cList.add(c2);
-    	cList2.add(c2);
-    	cList.add(c3);
     	
     	v = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null); 
     	
     	v2 = new VideoJuego("FF4", "F4", "Nintendo", 3, null, "hola"); 
-    	
-    	//Probando todos los constructores; 
     	
     	v3 = new VideoJuego(); 
     	
@@ -61,17 +43,19 @@ public class VideoJuegoTest {
     	
     	v5 = new VideoJuego("PRO 12", "P12", "PEs", 8, cList2, null, "caratula"); 
     	
+    	cList.add(c); 
+    	
+    	cList.add(c1);    	
+    	
     	v.setCalificaciones(cList);
-    	
-    	biblioteca.add(b); 
-    	
-    	biblioteca.add(b2);
 
     }
 
 	@Test
 	public void testCalcularNotaMedia() {
 		
+		when(c.getNota()).thenReturn(8);
+		when(c1.getNota()).thenReturn(6);
 		assertEquals( 7.0 , v.calculoNotaMedia(), 0.01); 
 		
 	}
@@ -79,25 +63,28 @@ public class VideoJuegoTest {
 	@Test
 	public void testNotaMaxima() {
 		
+		when(c.getNota()).thenReturn(10);
+		when(c1.getNota()).thenReturn(8); 
 		assertEquals( 10 , v.notaMaxima());
 		
 	}
 	
 	@Test
-	public void testAddCalificacion1() {
+	public void testCalculaVotosDeNota() {
 		
-		v.addCalificacion(new Calificacion(10, 2001, 11, 9));
 		
-		assertEquals(2, v.calculaVotosDeNota(10));
+		when(c.getNota()).thenReturn(10);
+		when(c1.getNota()).thenReturn(0);
+		assertEquals(1, v.calculaVotosDeNota(10));
 		
 	}
 	
 	@Test
 	public void testRemCalificacion() {
 		
-		v.remCalificacion(c1); 
+		v.remCalificacion(c); 
 		
-		assertEquals(2, v.getCalificaciones().size());
+		assertEquals(1, v.getCalificaciones().size());
 		
 	}
 	@Test
@@ -218,16 +205,90 @@ public class VideoJuegoTest {
 	@Test
 	public void testRemoveBiblioteca() {
 		
+		biblioteca.add(b); 
+		
+		v3.setBiblioteca(biblioteca);
+		
 		v3.removeBiblioteca(b);
 		
 		assertEquals(0, v3.getNumberOfBiblioteca());
 		
-		v.setBiblioteca(biblioteca);
-		
-		assertEquals(2, v.getNumberOfBiblioteca());
-		
 	}
 		
+	@Test
+	public void testSetBiblioteca() {
+		
+		
+		biblioteca.add(b); 
+		v3.setBiblioteca(biblioteca);
+		assertEquals(1, v3.getNumberOfBiblioteca());
+		
+	}
+	@Test
+	public void testAddCalificacion() {
+		v3.addCalificacion(c);
+
+		assertEquals(1, v3.getCalificaciones().size());
+	}
+	
+	@Test
+	public void testGetBiblioteca() {
+		
+		v3.addBiblioteca(b);
+		
+		biblioteca.add(b); 
+		
+		assertEquals(biblioteca.size(), v3.getBiblioteca().size());
+		
+	}
+	
+	
+	@Test
+	public void testGetJpanelVideojuegos() {
+		
+		JPanelVideojuego jp1 = new JPanelVideojuego(v5, b); 
+	
+		assertEquals(jp1.loquesea, v5.getJPanelVideojuego(b).loquesea);
+		
+		
+		
+		JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b); 
+	
+		assertEquals(jp2.loquesea, v3.getJPanelVideojuego(b).loquesea);
+		
+	}
+	
+	@Test
+	public void testEquals() {
+		
+    	VideoJuego v2 = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null); 
+    	
+    	VideoJuego v3 = new VideoJuego("a21", "Fss21", "Ubisoft", 3, null); 
+		
+		assertTrue(v.equals(v));
+		
+		assertFalse(v.equals(null)); 
+		
+		assertFalse(v.equals(b));
+		
+		assertTrue(v.equals(v2)); 
+		
+		assertFalse(v.equals(v3)); 
+		
+		v2.setId(null);
+		
+		assertFalse(v.equals(v2)); 
+		
+		v.setId(null);
+		
+		assertFalse(v.equals(v3)); 
+		
+		
+	}
+	
+	
+	
+	
 	
 
 }
