@@ -20,16 +20,19 @@ public class VentanaRegister extends JFrame implements ActionListener {
 	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 	final WebTarget usersTarget = appTarget.path("usuarios");
 	
-	// Components of the Form
+	//
+	Usuario newUser;
+	
+	// Componentes del formulario
 	private Container c;
 	private JLabel title;
 	private JLabel lNombre;
-	private JTextField tfNombre;
+	JTextField tfNombre;
 	private JLabel lEmail;
 	private JTextField tfEmail;
 	private JLabel lContrasenya;
-	private JPasswordField tfContrasenya;
-	private JPasswordField tfRepetirContrasenya;
+	JPasswordField tfContrasenya;
+	JPasswordField tfRepetirContrasenya;
 	private JLabel lGenero;
 	private JRadioButton rbHombre;
 	private JRadioButton rbMujer;
@@ -39,13 +42,13 @@ public class VentanaRegister extends JFrame implements ActionListener {
 	private JComboBox cbMes;
 	private JComboBox cbAnyo;
 	private JLabel lAnyadir;
-	private JTextArea taAnyadir;
-	private JCheckBox cbTerminos;
+	JTextArea taAnyadir;
+	JCheckBox cbTerminos;
 	private JButton sub;
 	private JButton reset;
 	private JTextArea tout;
-	private JLabel res;
-	private JTextArea resadd;
+	JLabel res;
+	JTextArea resadd;
 
 	private String dias[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
 			"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
@@ -239,7 +242,6 @@ public class VentanaRegister extends JFrame implements ActionListener {
 				tout.setEditable(false);
 				res.setText("Regisro OK");
 
-				// TODO completar registro con BD.
 				// 1. Comprobar contrasenyas
 				if (tfContrasenya.getText().equals(tfRepetirContrasenya.getText())) {
 					
@@ -249,9 +251,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(this, "Es necesario rellenar los campos");
 					} else {
 						// LLamar a BD
-						Usuario newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
-						System.out.println(newUser);
-						usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+						crearUsuario();
 						
 					}
 				} else {
@@ -268,27 +268,39 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		}
 
 		else if (e.getSource() == reset) {
-			String def = "";
-			tfNombre.setText(def);
-			taAnyadir.setText(def);
-			tfContrasenya.setText(def);
-			res.setText(def);
-			tout.setText(def);
-			cbTerminos.setSelected(false);
-			cbFecha.setSelectedIndex(0);
-			cbMes.setSelectedIndex(0);
-			cbAnyo.setSelectedIndex(0);
-			resadd.setText(def);
+			resetCampos();
 		}
 	}
+		 public void resetCampos() {
+			 String def = "";
+				tfNombre.setText(def);
+				taAnyadir.setText(def);
+				tfContrasenya.setText(def);
+				res.setText(def);
+				tout.setText(def);
+				cbTerminos.setSelected(false);
+				cbFecha.setSelectedIndex(0);
+				cbMes.setSelectedIndex(0);
+				cbAnyo.setSelectedIndex(0);
+				resadd.setText(def);
+		 }
 		 
+		 /**
+		 * Crea el usuario a partir de los campos rellenados, una vez validados
+		 */
+		public void crearUsuario() {
+			newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
+			System.out.println(newUser);
+			usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+				
+		 }
 		/**Devuelve el string "securizado" para volcarlo en SQL
 		 (Implementaci�n 1) Sustituye ' por '' y quita saltos de l�nea
 		 (Implementaci�n 2) Mantiene solo los caracteres seguros en espa�ol
 		 * @param string input
 		 * @return
 		 */
-		private static String secu( String string ) {
+		public static String secu( String string ) {
 			// Implementaci�n (1)
 			// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
 			// Implementaci�n (2)
