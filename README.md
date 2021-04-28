@@ -35,6 +35,12 @@ Estos son los test unitarios de las clases con funcionalidad lógica, se expluye
 Se pueden introducir datos de prueba en la aplicación utilizando el comando de maven
 
     mvn exec:java -Pdatos
+    
+**Lanzar los tests de ventanas**
+
+Una vez creado el server e introducidos los datos en BD, podemos lanzar los test de ventanas
+
+    mvn verify -Pventanas
 
 **Lanzar los tests de integración**
 
