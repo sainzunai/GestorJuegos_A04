@@ -18,6 +18,7 @@ public class BibliotecaTest {
 	
 	//EJEMPLO DE USO DE MOCKITO 
 	private VideoJuego videojuego = Mockito.mock(VideoJuego.class);
+	private VideoJuego videojuego2 = Mockito.mock(VideoJuego.class);
 	private Usuario user = Mockito.mock(Usuario.class);
 	private ArrayList<VideoJuego> listaVideojuegos;
 	
@@ -72,7 +73,7 @@ public class BibliotecaTest {
 	public void testAddJuego() {
 		b.addJuego(videojuego);
 		when(videojuego.getId()).thenReturn("4");
-		assertEquals(1, b.numeroDeJuegos());			
+		assertEquals(1, b.numeroDeJuegos());
 	}
 	
 	@Test
@@ -81,6 +82,15 @@ public class BibliotecaTest {
 		when(videojuego.getId()).thenReturn("4");
 		b.addJuego(videojuego);
 		assertEquals(1, b.numeroDeJuegos());			
+	}
+	
+	@Test
+	public void testAddJuegoDoble() {
+		b.addJuego(videojuego);
+		when(videojuego.getId()).thenReturn("4");
+		b.addJuego(videojuego2);
+		when(videojuego2.getId()).thenReturn("2");
+		assertEquals(2, b.numeroDeJuegos());			
 	}
 	
 	@Test
@@ -170,4 +180,15 @@ public class BibliotecaTest {
 		b.setId("1");
 		assertEquals(b, b1);
 	}	
+	
+	@Test
+	public void testEqualsUltimaBranch() {
+		b.setId(null);
+		Biblioteca b1 = new Biblioteca();
+		b1.setId(null);
+		assertTrue(b.equals(b1)); 
+		
+		
+	}
+	
 }

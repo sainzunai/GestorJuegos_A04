@@ -20,9 +20,12 @@ public class JPanelVideojuego extends JPanel {
 	JLabelGraficoAjustado lImagen;
 	JButton btn;
 	String textoBtn = "Add";
+	
+	public int loquesea; 
 
 
 	public JPanelVideojuego(final VideoJuego v, final Biblioteca b) {
+		this.loquesea = 0; 
 		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
 		this.setLayout(new BorderLayout());
 		this.add(lImagen, BorderLayout.CENTER);
@@ -64,6 +67,7 @@ public class JPanelVideojuego extends JPanel {
 //	}
 
 	public JPanelVideojuego(final VideoJuego v, int loquesea, final Biblioteca b) {
+		this.loquesea = loquesea; 
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(13 * 20, 15 * 20));
 		JLabel lbl = new JLabel(v.getNombre());
