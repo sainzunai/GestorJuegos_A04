@@ -198,7 +198,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
-					<excludedGroups>categories.IntegrationTest</excludedGroups>
+					<excludedGroups> categories.IntegrationTest, categories.VentanasTest  </excludedGroups>
 				</configuration>
 			</plugin>
 
@@ -287,6 +287,32 @@
 								<include>**/*</include>
 							</includes>
 							<groups>categories.IntegrationTest</groups>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>ventanas</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.22.0</version>
+						<configuration>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<groups>categories.VentanasTest</groups>
 						</configuration>
 						<executions>
 							<execution>

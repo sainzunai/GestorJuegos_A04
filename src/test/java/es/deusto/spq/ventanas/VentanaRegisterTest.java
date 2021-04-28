@@ -4,7 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import categories.IntegrationTest;
+import categories.VentanasTest;
+
+@Category(VentanasTest.class)
 public class VentanaRegisterTest {
 	VentanaRegister v;
 	
