@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class PlataformaTest {  //Si hay metodos nuevos habria que crear la logica. 
 	
@@ -14,6 +15,8 @@ public class PlataformaTest {  //Si hay metodos nuevos habria que crear la logic
 	Plataforma p2;
 	Plataforma p3;
 	
+	
+	private VideoJuego videojuego = Mockito.mock(VideoJuego.class);
 	
     @Before                                         
     public void setUp() throws Exception {
@@ -26,30 +29,53 @@ public class PlataformaTest {  //Si hay metodos nuevos habria que crear la logic
     }
 
 	@Test
-	public void test() {
+	public void testGetUrlLogo() {
 		assertEquals(p1.getUrlLogo(), "Foto.png");
-		
-		assertEquals(p2.getIdPlataforma(), "Ps4");
 		
 		assertEquals(p2.getUrlLogo(), "");
 		
 		assertEquals(p3.getUrlLogo(), "");
 		
+	}
+	
+	@Test
+	public void testGetIdPlataforma() {
+		assertEquals(p2.getIdPlataforma(), "Ps4");
 		assertEquals(p3.getIdPlataforma(), "");
 		
+	}
+
+	@Test
+	public void testGetNombrePlataforma() {		
 		assertEquals(p3.getNombrePlataforma(), "");
 	}
+	
+	
 	@Test
-	public void test1() {
+	public void testSetLogo() {
 		p1.setUrlLogo("\resource");
 		assertEquals("\resource", p1.getUrlLogo());
-		VideoJuego v1=new VideoJuego("Cod", "1", "Activision", 16, p1);
-		p1.addVideoJuego(v1);
+		
+	}
+	
+	@Test
+	public void testAddVideoJuego() {
+		p1.addVideoJuego(videojuego);
 		assertEquals(1, p1.getVideoJuegos().size());
-		p1.removeVideojuego(v1);
+		
+	}
+	
+	@Test
+	public void testRemVideojuego() {
+		p1.removeVideojuego(videojuego);
 		assertEquals(0, p1.getNumberOfVideojuegos());
+		
+	}
+	
+	@Test
+	public void testSetVideojuego() {
 		List<VideoJuego> lista = new ArrayList<>();
-		lista.add(v1);
+		lista.add(videojuego);
 		p1.setVideojuego(lista);
 		assertEquals(lista, p1.getVideoJuegos());
 	}
