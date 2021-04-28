@@ -9,11 +9,20 @@ import es.deusto.spq.Calificacion;
 
 public class ControladorVentanaPrincipalTest {
 	
+	VentanaPrincipal v;
 	
+	VentanaInicioSesion vs; 
+	
+	VentanaRegister vr; 
 	
     @Before                                         
     public void setUp() throws Exception {
     	
+    	v = new VentanaPrincipal(); 
+    	
+    	vs = new VentanaInicioSesion(); 
+    	
+    	vr = new VentanaRegister(); 
 
     }
     
