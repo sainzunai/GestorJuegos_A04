@@ -289,9 +289,10 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		 * Crea el usuario a partir de los campos rellenados, una vez validados
 		 */
 		public void crearUsuario() {
-			 newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
-				System.out.println(newUser);
-				usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+			newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
+			System.out.println(newUser);
+			usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+				
 		 }
 		/**Devuelve el string "securizado" para volcarlo en SQL
 		 (Implementaci�n 1) Sustituye ' por '' y quita saltos de l�nea
