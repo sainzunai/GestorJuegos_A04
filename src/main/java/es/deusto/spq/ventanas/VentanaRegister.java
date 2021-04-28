@@ -288,7 +288,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		 * @param string input
 		 * @return
 		 */
-		private static String secu( String string ) {
+		public static String secu( String string ) {
 			// Implementaci�n (1)
 			// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
 			// Implementaci�n (2)
