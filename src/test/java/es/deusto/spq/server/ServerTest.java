@@ -43,7 +43,7 @@ public class ServerTest {
 		biblio.setUser(user);
 		user.setBiblioteca(biblio);
 		dao.introducirObjeto(user);
-		user = dao.getUsuario(user.getGmail());
+		
 		
 		p1 = new Plataforma("PS4", "1");
 		v1=new VideoJuego("Battlefield V", "1", "EA", 18, p1);
@@ -66,7 +66,7 @@ public class ServerTest {
 	@After
 	public void finalizar() {
 		dao.deleteUsuario(test);
-		dao.deleteUsuario(user);
+		
 	}
 	
 	@PerfTest(invocations = 500, threads = 20)
@@ -77,7 +77,9 @@ public class ServerTest {
 	
 	@Test
 	public void testaddUser() {
-		usr.addUser(test);
+		System.out.println("\n\n\nEsto peta\n\n\n");
+		usr.addUser(user);
+		user = dao.getUsuario(user.getGmail());
 	}
 	
 	@Test
