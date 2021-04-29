@@ -69,15 +69,10 @@ public class ServerTest {
 		
 	}
 	
-	@PerfTest(invocations = 500, threads = 20)
-	@Test
-	public void testGetUsuario() {
-		assertEquals("test@com", usr.getUser("test@com", "12345").getGmail());
-	}
+	
 	
 	@Test
 	public void testaddUser() {
-		System.out.println("\n\n\nEsto peta\n\n\n");
 		usr.addUser(user);
 		user = dao.getUsuario(user.getGmail());
 	}
@@ -93,5 +88,10 @@ public class ServerTest {
 	@Test
 	public void testGetAllVideojuego() {
 		assertEquals(10, vr.getVideojuegos().size());
+	}
+	@PerfTest(invocations = 500, threads = 20)
+	@Test
+	public void testGetUsuario() {
+		assertEquals("test@com", usr.getUser("test@com", "12345").getGmail());
 	}
 }
