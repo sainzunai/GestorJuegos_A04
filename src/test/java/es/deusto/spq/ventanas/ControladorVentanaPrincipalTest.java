@@ -5,10 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mockito.Mockito;
 
 import categories.IntegrationTest;
 import categories.VentanasTest;
 import es.deusto.spq.Calificacion;
+import es.deusto.spq.Usuario;
 
 @Category(VentanasTest.class)
 public class ControladorVentanaPrincipalTest {
@@ -19,10 +21,12 @@ public class ControladorVentanaPrincipalTest {
 	
 	VentanaRegister vr; 
 	
+	private Usuario user = Mockito.mock(Usuario.class);	
+	
     @Before                                         
     public void setUp() throws Exception {
     	
-    	v = new VentanaPrincipal(); 
+    	v = new VentanaPrincipal(user); 
     	
     	vs = new VentanaInicioSesion(); 
     	
