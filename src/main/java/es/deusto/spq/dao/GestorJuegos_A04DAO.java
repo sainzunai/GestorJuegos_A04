@@ -232,16 +232,19 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	        q.setUnique(true);
 	        q.setFilter("gmail == gmailParam");
 	        q.declareParameters("String gmailParam");
-
+	        
 	        try {
 	           users = (Usuario) q.execute(email);
 	           System.out.println("Usuario:"+users.getGmail()+" "+users.getContrasena()+" "+users.getBiblioteca().getId());
-	        } finally {
+	        } catch (Exception ex) {
+				System.err.println(" $ Error selecting user: " + ex.getMessage());
+				ex.printStackTrace();
+	        }finally {
 	            q.closeAll();
 	        }
 
 	        pm.close();
-
+	     
 	    users.setBiblioteca(this.getBiblioteca_Usuario(users));
 		return(users);
 		
