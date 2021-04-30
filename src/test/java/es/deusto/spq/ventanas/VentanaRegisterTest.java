@@ -12,7 +12,7 @@ import categories.IntegrationTest;
 import categories.VentanasTest;
 import es.deusto.spq.server.ServerMain;
 
-//@Category(VentanasTest.class)//para que el test no se lanze cuando haves mvn test. Solo con mvn verify.
+@Category(VentanasTest.class)//para que el test no se lanze cuando haves mvn test. Solo con mvn verify.
 public class VentanaRegisterTest {
 	private VentanaRegister v;
 	private HttpServer server;
