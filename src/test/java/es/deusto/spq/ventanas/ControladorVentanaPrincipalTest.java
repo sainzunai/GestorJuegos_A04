@@ -33,19 +33,6 @@ public class ControladorVentanaPrincipalTest {
     	vr = new VentanaRegister(); 
 
     }
-    
-	@Test
-	public void testGetB() { //ASIER 
-
-		
-	}
-	
-	@Test
-	public void testSetB() { //ASIER 
-
-		
-	}
-	
 	
 	@Test
 	public void testIsCarga() { //ASIER 
