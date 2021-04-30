@@ -5,6 +5,7 @@ import java.util.List;
 
 import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
+import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -31,11 +32,15 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	private boolean estamosEnHome = false;
 	
 	private boolean estamosEnBiblio = false;
+	
+	private Usuario u; 
 
 	private ArrayList<VideoJuego> v = new ArrayList<>(); 
 	
-	ControladorVentanaPrincipal(VentanaPrincipal miVentana){
+	ControladorVentanaPrincipal(VentanaPrincipal miVentana, Usuario u){
 		this.miVentana = miVentana;
+		
+		this.u = u; 
 	}
 
 	public void mostrarHomeVideojuegos() {
@@ -57,7 +62,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         System.out.println("Leemos de Base Datos. Numero de Juegos:" + juegos.size());
         miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : juegos) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
             System.out.println(juego.getNombre());
             v.add(juego); 
         }
@@ -71,7 +76,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 			System.out.println("NO Leemos de Base Datos");
 	        miVentana.panelCentralCaratulas.borrarPanel();
 	        for (VideoJuego juego : v) {
-	            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+	            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
 	        }			
 			
 			
@@ -90,7 +95,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         
 		miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : b.getListaJuegos()) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
             
             
         }
@@ -141,7 +146,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		System.out.println("Numero total de juegos encontrador:" + buscador.size());
 		
         for (VideoJuego juego : buscador) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(b));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
         }
         
         System.out.println("Añadiendo Juegos al panel");

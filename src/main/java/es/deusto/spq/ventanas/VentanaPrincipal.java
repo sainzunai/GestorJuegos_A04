@@ -14,14 +14,16 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import es.deusto.spq.Usuario;
+
 public class VentanaPrincipal extends JFrame {
 	ControladorVentanaPrincipal miControlador;
 	JPanel panelMenuHomeVideojuegos;
 	JPanel panelMenuBibliotecaVideojuegos;
 	PanelCentralCaratulas panelCentralCaratulas;
 
-	public VentanaPrincipal() {
-		miControlador = new ControladorVentanaPrincipal(this);
+	public VentanaPrincipal(Usuario u) {
+		miControlador = new ControladorVentanaPrincipal(this, u);
 
 		// ----------- CONFIGURACION DE LA VENTANA -----------
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -156,8 +158,8 @@ public class VentanaPrincipal extends JFrame {
 
 	// ----------- TEST DE LA VENTANA -----------
 	public static void main(String[] args) {
-		JFrame ventana = new VentanaPrincipal();
-		ventana.setVisible(true);
+		//JFrame ventana = new VentanaPrincipal();
+		//ventana.setVisible(true);
 
 	}
 

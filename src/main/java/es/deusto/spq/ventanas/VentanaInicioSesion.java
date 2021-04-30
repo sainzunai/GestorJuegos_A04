@@ -142,14 +142,13 @@ public class VentanaInicioSesion extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Usuario u = new Usuario(null, null, null);
-				//TODO llamada a BD
 				WebTarget usernameTarget = usersTarget.path("getUsuario").queryParam("email", usu.getText()).queryParam("passw", pCon.getText());
 				System.out.println(usernameTarget);
 				GenericType<Usuario> gtUsu = new GenericType<Usuario>(){};
 				u = usernameTarget.request(MediaType.APPLICATION_JSON).get(gtUsu);
 				if(u!= null) {
 					System.out.println("usuario correcto: "+u);
-					VentanaPrincipal v = new VentanaPrincipal();//creacion de la ventana principal
+					VentanaPrincipal v = new VentanaPrincipal(u);//creacion de la ventana principal
 					v.setVisible(true);
 					dispose();
 
