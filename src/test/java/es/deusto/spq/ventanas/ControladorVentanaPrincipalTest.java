@@ -4,9 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import categories.IntegrationTest;
+import categories.VentanasTest;
 import es.deusto.spq.Calificacion;
 
+@Category(VentanasTest.class)
 public class ControladorVentanaPrincipalTest {
 	
 	VentanaPrincipal v;

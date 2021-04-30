@@ -2,14 +2,28 @@ package es.deusto.spq.ventanas;
 
 import static org.junit.Assert.assertEquals;
 
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import categories.IntegrationTest;
+import categories.VentanasTest;
+import es.deusto.spq.server.ServerMain;
+
+@Category(VentanasTest.class)//para que el test no se lanze cuando haves mvn test. Solo con mvn verify.
 public class VentanaRegisterTest {
-	VentanaRegister v;
+	private VentanaRegister v;
+	private HttpServer server;
+	
+	
 	
 	@Before
 	public void setup() {
+		//lanzar server
+		server = ServerMain.startServer();
+		//lanzar ventana
 		v = new VentanaRegister();
 	}
 	
@@ -50,6 +64,14 @@ public class VentanaRegisterTest {
 //		v.resadd.setText("");
 		v.crearUsuario();
 		assertEquals(v.newUser.getNombre(), "Unai");
+	}
+	
+	/**
+	 * Para apagar el servidor cuando termina el test. Sin este metodo no funciona.
+	 */
+	@After
+	public void tearDown() {
+		server.stop();
 	}
 	
 }
