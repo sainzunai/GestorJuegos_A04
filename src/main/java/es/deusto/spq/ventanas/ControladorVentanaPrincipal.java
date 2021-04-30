@@ -9,6 +9,7 @@ import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
@@ -22,10 +23,11 @@ final long serialVersionUID = 1L;
 Client client = ClientBuilder.newClient();
 final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
+final WebTarget usersTarget = appTarget.path("usuarios");
 //----------------------------------------------------------------------
 
 
-	private Biblioteca b = new Biblioteca(); //Biblioteca 
+//	private Biblioteca b = new Biblioteca(); //Biblioteca 
 	
 	private boolean carga = true; 
 	
@@ -94,7 +96,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
         estamosEnHome = false; 
         
 		miVentana.panelCentralCaratulas.borrarPanel();
-        for (VideoJuego juego : b.getListaJuegos()) {
+        for (VideoJuego juego : u.getBiblioteca().getListaJuegos()) {
             miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
             
             
@@ -106,9 +108,14 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		
 	}
 	
+	public void accionCerrarVentana() {
+		//update del usuario en el Server
+		usersTarget.request(MediaType.APPLICATION_JSON).put(Entity.entity(u, MediaType.APPLICATION_JSON));
+	}
+	
+	
 	public void accionBotonBuscar(String textoBuscar) {  //Para el boton buscar. 
-		//TODO
-		
+
 		ArrayList<VideoJuego> buscador = new ArrayList<>(); //Se genera una lista donde vamos a guardar todas las que coincidan con el nombre 
 		//La creamos cada vez que damos al boton asi se eliminara una vez se entre dentro. 
 		
@@ -133,10 +140,10 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 		if(estamosEnBiblio) {  //Estamos colocados en la ventana de biblioteca
 			
 			
-			for(int i = 0; i < b.numeroDeJuegos(); i ++) {
-				if(b.getListaJuegos().get(i).getNombre().contains(textoBuscar)) {
+			for(int i = 0; i < u.getBiblioteca().numeroDeJuegos(); i ++) {
+				if(u.getBiblioteca().getListaJuegos().get(i).getNombre().contains(textoBuscar)) {
 					
-					buscador.add(b.getListaJuegos().get(i)); 
+					buscador.add(u.getBiblioteca().getListaJuegos().get(i)); 
 					System.out.println("BIBLIO: Anyadiendo videjuego a la lista: " + v.get(i).getNombre());
 				}				
 			}			
@@ -157,11 +164,7 @@ final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
 	}
 
 	public Biblioteca getB() {
-		return b;
-	}
-
-	public void setB(Biblioteca b) {
-		this.b = b;
+		return u.getBiblioteca();
 	}
 
 	public boolean isCarga() {

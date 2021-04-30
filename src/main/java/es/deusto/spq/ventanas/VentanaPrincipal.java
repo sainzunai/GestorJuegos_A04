@@ -166,12 +166,9 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
 				//Al cerrar la ventana guardamos en Server
-				
+				miControlador.accionCerrarVentana();
 				
 			}
-			
-			
-			
 			
 		});
 	}
