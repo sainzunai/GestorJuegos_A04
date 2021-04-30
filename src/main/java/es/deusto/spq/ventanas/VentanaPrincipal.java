@@ -5,8 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -151,6 +156,21 @@ public class VentanaPrincipal extends JFrame {
 				miControlador.mostrarBibliotecaVideojuegos();
 
 			}
+		});
+		
+		this.addWindowListener(new WindowAdapter() {
+		
+			
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				//Al cerrar la ventana guardamos en Server
+				
+				
+			}
+			
+			
+			
+			
 		});
 	}
 
