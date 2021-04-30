@@ -21,6 +21,14 @@ Crear la base de datos y dar permisos al usuario por defecto
 Estos son los test unitarios de las clases con funcionalidad lógica, se expluyen ventanas, servidor y BD
 
     mvn test
+
+**Jacoco**
+  
+Para comprobar Jacoco hay que ir a la carpeta correspondiente de descarga y seguir este path:
+	
+	..\GestorJuegos_A04\target\site\jacoco
+
+Una vez en esa carpeta abrir el archivo con nombre index.
     
 **Enhance de las clases para JDO**
 
@@ -47,6 +55,14 @@ Una vez creado el server e introducidos los datos en BD, podemos lanzar los test
 Estos son los test de integración y de performance para probar el servidor y la BD
 
     mvn verify -Pintegracion
+
+**Contiperf**
+
+Para acceder a los resultados de los test seguir el siguiente path:
+
+	..\GestorJuegos_A04\target\contiperf-report
+
+Una vez en esa carpeta abrir el archivo con nombre index.
 
 **Inicio del servidor**
 
