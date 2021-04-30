@@ -45,6 +45,7 @@ public class UsuarioResource {
 		
 		if (user.getContrasena().equals(pass)) {
 			System.out.println("Contrasena correcta, devolviendo usuario...");
+			System.out.println("Id de la Biblioteca: " + user.getBiblioteca().getId());
 			return user;
 		}else {
 			System.out.println("Error, contrasena incorrecta, devolviendo null...");
@@ -76,6 +77,7 @@ public class UsuarioResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updateUser(Biblioteca userBiblio) {
 		System.out.println("Realizando el update de la biblioteca para el usuario");
+		
 		dao.updateBiblioteca(userBiblio);
 	}
 }

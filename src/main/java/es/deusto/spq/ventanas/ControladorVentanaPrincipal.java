@@ -40,8 +40,7 @@ final WebTarget usersTarget = appTarget.path("usuarios");
 	private ArrayList<VideoJuego> v = new ArrayList<>(); 
 	
 	ControladorVentanaPrincipal(VentanaPrincipal miVentana, Usuario u){
-		this.miVentana = miVentana;
-		
+		this.miVentana = miVentana;	
 		this.u = u; 
 	}
 
@@ -110,7 +109,8 @@ final WebTarget usersTarget = appTarget.path("usuarios");
 	
 	public void accionCerrarVentana() {
 		//update del usuario en el Server
-		usersTarget.request(MediaType.APPLICATION_JSON).put(Entity.entity(u, MediaType.APPLICATION_JSON));
+		System.out.println("ESTE ES MI ID FINAL:" + u.getBiblioteca().getId());
+		usersTarget.request(MediaType.APPLICATION_JSON).put(Entity.entity(u.getBiblioteca(), MediaType.APPLICATION_JSON));
 	}
 	
 	
