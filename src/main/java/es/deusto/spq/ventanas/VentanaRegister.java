@@ -306,7 +306,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 			// Implementaci�n (2)
 			StringBuffer ret = new StringBuffer();
 			for (char c : string.toCharArray()) {
-				if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@/\\0123456789".indexOf(c)>=0) ret.append(c);
+				if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@/\\0123456789.".indexOf(c)>=0) ret.append(c);
 			}
 			return ret.toString();
 		}
