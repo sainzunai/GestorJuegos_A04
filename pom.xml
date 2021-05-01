@@ -19,6 +19,10 @@
 		<config.files.dir>${basedir}/src/main/resources</config.files.dir>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+		
+		<sonar.projectKey>sainzunai_GestorJuegos_A04</sonar.projectKey>
+		<sonar.organization>sainzunai</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 	</properties>
 
