@@ -36,10 +36,7 @@ public class PrepararDatos {
 		v9.setCaratula("recursos_test/thebindingofisaac_pc.jpg");
 		VideoJuego v10 = new VideoJuego("The Binding of Isaac", "10", "Nicalis", 16, p4);
 		v10.setCaratula("recursos_test/thebindingofisaac_nin.jpg");
-		
-		//System.out.println("Creando Biblioteca...");
-		//Biblioteca b = new Biblioteca("1");
-		
+				
 		p1.addVideoJuego(v1); p1.addVideoJuego(v5); p1.addVideoJuego(v7); 
 		p2.addVideoJuego(v2); p2.addVideoJuego(v8); 
 		p3.addVideoJuego(v3); p3.addVideoJuego(v6); p3.addVideoJuego(v9);
@@ -49,9 +46,6 @@ public class PrepararDatos {
 		
 		System.out.println("Añadiendo Plataformas y Videojuegos a BD...");
 		dao.introducirObjeto(p1); dao.introducirObjeto(p2); dao.introducirObjeto(p3); dao.introducirObjeto(p4);
-		
-		//System.out.println("Añadiendo Biblioteca a BD...");
-		//dao.introducirObjeto(b);
 		
 		System.out.println("Terminada la inserción de datos en BD.");
 	}

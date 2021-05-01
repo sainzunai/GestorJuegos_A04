@@ -21,10 +21,6 @@ import javax.jdo.annotations.Extension;
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class VideoJuego implements Serializable{
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@PrimaryKey 
@@ -114,9 +110,9 @@ public class VideoJuego implements Serializable{
 		this.caratula = " "; 
 		
 	}
+	
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
-		
-		
+				
 		this.nombre = nombre; 
 		
 		this.videojuego_id = id; 
@@ -134,8 +130,7 @@ public class VideoJuego implements Serializable{
 	}
 	
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
-		
-		
+				
 		this.nombre = nombre; 
 		
 		this.videojuego_id = id; 
@@ -154,8 +149,7 @@ public class VideoJuego implements Serializable{
 	
 	
 	public VideoJuego() {
-		
-		
+				
 		this.nombre = ""; 
 		
 		this.videojuego_id = ""; 
@@ -167,13 +161,11 @@ public class VideoJuego implements Serializable{
 		this.calificaciones = new ArrayList<>(); 
 		
 		this.caratula = " "; 
-		
-		
+			
 	}
 	
 	public double calculoNotaMedia() {
-		
-		
+				
 		double notaMedia = 0.0; 
 		
 		int i; 
@@ -204,8 +196,7 @@ public class VideoJuego implements Serializable{
 		}	
 		
 		return numeroNotas;
-		
-		
+				
 	}
 	
 	
@@ -305,29 +296,20 @@ public class VideoJuego implements Serializable{
 	public void setBiblioteca(List<Biblioteca> b) {
 		biblioteca=b;
 	}
-	//IMPLEMENTACION DE VENTANAS  
 	
 	
-	  public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
+	public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
 
-	  
 	  if(caratula == " ") {
-		  
-		  j = new JPanelVideojuego(this, 1, b); 
-		  
+		  j = new JPanelVideojuego(this, 1, b); 		  
 	  }
 	  
-	  else {
-	  
-		  j = new JPanelVideojuego(this, b);
-	  
+	  else {	  
+		  j = new JPanelVideojuego(this, b);	  
 	  }
-	  
-	  
+	  	  
 	  return j;
 	  
-	  }
+	}
 	 
-
-
 }

@@ -22,42 +22,11 @@ public class BibliotecaTest {
 	private Usuario user = Mockito.mock(Usuario.class);
 	private ArrayList<VideoJuego> listaVideojuegos;
 	
-//	VideoJuego v1;
-//	
-//	VideoJuego v2;
-//	
-//	VideoJuego v3;
-//	
-//	VideoJuego v4;
-//	
-//	ArrayList<VideoJuego> v; 
-
 	
 	
     @Before                                      
     public void setUp() throws Exception {
     	b = new Biblioteca();
-    	//b.setId("1"); //Para el test de getID
-    	//listaVideojuegos = new ArrayList<>();
-    	//listaVideojuegos.add(videojuego);
-    	
-//    	v1 = new VideoJuego("Battlefield","1","EA",18,new Plataforma());
-//    	v2 = new VideoJuego("Battlefield","2","EA",18,new Plataforma());
-//    	v3 = new VideoJuego("Battlefield","3","EA",18,new Plataforma());
-//    	v4 = new VideoJuego("Battlefield","4","EA",18,new Plataforma());
-    	
-    	//b.addJuego(v1);
-    	//b.addJuego(v2);
-    	//b.addJuego(v3);
-    	//b.addJuego(v4);
-    	
-//    	v = new ArrayList<>(); 
-//    	
-//    	v.add(v1);
-//    	v.add(v2);
-//    	v.add(v3);
-    	
-
     }
 
     //EJEMPLO DE USO DE MOCKITO --> Añado el mock, lo elimino y veo que el numero de juegos es el mismo
