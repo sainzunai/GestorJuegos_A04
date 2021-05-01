@@ -5,11 +5,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-//Metodos utilizados por el servidor
+
 @Path("serverResources")
 public class ServerResources {
-	
-	
+		
 	/**
 	 * Metodo encargado de gestionar las HTTP GET para la clase Server Resources. 
 	 * Se devolverá al usuario un texto plano de bienvenida

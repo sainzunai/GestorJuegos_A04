@@ -27,7 +27,6 @@ public class UsuarioResource {
 	public void setDao(IGestorJuegos_A04DAO dao) {
 		this.dao = dao;
 	}
-
 	
 	/**
 	 * Metodo REST que pide a BD un usuario, comprueba si coincide con
@@ -67,7 +66,6 @@ public class UsuarioResource {
 	 dao.introducirObjeto(user);
 	}
 	
-	//TODO Implementar la llamada a put cuando se cierre la aplicación
 	/**
 	 * Metodo REST para realizar el update de la Biblioteca en BD
 	 * @param userBiblio Objeto Biblioteca que realizar el update

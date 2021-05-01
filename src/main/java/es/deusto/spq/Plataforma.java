@@ -10,11 +10,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
-public class Plataforma implements Serializable{  //PS4, NINTENDO etc. 
+public class Plataforma implements Serializable{  
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@PrimaryKey

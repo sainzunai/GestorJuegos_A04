@@ -20,6 +20,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public  GestorJuegos_A04DAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
+	
 	/**
 	 * Descripción del método
 	 * Introducimos una clase dentro de la base de datos.Con las correspondientes anotaciones y atributos.
@@ -48,6 +49,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
     		
 	    }
 	}
+	
 	/**
 	 * Descripción del método
 	 * Coger un videojuego de la base de datos pasando el parametro primary key
@@ -78,6 +80,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	        
 		return(videojuego);
 	}
+	
 	/**
 	 * Descripción del método
 	 * Le pedimos a la base de datos todos los videojuegos de la base de datos
@@ -154,6 +157,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 	}
 	}
+	
 	/**
 	 * Descripción del método
 	 * Se elimina todo de la base de datos
@@ -192,6 +196,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 		
 	}
+	
 	/**
 	 * Descripción del método
 	 * Actualiza la biblioteca en la base de datos
@@ -231,6 +236,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
        
             
 	}
+	
 	@Override
 	public Usuario getUsuario(String email) {
 		
@@ -261,6 +267,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		return(users);
 		
 	}
+	
 	@Override
 	public Biblioteca getBiblioteca_Usuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -289,6 +296,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		return(biblioteca);
 		
 	}
+	
 	@Override
 	public void updateBiblioteca(Biblioteca biblioteca) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -310,6 +318,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	            pm.close();
 	        }
 	}
+	
 	@Override
 	public void deleteUsuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();

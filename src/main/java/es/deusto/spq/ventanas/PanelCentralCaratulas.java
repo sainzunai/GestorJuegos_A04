@@ -32,7 +32,6 @@ public class PanelCentralCaratulas extends JPanel{
 	public PanelCentralCaratulas(final ControladorVentanaPrincipal controlador) {
 		this.controlador = controlador;
 		
-		
 		this.setBorder(new LineBorder(new Color(128, 0, 128)));
 		
 		this.setLayout(new BorderLayout(0, 0));
@@ -62,19 +61,13 @@ public class PanelCentralCaratulas extends JPanel{
 		JScrollPane pScroll = new JScrollPane(panelVideojuegosConLayout, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(pScroll, BorderLayout.CENTER);
 
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-//		panelVideojuegosConLayout.add(new JPanelVideojuego("recursos_test/Battlefield.jpg"));
-		
 		
 		bBuscar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (controlador != null) {	//en vez de hacer otro constructor ponemos este filtro
+				//en vez de hacer otro constructor ponemos este filtro
+				if (controlador != null) {	
 					controlador.accionBotonBuscar(tfBuscador.getText());
 				}
 				
@@ -100,10 +93,7 @@ public class PanelCentralCaratulas extends JPanel{
 		ventana.getContentPane().add(panel);
 		VideoJuego juego = new VideoJuego();
 		juego.setCaratula("recursos_test/Battlefield.jpg");
-		//panel.anyadirCaratula(juego.getJPanelVideojuego());
 		panel.borrarPanel();
-		//panel.anyadirCaratula(juego.getJPanelVideojuego());
-		//panel.anyadirCaratula(juego.getJPanelVideojuego());
 		ventana.revalidate();
 		ventana.repaint();
 		
