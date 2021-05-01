@@ -248,13 +248,13 @@ public class VideoJuegoTest {
 		
 		JPanelVideojuego jp1 = new JPanelVideojuego(v5, b); 
 	
-		assertEquals(jp1.loquesea, v5.getJPanelVideojuego(b).loquesea);
+		assertEquals(jp1.cambioConstructor, v5.getJPanelVideojuego(b).cambioConstructor);
 		
 		
 		
 		JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b); 
 	
-		assertEquals(jp2.loquesea, v3.getJPanelVideojuego(b).loquesea);
+		assertEquals(jp2.cambioConstructor, v3.getJPanelVideojuego(b).cambioConstructor);
 		
 	}
 	
@@ -283,6 +283,7 @@ public class VideoJuegoTest {
 		
 		assertFalse(v.equals(v3)); 
 		
+		assertTrue(v.equals(v2));
 		
 	}
 	

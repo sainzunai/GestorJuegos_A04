@@ -55,8 +55,6 @@ public class CalificacionTest {
 		
 		assertEquals( c.getMesAsignacion(), 2);
 		
-
-		
 	}
 	
 		
@@ -64,8 +62,7 @@ public class CalificacionTest {
 	public void testGetNota() {
 		
 		assertEquals( c.getNota(), 0);
-		
-		
+			
 	}
 	
 	@Test

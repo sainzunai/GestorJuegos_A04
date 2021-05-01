@@ -301,9 +301,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		 * @return
 		 */
 		public static String secu( String string ) {
-			// Implementaci�n (1)
-			// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
-			// Implementaci�n (2)
+			// Implementacion
 			StringBuffer ret = new StringBuffer();
 			for (char c : string.toCharArray()) {
 				if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@/\\0123456789.".indexOf(c)>=0) ret.append(c);

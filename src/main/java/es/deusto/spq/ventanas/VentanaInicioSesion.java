@@ -27,23 +27,21 @@ public class VentanaInicioSesion extends JFrame{
 	Client client = ClientBuilder.newClient();
 	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 	final WebTarget usersTarget = appTarget.path("usuarios");
-//	final WebTarget getUsersTarget = usersTarget.path("getUsuario");
 	
 	public VentanaInicioSesion() {
 
-		///////////////////////////////////
-		// creaacion de panatalla y centrado
-		////////////////////////////////////
+		/////////////////////////////////////////////////////
+		// creacion de panatalla y centrado de la pantalla //
+		/////////////////////////////////////////////////////
 
 		setTitle("Iniciar sesion");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(350, 200);
 		setLocationRelativeTo(null);
-		// de la pantalla
 
-		///////////////////////////////////
-		// creacion de contenido dentro
-		///////////////////////////////////
+		/////////////////////////////////////////////////
+		// creacion de contenido dentro de la pantalla //
+		////////////////////////////////////////////////
 
 		JPanel pPrincipal = new JPanel();
 		JPanel pUsuario = new JPanel();
@@ -88,12 +86,7 @@ public class VentanaInicioSesion extends JFrame{
 		pEntrarMini.add(lEntrar);
 		pNuevoUserMini.add(lNuevoUsuario);
 
-		// pintado de paneles
-		// pUsuario.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		// pContrasenya.setBorder(BorderFactory.createLineBorder(Color.blue));
-		// pNuevoUser.setBorder(BorderFactory.createLineBorder(Color.magenta));
-		// pNuevoUserMini.setBorder(BorderFactory.createLineBorder(Color.magenta));
-
+	
 		pNuevoUserMini.addMouseListener(new MouseAdapter() {
 
 			 @Override
@@ -103,10 +96,7 @@ public class VentanaInicioSesion extends JFrame{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
 				VentanaRegister v = new VentanaRegister();
-//				v.setVisible(true);
-
 			}
 
 			@Override
@@ -203,8 +193,9 @@ public class VentanaInicioSesion extends JFrame{
 
 }
 	// ----------- TEST DE LA VENTANA -----------
-		public static void main(String[] args) {
-			VentanaInicioSesion v = new VentanaInicioSesion();
-			v.setVisible(true);
+	public static void main(String[] args) {
+		VentanaInicioSesion v = new VentanaInicioSesion();
+		v.setVisible(true);
 
-		}}
+	}
+}
