@@ -29,7 +29,7 @@ public class BibliotecaTest {
     	b = new Biblioteca();
     }
 
-    //EJEMPLO DE USO DE MOCKITO --> Añado el mock, lo elimino y veo que el numero de juegos es el mismo
+    //EJEMPLO DE USO DE MOCKITO --> Anyado el mock, lo elimino y veo que el numero de juegos es el mismo
 	@Test
 	public void testRemJuego() {
 		b.addJuego(videojuego);
