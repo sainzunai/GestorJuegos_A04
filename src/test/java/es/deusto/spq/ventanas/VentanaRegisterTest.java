@@ -10,6 +10,7 @@ import org.junit.experimental.categories.Category;
 
 import categories.IntegrationTest;
 import categories.VentanasTest;
+import es.deusto.spq.dao.GestorJuegos_A04DAO;
 import es.deusto.spq.server.ServerMain;
 
 @Category(VentanasTest.class)//para que el test no se lanze cuando haves mvn test. Solo con mvn verify.
@@ -57,7 +58,9 @@ public class VentanaRegisterTest {
 		v.tfNombre.setText("Unai");
 		v.tfContrasenya.setText("TestPasswd");
 		v.tfRepetirContrasenya.setText("TestPasswd");
+		
 		v.cbTerminos.setSelected(false);
+		
 //		v.cbFecha.setSelectedIndex(0);
 //		v.cbMes.setSelectedIndex(0);
 //		v.cbAnyo.setSelectedIndex(0);
@@ -72,6 +75,8 @@ public class VentanaRegisterTest {
 	@After
 	public void tearDown() {
 		server.stop();
+		//GestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
+		//dao.deleteUsuario(dao.getUsuario("test@hotmail.com"));
 	}
 	
 }

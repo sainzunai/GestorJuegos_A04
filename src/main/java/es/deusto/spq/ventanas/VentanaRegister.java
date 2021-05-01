@@ -29,7 +29,7 @@ public class VentanaRegister extends JFrame implements ActionListener {
 	private JLabel lNombre;
 	JTextField tfNombre;
 	private JLabel lEmail;
-	private JTextField tfEmail;
+	JTextField tfEmail;
 	private JLabel lContrasenya;
 	JPasswordField tfContrasenya;
 	JPasswordField tfRepetirContrasenya;

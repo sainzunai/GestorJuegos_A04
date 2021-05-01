@@ -72,9 +72,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	           
 	        } finally {
 	            q.closeAll();
+	            pm.close();
 	        }
 
-	        pm.close();
+	        
 		return(videojuego);
 	}
 	/**
@@ -91,12 +92,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		
 		Transaction tx = pm.currentTransaction();
 		List<VideoJuego> listavideojuego=null;
-	    
+		Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
 		try {
 			System.out.println ("   * Seleccionando videojuegos: ");
 			
 	    	tx.begin();
-	    	Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
+	    	
 			q.orderBy("videojuego_id asc");
 			listavideojuego = q.executeList();
 	 
@@ -108,10 +109,14 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	     } finally {
 		   	if (tx != null && tx.isActive()) {
 		   		tx.rollback();
-		 }
-				
-	   		pm.close();
+		   	}
+		   	if (pm != null && !pm.isClosed()) {
+		   		
+				pm.close();
+			}
+	   		
 	     }
+		
 		return(listavideojuego);
 	}
 	
@@ -125,11 +130,12 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		System.out.println("- Borrando los videojuegos de la base de datos...");			
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
+		Query<VideoJuego> query3 = pm.newQuery(VideoJuego.class);
 		try {		
 		tx.begin();
 					
 			
-		Query<VideoJuego> query3 = pm.newQuery(VideoJuego.class);
+		
 		System.out.println(" * '" + query3.deletePersistentAll() + "' videojuegos borrados de la BD.");
 		
 		tx.commit();
@@ -144,6 +150,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		
 		if (pm != null && !pm.isClosed()) {
 			pm.close();
+			query3.closeAll();
 		}
 	}
 	}
@@ -155,18 +162,16 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	public void deleteAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx = pm.currentTransaction();
+	    Query<Plataforma> query2 = pm.newQuery(Plataforma.class);
+	    Query<Biblioteca> query4 = pm.newQuery(Biblioteca.class);
+	    Query<Usuario> query3 = pm.newQuery(Usuario.class);
 		try {
 			System.out.println("- Cleaning the DB...");			
-			
-			
-			
 			tx.begin();
-			
-			Query<Plataforma> query2 = pm.newQuery(Plataforma.class);
 			System.out.println(query2.deletePersistentAll() + "Eliminando Plataforma");
-			Query<Biblioteca> query4 = pm.newQuery(Biblioteca.class);
+			
 			System.out.println(" * '" + query4.deletePersistentAll() + "' biblioteca borrados de la BD.");
-			Query<Usuario> query3 = pm.newQuery(Usuario.class);
+			
 			System.out.println(query3.deletePersistentAll() + "Eliminando Usuario");
 			//End the transaction
 			tx.commit();
@@ -180,6 +185,9 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
+				query2.closeAll();
+				query3.closeAll();
+				query4.closeAll();
 			}
 		}
 		
@@ -216,9 +224,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
             tx.commit();
         } finally {
             q.closeAll();
+            query.closeAll();
+            pm.close();
         }
 
-        pm.close();
+       
             
 	}
 	@Override
@@ -241,11 +251,13 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 				ex.printStackTrace();
 	        }finally {
 	            q.closeAll();
+	            pm.close();
 	        }
 
-	        pm.close();
+	        
 	     
 	    users.setBiblioteca(this.getBiblioteca_Usuario(users));
+	    
 		return(users);
 		
 	}
@@ -268,9 +280,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	           System.out.println("Biblioteca: "+ biblioteca.getId()+" "+biblioteca.getListaJuegos());
 	        } finally {
 	            q.closeAll();
+	            pm.close();
 	        }
 
-	        pm.close();
+	       
 
 	    
 		return(biblioteca);
@@ -282,33 +295,41 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		Transaction tx = pm.currentTransaction();
 		System.out.println("Obteniendo la biblioteca con Id: "+biblioteca.getId());
         Query<Biblioteca> q = pm.newQuery(Biblioteca.class);
-        q.extension("datanucleus.query.flushBeforeExecution","true");
-        q.setUnique(true);
-        q.setFilter("biblioteca_id == idParam");
-        q.declareParameters("String idParam");
         
-        for(int i=0;i<biblioteca.getListaJuegos().size();i++) {
-        	this.updateBiblioteca_Videojuego(biblioteca, biblioteca.getListaJuegos().get(i));
-        }
+        try {
+        		q.extension("datanucleus.query.flushBeforeExecution","true");
+        		q.setUnique(true);
+        		q.setFilter("biblioteca_id == idParam");
+        		q.declareParameters("String idParam");
+            
+        		for(int i=0;i<biblioteca.getListaJuegos().size();i++) {
+        			this.updateBiblioteca_Videojuego(biblioteca, biblioteca.getListaJuegos().get(i));
+        		}
+	        } finally {
+	            q.closeAll();
+	            pm.close();
+	        }
 	}
 	@Override
 	public void deleteUsuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx = pm.currentTransaction();
+	    Query<Usuario> q = pm.newQuery(Usuario.class);
+	    Query<Biblioteca> q1 = pm.newQuery(Biblioteca.class);
 		try {
 			System.out.println("- Cleaning the DB...");			
 			
 			
 			
 			tx.begin();
-			Query<Usuario> q = pm.newQuery(Usuario.class);
+			
 	        q.setUnique(true);
 	        q.setFilter("gmail == gmailParam");
 	        q.declareParameters("String gmailParam");
 	        Usuario users = (Usuario) q.execute(user.getGmail());
 	        pm.deletePersistent(users);
 	        
-	        Query<Biblioteca> q1 = pm.newQuery(Biblioteca.class);
+	        
 	        q1.extension("datanucleus.query.flushBeforeExecution","true");
 	        q1.setUnique(true);
 	        q1.setFilter("biblioteca_id == idParam");
@@ -327,6 +348,8 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
+				q.closeAll();
+				q1.closeAll();
 			}
 		}
 		
