@@ -62,6 +62,16 @@ Para acceder a los resultados de los test seguir el siguiente path:
 
 	..\GestorJuegos_A04\target\contiperf-report
 
+**Maven Site**
+
+Se puede generar el site del proyecto con un resumen de todos los tests con
+
+	mvn site
+
+Luego se accederá a la carpeta ubicada en:
+
+	..\GestorJuegos_A04\target\site
+
 Una vez en esa carpeta abrir el archivo con nombre index.
 
 **Inicio del servidor**
