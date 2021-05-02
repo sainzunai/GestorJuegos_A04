@@ -39,9 +39,17 @@ public class UsuarioResource {
 	@Path("getUsuario")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Usuario getUser(@QueryParam("email")String email, @QueryParam("passw") String pass) {
-		Usuario user = dao.getUsuario(email);
-		System.out.println("Obteniedo el usuario con email: " + user.getGmail());
+		Usuario user;
+		try {
+			user = dao.getUsuario(email);
+			System.out.println("Obteniedo el usuario con email: " + user.getGmail());
+		} catch (Exception e) {
+			return null;
+		}
 		
+		if(pass.equals("_")) {//esto solo es una comprobacion de username asi que nos saltamos el resto
+			return user;
+		}
 		if (user.getContrasena().equals(pass)) {
 			System.out.println("Contrasena correcta, devolviendo usuario...");
 			return user;
@@ -63,7 +71,12 @@ public class UsuarioResource {
 	 Biblioteca b = new Biblioteca();
 	 user.setBiblioteca(b);
 	 b.setUser(user);
-	 dao.introducirObjeto(user);
+	 try {
+		 dao.introducirObjeto(user);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	
 	}
 	
 	/**
