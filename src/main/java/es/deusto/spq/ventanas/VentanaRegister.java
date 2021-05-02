@@ -7,7 +7,9 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -291,7 +293,25 @@ public class VentanaRegister extends JFrame implements ActionListener {
 		public void crearUsuario() {
 			newUser = new Usuario(secu(tfEmail.getText()), secu(tfContrasenya.getText()), secu(tfNombre.getText()));
 			System.out.println(newUser);
-			usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+			
+			//Antes de postear miramos si existe el usuario en server
+			Usuario u = new Usuario(null, null, null);
+			WebTarget usernameTarget = usersTarget.path("getUsuario").queryParam("email", newUser.getGmail()).queryParam("passw", "_");
+			GenericType<Usuario> gtUsu = new GenericType<Usuario>(){};
+			u = usernameTarget.request(MediaType.APPLICATION_JSON).get(gtUsu);
+			if(u == null) //que devuelva null significa que no existe ese usuario
+				{
+				usersTarget.request(MediaType.APPLICATION_JSON).post(Entity.entity(newUser, MediaType.APPLICATION_JSON));
+				System.out.println("Registro correcto");
+				JOptionPane.showMessageDialog( this, "Registro completado con Usuario: " + newUser.getNombre() + " y passwd: " + newUser.getContrasena());
+				
+				this.dispose();
+				}
+			else {
+				JOptionPane.showMessageDialog( this, "Usuario ya existente.");
+				
+			}
+			
 				
 		 }
 		/**Devuelve el string "securizado" para volcarlo en SQL

@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -27,6 +28,7 @@ public class VentanaInicioSesion extends JFrame{
 	Client client = ClientBuilder.newClient();
 	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 	final WebTarget usersTarget = appTarget.path("usuarios");
+	JFrame ventana;
 	
 	public VentanaInicioSesion() {
 
@@ -43,6 +45,8 @@ public class VentanaInicioSesion extends JFrame{
 		// creacion de contenido dentro de la pantalla //
 		////////////////////////////////////////////////
 
+		ventana = this;
+		
 		JPanel pPrincipal = new JPanel();
 		JPanel pUsuario = new JPanel();
 		JPanel pContrasenya = new JPanel();
@@ -145,10 +149,13 @@ public class VentanaInicioSesion extends JFrame{
 
 				}
 				else {
-					System.err.println("Credenciales incorrectas :(");
+//					System.err.println("Credenciales incorrectas :(");
+					JOptionPane.showMessageDialog( ventana, "Credenciales incorrectas :(");
+					
+					
 				}
 				
-				dispose();
+//				dispose();
 
 			}
 
