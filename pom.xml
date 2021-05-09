@@ -23,6 +23,8 @@
 		<sonar.projectKey>sainzunai_GestorJuegos_A04</sonar.projectKey>
 		<sonar.organization>sainzunai</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		
+		<doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
 
 	</properties>
 
@@ -203,6 +205,15 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<excludedGroups> categories.IntegrationTest, categories.VentanasTest  </excludedGroups>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.soebes.maven.plugins</groupId>
+				<artifactId>doxygen-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<configurationFile>${doxygen.config.file}</configurationFile>
 				</configuration>
 			</plugin>
 

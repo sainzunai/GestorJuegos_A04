@@ -72,6 +72,9 @@ public class VideoJuego implements Serializable{
 
 	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
+	/**
+	 * Prueba para ver si la documentacion funciona
+	 */
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma, String caratula ) {
 		
 		
