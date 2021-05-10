@@ -35,7 +35,7 @@ public class VideoJuego implements Serializable{
 	private int edadRecomendada; 
 	@Persistent
 	private Plataforma plataforma; 
-
+	
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
 	@Persistent(defaultFetchGroup="true")
     @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="biblioteca_id ASC"))
@@ -91,6 +91,7 @@ public class VideoJuego implements Serializable{
 		this.calificaciones  = new ArrayList<>(); 
 		
 		this.caratula = caratula; 
+	
 		
 	}
 	
@@ -221,12 +222,26 @@ public class VideoJuego implements Serializable{
 
 	}
 	
-	public void addCalificacion(Calificacion c) {
+	public void addCalificacion(Calificacion c) {  //	testear el cambio de la branch 
 		
-		this.calificaciones.add(c); 
+		int entrado = -1; //iniciamos a -1 por si esta vacia no entrara en for y dara un null pointer exception 
+		
+		for( int i = 0; i < calificaciones.size(); i ++  ) {
+			
+			entrado = 0;  
+			if(calificaciones.get(i).getUserNota().equals(c.getUserNota())) {
+				entrado = 1; 
+				
+			}
+		}
+		
+		if(entrado == 0) {
+			
+			this.calificaciones.add(c); 
+		}
 	}
 	
-	public boolean remCalificacion(Calificacion c) {
+	public boolean remCalificacion(Calificacion c) {  //vamos a buscar por usuario que va a ser todo mas facil 
 		
 		return this.calificaciones.remove(c); 
 	}

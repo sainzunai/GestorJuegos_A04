@@ -2,10 +2,8 @@ package es.deusto.spq;
 
 public class Calificacion {
 	
-	
-	//Va a ir directamente relacionada con un USUARIO. FUTURA creacion 
 
-	//private User u;
+	private Usuario userNota;  //tiene que tener un usuario en concreto para no repetir y usarlo en los metodos de logica etc. 
 	
 	private int nota; 
 	
@@ -16,7 +14,7 @@ public class Calificacion {
 	private int anyoAsignacion; 
 	
 	
-	public Calificacion(int nota, int anyo, int mes, int dia) {  //No vamos a crear un constructor vacio porque no corresponde a una Calificacion; 
+	public Calificacion(int nota, int anyo, int mes, int dia, Usuario u) {  //No vamos a crear un constructor vacio porque no corresponde a una Calificacion; 
 		
 		this.nota = nota; 
 		
@@ -25,6 +23,8 @@ public class Calificacion {
 		this.mesAsignacion = mes; 
 		
 		this.diaAsignacion = dia; 
+		
+		this.userNota = u; 
 		
 		
 	}
@@ -76,6 +76,18 @@ public class Calificacion {
 
 	public void setAnyoAsignacion(int anyoAsignacion) {
 		this.anyoAsignacion = anyoAsignacion;
+	}
+
+
+
+	public Usuario getUserNota() {
+		return userNota;
+	}
+
+
+
+	public void setUserNota(Usuario userNota) {  //dudo que haya que utilizar este metodo. 
+		this.userNota = userNota;
 	}
 
 
