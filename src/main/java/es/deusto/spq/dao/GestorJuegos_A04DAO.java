@@ -291,7 +291,9 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	        }
 
 	       
-
+	    for(int i=0;i<biblioteca.getListaJuegos().size();i++) {
+	    	biblioteca.getListaJuegos().set(i, this.getVideojuego(biblioteca.getListaJuegos().get(i).getId()));
+	    }
 	    
 		return(biblioteca);
 		
@@ -361,6 +363,18 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 				q1.closeAll();
 			}
 		}
+		
+	}
+
+	@Override
+	public void updateVideoJuego_Calificacion(VideoJuego videojuego) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateCalificacion_Usuario(Usuario user) {
+		// TODO Auto-generated method stub
 		
 	}
 	

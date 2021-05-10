@@ -17,4 +17,6 @@ public interface IGestorJuegos_A04DAO {
 	public Usuario getUsuario(String email);
 	public Biblioteca getBiblioteca_Usuario(Usuario user);
 	public void deleteUsuario(Usuario user);
+	public void updateVideoJuego_Calificacion(VideoJuego videojuego);
+	public void updateCalificacion_Usuario(Usuario user);
 }

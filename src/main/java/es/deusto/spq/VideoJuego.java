@@ -40,8 +40,8 @@ public class VideoJuego implements Serializable{
 	@Persistent(defaultFetchGroup="true")
     @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="biblioteca_id ASC"))
     private List<Biblioteca> biblioteca= new ArrayList<>();
-    
-    
+	@Persistent(mappedBy="videojuego",defaultFetchGroup="true")
+	private List<Calificacion> calificaciones = new ArrayList<>();  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	JPanelVideojuego j;
 	
 
@@ -70,7 +70,7 @@ public class VideoJuego implements Serializable{
 		return true;
 	}
 
-	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
+	
 	
 	/**
 	 * Prueba para ver si la documentacion funciona
@@ -115,7 +115,7 @@ public class VideoJuego implements Serializable{
 		
 	}
 	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, List<Calificacion> calificaciones,Plataforma plataforma) {
 				
 		this.nombre = nombre; 
 		
@@ -133,7 +133,7 @@ public class VideoJuego implements Serializable{
 		
 	}
 	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, List<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
 				
 		this.nombre = nombre; 
 		
@@ -279,11 +279,11 @@ public class VideoJuego implements Serializable{
 		this.edadRecomendada = edadRecomendada;
 	}
 
-	public ArrayList<Calificacion> getCalificaciones() {
+	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public void setCalificaciones(ArrayList<Calificacion> calificaciones) {
+	public void setCalificaciones(List<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 

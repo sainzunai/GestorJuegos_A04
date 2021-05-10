@@ -227,7 +227,7 @@ public class VideoJuegoTest {
 	@Test
 	public void testAddCalificacion() {
 		v3.addCalificacion(c);
-
+		
 		assertEquals(1, v3.getCalificaciones().size());
 	}
 	

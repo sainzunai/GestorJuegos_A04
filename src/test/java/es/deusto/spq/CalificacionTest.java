@@ -15,11 +15,14 @@ public class CalificacionTest {
 	
 	private Usuario u2 = Mockito.mock(Usuario.class);
 	
+	private VideoJuego v = Mockito.mock(VideoJuego.class);
+	
+	private VideoJuego v1 = Mockito.mock(VideoJuego.class);
 	
     @Before                                         
     public void setUp() throws Exception {
     	
-    	c = new Calificacion(0, 2003, 4, 4, u1); 
+    	c = new Calificacion(0, 2003, 4, 4, u1,v); 
 
     }
 	
@@ -95,5 +98,15 @@ public class CalificacionTest {
     	
        	assertEquals(c.getUserNota().getNombre(), "HOLA1" );
    	}	
-
+    @Test
+    public void testGetVideojuego() {
+    	when(v.getId()).thenReturn("1");
+    	assertEquals(c.getVideojuego().getId(),"1");
+    }
+    @Test
+    public void testSetVideoJuego() {
+    	c.setVideojuego(v1);
+    	when(v1.getId()).thenReturn("2");
+    	assertEquals(c.getVideojuego().getId(),"2");
+    }
 }

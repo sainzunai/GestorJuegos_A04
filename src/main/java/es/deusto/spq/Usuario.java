@@ -2,9 +2,11 @@ package es.deusto.spq;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -20,8 +22,9 @@ public class Usuario implements Serializable{
 	private String contrasena;
 	
 	//TENEMOS ESTE ARRAY DE NOTAS PARA SABER CUALES HA DADO CADA UNO. 
-	
-	private ArrayList<Calificacion> notasDadas; 
+	@Persistent(mappedBy="userNota", dependentElement="true",defaultFetchGroup="true")
+	@Join
+	private List<Calificacion> notasDadas = new ArrayList<>(); 
 	
 	@Persistent(mappedBy="user", dependentElement="true",defaultFetchGroup="true")
     Biblioteca biblioteca;
@@ -66,12 +69,12 @@ public class Usuario implements Serializable{
 	}
 
 
-	public ArrayList<Calificacion> getNotasDadas() {  //test 
+	public List<Calificacion> getNotasDadas() {  //test 
 		return notasDadas;
 	}
 
 
-	public void setNotasDadas(ArrayList<Calificacion> notasDadas) { //test 
+	public void setNotasDadas(List<Calificacion> notasDadas) { //test 
 		this.notasDadas = notasDadas;
 	}
 	
