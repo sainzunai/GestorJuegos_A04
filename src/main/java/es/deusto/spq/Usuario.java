@@ -75,6 +75,16 @@ public class Usuario implements Serializable{
 		this.notasDadas = notasDadas;
 	}
 	
+	public void addNota(Calificacion c ) {
+		
+		this.notasDadas.add(c); 
+	}
+
+	public void remNota(Calificacion c ) {
+
+		this.notasDadas.remove(c); 
+	}
+	
 	public double mediaUsuario() {  //test 
 		
 		double notaMedia = 0.0; 
