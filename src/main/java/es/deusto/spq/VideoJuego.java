@@ -226,6 +226,11 @@ public class VideoJuego implements Serializable{
 		
 		int entrado = -1; //iniciamos a -1 por si esta vacia no entrara en for y dara un null pointer exception 
 		
+		
+		if(calificaciones.size() == 0) {
+			
+			entrado = 0; 
+		}
 		for( int i = 0; i < calificaciones.size(); i ++  ) {
 			
 			entrado = 0;  

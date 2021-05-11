@@ -21,6 +21,8 @@ public class VideoJuegoTest {
 	private Biblioteca b = Mockito.mock(Biblioteca.class);
 	private Calificacion c = Mockito.mock(Calificacion.class);
 	private Calificacion c1 = Mockito.mock(Calificacion.class);
+	private Usuario u = Mockito.mock(Usuario.class);
+	private Usuario u1 = Mockito.mock(Usuario.class);
 	private VideoJuego v; 	
 	private VideoJuego v2; 
 	private VideoJuego v3; 
@@ -227,8 +229,11 @@ public class VideoJuegoTest {
 	@Test
 	public void testAddCalificacion() {
 		v3.addCalificacion(c);
-		
+		when(c.getUserNota()).thenReturn(u1);
 		assertEquals(1, v3.getCalificaciones().size());
+		v3.addCalificacion(c1);
+		when(c.getUserNota()).thenReturn(u);
+		assertEquals(2, v3.getCalificaciones().size());
 	}
 	
 	@Test
@@ -243,20 +248,23 @@ public class VideoJuegoTest {
 	}
 	
 	
-	@Test
-	public void testGetJpanelVideojuegos() {
-		
-		JPanelVideojuego jp1 = new JPanelVideojuego(v5, b); 
-	
-		assertEquals(jp1.cambioConstructor, v5.getJPanelVideojuego(b).cambioConstructor);
-		
-		
-		
-		JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b); 
-	
-		assertEquals(jp2.cambioConstructor, v3.getJPanelVideojuego(b).cambioConstructor);
-		
-	}
+	/*
+	 * @Test public void testGetJpanelVideojuegos() {
+	 * 
+	 * JPanelVideojuego jp1 = new JPanelVideojuego(v5, b);
+	 * 
+	 * assertEquals(jp1.cambioConstructor,
+	 * v5.getJPanelVideojuego(b).cambioConstructor);
+	 * 
+	 * 
+	 * 
+	 * JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b);
+	 * 
+	 * assertEquals(jp2.cambioConstructor,
+	 * v3.getJPanelVideojuego(b).cambioConstructor);
+	 * 
+	 * }
+	 */
 	
 	@Test
 	public void testEquals() {
