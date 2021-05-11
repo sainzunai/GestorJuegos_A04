@@ -24,10 +24,10 @@ public class JPanelVideojuego extends JPanel {
 	JLabelGraficoAjustado lImagen;
 	JButton btn;
 	String textoBtn = "Add";
-	
+
 	public int cambioConstructor; 
 
-	public JPanelVideojuego(final VideoJuego v, final Biblioteca b) {
+	public JPanelVideojuego(final VideoJuego v, final Biblioteca b, final boolean estamosHome) {
 		this.cambioConstructor = 0; 
 		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
 		this.setLayout(new BorderLayout());
@@ -41,50 +41,54 @@ public class JPanelVideojuego extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				b.addJuego(v);
-				
+
 
 			}
 		});
-lImagen.addMouseListener(new MouseListener() {
-			
+		lImagen.addMouseListener(new MouseListener() {
+
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(arg0.getClickCount() == 2) {
 					System.out.println("Doble click efectivo");
+					
+					System.out.println("Estamos en casa: "+ estamosHome);
+					
+					//tienes la variable estamos en HOME si es true estas en home, si es false estas en bibliotec muak :*
 				}
-				
+
 			}
 		});
-		
+
 	}
 
-	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b) {
+	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b, final boolean estamosHome) {
 		this.cambioConstructor = cambioConstructor; 
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(13 * 20, 15 * 20));
@@ -102,61 +106,62 @@ lImagen.addMouseListener(new MouseListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-					
+
 				b.addJuego(v);
 
 			}
 		});
-		
-lImagen.addMouseListener(new MouseListener() {
-			
+
+		lImagen.addMouseListener(new MouseListener() {
+
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(arg0.getClickCount() == 2) {
 					System.out.println("Doble click efectivo");
+					
+					System.out.println("Estamos en casa: " + estamosHome);
+					
+					//tienes la variable estamos en HOME si es true estas en home, si es false estas en bibliotec muak :*
 				}
-				
+
 			}
 		});
 	}
-	
-	
 
-	public static void main(String[] args) {
-		JFrame ventana = new JFrame();
-		ventana.getContentPane().setLayout(new FlowLayout());
-		ventana.setVisible(true);
-		ventana.setSize(500, 500);
-		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
-		Biblioteca b = new Biblioteca(); 
-		JPanelVideojuego p = v.getJPanelVideojuego(b); 
-		ventana.add(p);
-		ventana.revalidate();
-
-	}
+	/*
+	 * 
+	 * public static void main(String[] args) { JFrame ventana = new JFrame();
+	 * ventana.getContentPane().setLayout(new FlowLayout());
+	 * ventana.setVisible(true); ventana.setSize(500, 500);
+	 * ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); VideoJuego v = new
+	 * VideoJuego("hola", "d", "sss", 10, null); Biblioteca b = new Biblioteca();
+	 * JPanelVideojuego p = v.getJPanelVideojuego(b); ventana.add(p);
+	 * ventana.revalidate();
+	 * 
+	 * }
+	 */
 }
