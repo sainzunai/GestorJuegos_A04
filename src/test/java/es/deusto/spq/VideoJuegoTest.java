@@ -265,6 +265,7 @@ public class VideoJuegoTest {
 	 * 
 	 * }
 	 */
+	 
 	
 	@Test
 	public void testEquals() {
