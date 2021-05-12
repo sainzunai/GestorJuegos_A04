@@ -1,5 +1,7 @@
 package es.deusto.spq.ventanas;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,7 +12,7 @@ public class Test {
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		JPanel panel = new JPanel();
-		StarRater starRater = new StarRater(5, 2, 1);
+		StarRater starRater = new StarRater(5, 0, 1);
 		starRater.addStarListener(new StarRater.StarListener() {
 
 			public void handleSelection(int selection) {
@@ -22,6 +24,8 @@ public class Test {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		starRater.setPreferredSize(new Dimension(300,  300));
+		frame.setSize(500, 500);
 	}
 
 }

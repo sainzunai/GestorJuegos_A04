@@ -42,8 +42,15 @@ public class VentanaFeed extends JFrame {
 		tabbedPane.addTab("Feed Privada", icon2, pPrivada, null);
 		setVisible(true);
 		
-		
+		/////////////////////////////////////////////////////////////////////////
+		///_________________GESTION INDIVIDUAL DE PANELES_____________________///
+		/////////////////////////////////////////////////////////////////////////
 
+		//PARTE PUBLICA
+		
+		
+		//PARTE PRIVADA
+		pPrivada.add(new JPanelFeedPrivada());
 	}
 	/** Returns an ImageIcon, or null if the path was invalid. */
 	protected ImageIcon createImageIcon(String path,
