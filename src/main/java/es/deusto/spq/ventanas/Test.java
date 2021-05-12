@@ -8,6 +8,7 @@ import es.deusto.spq.ventanas.recursos_test.StarRater;
 public class Test {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
+		frame.setSize(500, 500);
 		JPanel panel = new JPanel();
 		StarRater starRater = new StarRater(5, 2, 1);
 		starRater.addStarListener(new StarRater.StarListener() {
