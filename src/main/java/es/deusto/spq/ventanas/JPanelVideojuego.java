@@ -151,6 +151,25 @@ public class JPanelVideojuego extends JPanel {
 			}
 		});
 	}
+	
+	/**
+	 * Muestra unicamente un panel con la caratula, sin boton ni funciones
+	 * @param v videojuego a mostrar en panel
+	 */
+	public JPanelVideojuego(final VideoJuego v) {
+		JPanel panel = new JPanel();
+		panel.setSize(new Dimension(13 * 20, 15 * 20));
+		JLabel lbl = new JLabel(v.getNombre());
+		panel.add(lbl);
+		this.setLayout(new BorderLayout());
+		this.add(panel);
+		this.setPreferredSize(new Dimension(13 * 20, 15 * 20));
+		this.setBorder(new LineBorder(Color.black));
+		this.setBackground(Color.white);
+
+		
+	}
+	
 
 	/*
 	 * 

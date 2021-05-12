@@ -335,4 +335,16 @@ public class VideoJuego implements Serializable{
 	  
 	}
 	 
+	/**
+	 * @return panel videojuego simple
+	 * Metedo necesario para llamar cuando hace falta la caratula sin funcionalidad
+	 */
+	public JPanelVideojuego getJPanelVideojuego() {
+
+			  j = new JPanelVideojuego(this); 		  
+		  	  
+		  return j;
+		  
+		}
+		 
 }
