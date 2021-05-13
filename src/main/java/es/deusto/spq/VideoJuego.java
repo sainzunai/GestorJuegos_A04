@@ -42,7 +42,8 @@ public class VideoJuego implements Serializable{
     private List<Biblioteca> biblioteca= new ArrayList<>();
 	@Persistent(mappedBy="videojuego",defaultFetchGroup="true")
 	private List<Calificacion> calificaciones = new ArrayList<>();  //Puede que tenga que ser un HASH MAP. Iremos viendo
-	JPanelVideojuego j;
+	
+	private JPanelVideojuego j;
 	
 
 	@Override
@@ -335,16 +336,16 @@ public class VideoJuego implements Serializable{
 	  
 	}
 	 
-	/**
-	 * @return panel videojuego simple
-	 * Metedo necesario para llamar cuando hace falta la caratula sin funcionalidad
-	 */
-	public JPanelVideojuego getJPanelVideojuego() {
-
-			  j = new JPanelVideojuego(this); 		  
-		  	  
-		  return j;
-		  
-		}
+//	/**
+//	 * @return panel videojuego simple
+//	 * Metedo necesario para llamar cuando hace falta la caratula sin funcionalidad
+//	 */
+//	public JPanelVideojuego getJPanelVideojuegoSimple() {
+//
+//			  j = new JPanelVideojuego(this); 		  
+//		  	  
+//		  return j;
+//		  
+//		}
 		 
 }

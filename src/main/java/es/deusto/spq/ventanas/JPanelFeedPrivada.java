@@ -50,9 +50,9 @@ public class JPanelFeedPrivada extends JPanel{
 		taSubtitulo.setOpaque(false);
 		
 		if(u != null && v != null) {
-			JPanelVideojuego pV = v.getJPanelVideojuego();
-			add(pV);
-			pV.setBounds(100, 200, 400, 400);
+			//JPanelVideojuego pV = v.getJPanelVideojuegoSimple();
+			//add(pV);
+			//pV.setBounds(100, 200, 400, 400);
 		}
 		
 	}
