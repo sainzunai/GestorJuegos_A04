@@ -77,7 +77,7 @@ public class JPanelVideojuego extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 				if(arg0.getClickCount() == 2) {
 					System.out.println("Doble click efectivo");
-					
+					VentanaFeed vFeed = new VentanaFeed(v, null);
 					System.out.println("Estamos en casa: "+ estamosHome);
 					
 					//tienes la variable estamos en HOME si es true estas en home, si es false estas en bibliotec muak :*
@@ -142,7 +142,7 @@ public class JPanelVideojuego extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 				if(arg0.getClickCount() == 2) {
 					System.out.println("Doble click efectivo");
-					
+					VentanaFeed vFeed = new VentanaFeed(v, null);
 					System.out.println("Estamos en casa: " + estamosHome);
 					
 					//tienes la variable estamos en HOME si es true estas en home, si es false estas en bibliotec muak :*

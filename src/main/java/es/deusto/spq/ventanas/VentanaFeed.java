@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import es.deusto.spq.Plataforma;
+import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
@@ -13,7 +14,7 @@ import java.awt.Color;
 
 public class VentanaFeed extends JFrame {
 	
-	public VentanaFeed(VideoJuego v) {
+	public VentanaFeed(VideoJuego v, Usuario u) {
 
 		/////////////////////////////////////////////////////
 		//creacion de panatalla y centrado de la pantalla //
@@ -50,7 +51,7 @@ public class VentanaFeed extends JFrame {
 		
 		
 		//PARTE PRIVADA
-		JPanelFeedPrivada pFeedPriv = new JPanelFeedPrivada(null, null);
+		JPanelFeedPrivada pFeedPriv = new JPanelFeedPrivada(u, v);
 		pPrivada.setLayout(null);
 		pPrivada.add(pFeedPriv);
 		pFeedPriv.setBounds(0,0,1000,1000);
@@ -77,7 +78,8 @@ public class VentanaFeed extends JFrame {
 		Plataforma plat = new Plataforma();
 		plat.setNombrePlataforma("PC");
 		VideoJuego v = new VideoJuego("Battlefield V", "111", "Ubisoft", 18, plat, "path");
-		VentanaFeed ventana = new VentanaFeed(v);
+		Usuario u = new Usuario("", "", "Unaii");
+		VentanaFeed ventana = new VentanaFeed(v, u);
 
 	}
 
