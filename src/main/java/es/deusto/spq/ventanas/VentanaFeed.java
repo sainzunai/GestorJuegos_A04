@@ -54,7 +54,12 @@ public class VentanaFeed extends JFrame {
 		pPrivada.setLayout(null);
 		pPrivada.add(pFeedPriv);
 		pFeedPriv.setBounds(0,0,1000,1000);
+		
 	}
+	
+	
+	
+	
 	/** Returns an ImageIcon, or null if the path was invalid. */
 	protected ImageIcon createImageIcon(String path,
 	                                           String description) {

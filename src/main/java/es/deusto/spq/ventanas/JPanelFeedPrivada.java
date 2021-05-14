@@ -23,7 +23,7 @@ public class JPanelFeedPrivada extends JPanel{
 	public JPanelFeedPrivada(Usuario u, VideoJuego v) {
 		this.setBorder(new LineBorder(Color.black));
 		StarRater starRater = new StarRater(5, 3, 3);
-		starRater.setBounds(248, 157, 80, 16);
+		starRater.setBounds(380, 108, 80, 16);
 		starRater.addStarListener(new StarRater.StarListener() {
 
 			public void handleSelection(int selection) {
@@ -49,11 +49,12 @@ public class JPanelFeedPrivada extends JPanel{
 		add(taSubtitulo);
 		taSubtitulo.setOpaque(false);
 		
-		if(u != null && v != null) {
-			//JPanelVideojuego pV = v.getJPanelVideojuegoSimple();
-			//add(pV);
-			//pV.setBounds(100, 200, 400, 400);
-		}
+//		if(u != null && v != null) {
+			JLabelGraficoAjustado lCaratula = new JLabelGraficoAjustado("resources/imagenes/Battlefield.jpg", 300, 500);
+			add(lCaratula);
+			lCaratula.setBounds(37, 108, 300, 335);
+			
+//		}
 		
 	}
 	public static void main(String[] args) {
