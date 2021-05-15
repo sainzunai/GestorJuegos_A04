@@ -32,6 +32,10 @@ public class VideoJuego implements Serializable{
 	
 	private String caratula; 
 	
+	private int sumaNotas; 
+	
+	private int numeroNotas; 
+	
 	private int edadRecomendada; 
 	@Persistent
 	private Plataforma plataforma; 
@@ -69,9 +73,6 @@ public class VideoJuego implements Serializable{
 			return false;
 		return true;
 	}
-
-	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
-	
 	/**
 	 * Prueba para ver si la documentacion funciona
 	 */
@@ -87,8 +88,6 @@ public class VideoJuego implements Serializable{
 		this.edadRecomendada = edadRecomendada; 
 		
 		this.plataforma=plataforma;
-		
-		this.calificaciones  = new ArrayList<>(); 
 		
 		this.caratula = caratula; 
 		
@@ -108,48 +107,9 @@ public class VideoJuego implements Serializable{
 		
 		this.plataforma=plataforma;
 		
-		this.calificaciones  = new ArrayList<>(); 
-		
 		this.caratula = " "; 
 		
 	}
-	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
-				
-		this.nombre = nombre; 
-		
-		this.videojuego_id = id; 
-		
-		this.compania = company; 
-		
-		this.edadRecomendada = edadRecomendada; 
-		
-		this.plataforma=plataforma;
-		
-		this.calificaciones = calificaciones; 
-		
-		this.caratula = " "; 
-		
-	}
-	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
-				
-		this.nombre = nombre; 
-		
-		this.videojuego_id = id; 
-		
-		this.compania = company; 
-		
-		this.edadRecomendada = edadRecomendada; 
-		
-		this.plataforma=plataforma;
-		
-		this.calificaciones = calificaciones; 
-		
-		this.caratula = caratula; 
-		
-	}
-	
 	
 	public VideoJuego() {
 				
@@ -159,79 +119,25 @@ public class VideoJuego implements Serializable{
 		
 		this.compania = ""; 
 		
-		this.edadRecomendada = 0; 
-		
-		this.calificaciones = new ArrayList<>(); 
+		this.edadRecomendada = 0;
 		
 		this.caratula = " "; 
 			
 	}
 	
 	public double calculoNotaMedia() {
-				
-		double notaMedia = 0.0; 
 		
-		int i; 
+		return sumaNotas / numeroNotas; 
+	}
+	
+	public void addNota(int nota) {
 		
-		for( i = 0; i < calificaciones.size(); i ++  ) {
-			
-			notaMedia = notaMedia + calificaciones.get(i).getNota();
-
-		}
-
-		return notaMedia / ( i );
+		sumaNotas += nota;
+		
+		numeroNotas ++; 
 		
 	}
 	
-	public int calculaVotosDeNota(int votacion) { //Nos dice el numero de 10 o 9 que ha habido para el juego. 
-		
-		int i; 
-		
-		int numeroNotas = 0; 
-		
-		for( i = 0; i < calificaciones.size(); i ++  ) {
-			
-			if(votacion == calificaciones.get(i).getNota()) {
-				
-				numeroNotas ++; 
-	
-			}
-		}	
-		
-		return numeroNotas;
-				
-	}
-	
-	
-	public int notaMaxima() {
-
-		int i; 
-
-		int nota = 0; 
-
-		for( i = 0; i < calificaciones.size(); i ++  ) {
-
-			if (nota < calificaciones.get(i).getNota()) {
-
-				nota = calificaciones.get(i).getNota(); 
-			}
-
-		}		
-		return nota; 
-
-	}
-	
-	public void addCalificacion(Calificacion c) {
-		
-		this.calificaciones.add(c); 
-	}
-	
-	public boolean remCalificacion(Calificacion c) {
-		
-		return this.calificaciones.remove(c); 
-	}
-	
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -263,15 +169,6 @@ public class VideoJuego implements Serializable{
 	public void setEdadRecomendada(int edadRecomendada) {
 		this.edadRecomendada = edadRecomendada;
 	}
-
-	public ArrayList<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-
-	public void setCalificaciones(ArrayList<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
-
 
 	public String getCaratula() {
 		return caratula;
@@ -313,6 +210,22 @@ public class VideoJuego implements Serializable{
 	  	  
 	  return j;
 	  
+	}
+
+	public int getSumaNotas() {
+		return sumaNotas;
+	}
+
+	public void setSumaNotas(int sumaNotas) {
+		this.sumaNotas = sumaNotas;
+	}
+
+	public int getNumeroNotas() {
+		return numeroNotas;
+	}
+
+	public void setNumeroNotas(int numeroNotas) {
+		this.numeroNotas = numeroNotas;
 	}
 	 
 }

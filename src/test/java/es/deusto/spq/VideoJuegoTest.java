@@ -15,12 +15,8 @@ import es.deusto.spq.ventanas.JPanelVideojuego;
 public class VideoJuegoTest {
 	
 	private List<Biblioteca> biblioteca= new ArrayList<>();
-	private ArrayList<Calificacion> cList;
-	private ArrayList<Calificacion> cList2;
-	
 	private Biblioteca b = Mockito.mock(Biblioteca.class);
-	private Calificacion c = Mockito.mock(Calificacion.class);
-	private Calificacion c1 = Mockito.mock(Calificacion.class);
+
 	private VideoJuego v; 	
 	private VideoJuego v2; 
 	private VideoJuego v3; 
@@ -30,63 +26,28 @@ public class VideoJuegoTest {
     public void setUp() throws Exception {
     	
     	
-    	cList = new ArrayList<>(); 
-    	cList2 = new ArrayList<>(); 
+ 
     	
     	v = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null); 
     	
     	v2 = new VideoJuego("FF4", "F4", "Nintendo", 3, null, "hola"); 
     	
     	v3 = new VideoJuego(); 
+    
+    	v4 = new VideoJuego("FIfa 18", "F18", "Oracle", 6, null); 
     	
-    	v4 = new VideoJuego("FIfa 18", "F18", "Oracle", 6, cList, null); 
+    	v5 = new VideoJuego("PRO 12", "P12", "PEs", 8, null, "caratula"); 
     	
-    	v5 = new VideoJuego("PRO 12", "P12", "PEs", 8, cList2, null, "caratula"); 
-    	
-    	cList.add(c); 
-    	
-    	cList.add(c1);    	
-    	
-    	v.setCalificaciones(cList);
 
     }
 
 	@Test
 	public void testCalcularNotaMedia() {
 		
-		when(c.getNota()).thenReturn(8);
-		when(c1.getNota()).thenReturn(6);
-		assertEquals( 7.0 , v.calculoNotaMedia(), 0.01); 
 		
 	}
 	
-	@Test
-	public void testNotaMaxima() {
-		
-		when(c.getNota()).thenReturn(10);
-		when(c1.getNota()).thenReturn(8); 
-		assertEquals( 10 , v.notaMaxima());
-		
-	}
-	
-	@Test
-	public void testCalculaVotosDeNota() {
-		
-		
-		when(c.getNota()).thenReturn(10);
-		when(c1.getNota()).thenReturn(0);
-		assertEquals(1, v.calculaVotosDeNota(10));
-		
-	}
-	
-	@Test
-	public void testRemCalificacion() {
-		
-		v.remCalificacion(c); 
-		
-		assertEquals(1, v.getCalificaciones().size());
-		
-	}
+
 	@Test
 	public void testGetCaratula() {
 		
@@ -160,20 +121,7 @@ public class VideoJuegoTest {
 		assertEquals(4, v5.getEdadRecomendada());
 		
 	}
-	@Test
-	public void testGetCalificaciones() {
-		
-		assertEquals(cList, v4.getCalificaciones());	
-		
-	}
-	@Test
-	public void testSetCalificaciones() {
-		
-		v4.setCalificaciones(cList2);
-		
-		assertEquals(cList2, v4.getCalificaciones());
-		
-	}
+	
 	@Test
 	public void testGetCaratula1() {
 		
@@ -223,12 +171,6 @@ public class VideoJuegoTest {
 		v3.setBiblioteca(biblioteca);
 		assertEquals(1, v3.getNumberOfBiblioteca());
 		
-	}
-	@Test
-	public void testAddCalificacion() {
-		v3.addCalificacion(c);
-
-		assertEquals(1, v3.getCalificaciones().size());
 	}
 	
 	@Test
