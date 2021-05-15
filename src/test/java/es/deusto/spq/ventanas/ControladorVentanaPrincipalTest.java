@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 
 import categories.IntegrationTest;
 import categories.VentanasTest;
-import es.deusto.spq.Calificacion;
+
 import es.deusto.spq.Usuario;
 
 @Category(VentanasTest.class)
