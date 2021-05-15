@@ -1,28 +1,19 @@
 package es.deusto.spq;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 public class CalificacionTest {
 	
 	Calificacion c; 
 	
-	private Usuario u1 = Mockito.mock(Usuario.class);
-	
-	private Usuario u2 = Mockito.mock(Usuario.class);
-	
-	private VideoJuego v = Mockito.mock(VideoJuego.class);
-	
-	private VideoJuego v1 = Mockito.mock(VideoJuego.class);
 	
     @Before                                         
     public void setUp() throws Exception {
     	
-    	c = new Calificacion(0, 2003, 4, 4, u1,v); 
+    	c = new Calificacion(0, 2003, 4, 4); 
 
     }
 	
@@ -81,32 +72,5 @@ public class CalificacionTest {
 		assertEquals( c.getNota(), 10);
 	}
 	
-    @Test
-   	public void testSetUserNota() {
-    	
-    	c.setUserNota(u2);
-    	
-    	when(u2.getNombre()).thenReturn("HOLA");
-    	
-       	assertEquals(c.getUserNota().getNombre(), "HOLA" );
-   	}
-    
-    @Test
-   	public void testGetUserNota() {
-    	
-    	when(u1.getNombre()).thenReturn("HOLA1");
-    	
-       	assertEquals(c.getUserNota().getNombre(), "HOLA1" );
-   	}	
-    @Test
-    public void testGetVideojuego() {
-    	when(v.getId()).thenReturn("1");
-    	assertEquals(c.getVideojuego().getId(),"1");
-    }
-    @Test
-    public void testSetVideoJuego() {
-    	c.setVideojuego(v1);
-    	when(v1.getId()).thenReturn("2");
-    	assertEquals(c.getVideojuego().getId(),"2");
-    }
+
 }

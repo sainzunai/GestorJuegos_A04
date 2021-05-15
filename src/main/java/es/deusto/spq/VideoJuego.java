@@ -35,15 +35,14 @@ public class VideoJuego implements Serializable{
 	private int edadRecomendada; 
 	@Persistent
 	private Plataforma plataforma; 
-	
+
 	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
 	@Persistent(defaultFetchGroup="true")
     @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="biblioteca_id ASC"))
     private List<Biblioteca> biblioteca= new ArrayList<>();
-	@Persistent(mappedBy="videojuego",defaultFetchGroup="true")
-	private List<Calificacion> calificaciones = new ArrayList<>();  //Puede que tenga que ser un HASH MAP. Iremos viendo
-	
-	private JPanelVideojuego j;
+    
+    
+	JPanelVideojuego j;
 	
 
 	@Override
@@ -71,7 +70,7 @@ public class VideoJuego implements Serializable{
 		return true;
 	}
 
-	
+	private ArrayList<Calificacion> calificaciones;  //Puede que tenga que ser un HASH MAP. Iremos viendo
 	
 	/**
 	 * Prueba para ver si la documentacion funciona
@@ -92,7 +91,6 @@ public class VideoJuego implements Serializable{
 		this.calificaciones  = new ArrayList<>(); 
 		
 		this.caratula = caratula; 
-	
 		
 	}
 	
@@ -116,7 +114,7 @@ public class VideoJuego implements Serializable{
 		
 	}
 	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, List<Calificacion> calificaciones,Plataforma plataforma) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma) {
 				
 		this.nombre = nombre; 
 		
@@ -134,7 +132,7 @@ public class VideoJuego implements Serializable{
 		
 	}
 	
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, List<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, ArrayList<Calificacion> calificaciones,Plataforma plataforma, String caratula) {
 				
 		this.nombre = nombre; 
 		
@@ -223,31 +221,12 @@ public class VideoJuego implements Serializable{
 
 	}
 	
-	public void addCalificacion(Calificacion c) {  //	testear el cambio de la branch 
+	public void addCalificacion(Calificacion c) {
 		
-		int entrado = -1; //iniciamos a -1 por si esta vacia no entrara en for y dara un null pointer exception 
-		
-		
-		if(calificaciones.size() == 0) {
-			
-			entrado = 0; 
-		}
-		for( int i = 0; i < calificaciones.size(); i ++  ) {
-			
-			entrado = 0;  
-			if(calificaciones.get(i).getUserNota().equals(c.getUserNota())) {
-				entrado = 1; 
-				
-			}
-		}
-		
-		if(entrado == 0) {
-			
-			this.calificaciones.add(c); 
-		}
+		this.calificaciones.add(c); 
 	}
 	
-	public boolean remCalificacion(Calificacion c) {  //vamos a buscar por usuario que va a ser todo mas facil 
+	public boolean remCalificacion(Calificacion c) {
 		
 		return this.calificaciones.remove(c); 
 	}
@@ -285,11 +264,11 @@ public class VideoJuego implements Serializable{
 		this.edadRecomendada = edadRecomendada;
 	}
 
-	public List<Calificacion> getCalificaciones() {
+	public ArrayList<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public void setCalificaciones(List<Calificacion> calificaciones) {
+	public void setCalificaciones(ArrayList<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 
@@ -322,30 +301,18 @@ public class VideoJuego implements Serializable{
 	}
 	
 	
-	public JPanelVideojuego getJPanelVideojuego(Biblioteca b, boolean estamosHome) {
+	public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
 
 	  if(caratula == " ") {
-		  j = new JPanelVideojuego(this, 1, b, estamosHome); 		  
+		  j = new JPanelVideojuego(this, 1, b); 		  
 	  }
 	  
 	  else {	  
-		  j = new JPanelVideojuego(this, b, estamosHome);	  
+		  j = new JPanelVideojuego(this, b);	  
 	  }
 	  	  
 	  return j;
 	  
 	}
 	 
-//	/**
-//	 * @return panel videojuego simple
-//	 * Metedo necesario para llamar cuando hace falta la caratula sin funcionalidad
-//	 */
-//	public JPanelVideojuego getJPanelVideojuegoSimple() {
-//
-//			  j = new JPanelVideojuego(this); 		  
-//		  	  
-//		  return j;
-//		  
-//		}
-		 
 }

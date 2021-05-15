@@ -54,7 +54,7 @@ final WebTarget usersTarget = appTarget.path("usuarios");
         System.out.println("Leemos de Base Datos. Numero de Juegos:" + juegos.size());
         miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : juegos) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca(), estamosEnHome));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
             System.out.println(juego.getNombre());
             v.add(juego); 
         }
@@ -68,7 +68,7 @@ final WebTarget usersTarget = appTarget.path("usuarios");
 			System.out.println("NO Leemos de Base Datos");
 	        miVentana.panelCentralCaratulas.borrarPanel();
 	        for (VideoJuego juego : v) {
-	            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca(), estamosEnHome));
+	            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
 	        }			
 			
 			
@@ -87,7 +87,7 @@ final WebTarget usersTarget = appTarget.path("usuarios");
         
 		miVentana.panelCentralCaratulas.borrarPanel();
         for (VideoJuego juego : u.getBiblioteca().getListaJuegos()) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca(), estamosEnHome));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
             
             
         }
@@ -139,7 +139,7 @@ final WebTarget usersTarget = appTarget.path("usuarios");
 		System.out.println("Numero total de juegos encontrador:" + buscador.size());
 		
         for (VideoJuego juego : buscador) {
-            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca(), estamosEnHome));
+            miVentana.panelCentralCaratulas.anyadirCaratula(juego.getJPanelVideojuego(u.getBiblioteca()));
         }
         
         System.out.println("Añadiendo Juegos al panel");
