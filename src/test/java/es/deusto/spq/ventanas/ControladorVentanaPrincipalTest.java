@@ -20,7 +20,7 @@ public class ControladorVentanaPrincipalTest {
 	VentanaInicioSesion vs; 
 	
 	VentanaRegister vr; 
-	
+	ControladorVentanaPrincipal cvp;
 	private Usuario user = Mockito.mock(Usuario.class);	
 	
     @Before                                         
@@ -30,64 +30,29 @@ public class ControladorVentanaPrincipalTest {
     	
     	vs = new VentanaInicioSesion(); 
     	
-    	vr = new VentanaRegister(); 
+    	vr = new VentanaRegister();
+    	cvp = new ControladorVentanaPrincipal(v, user);
 
-    }
-	
+    }	
 	@Test
 	public void testIsCarga() { //ASIER 
-
-		
+		cvp.setCarga(true);
+		assertEquals(true, cvp.isCarga());
+		cvp.setCarga(false);
+		assertEquals(false, cvp.isCarga());
 	}
-	
-	@Test
-	public void testSetCarga() { //ASIER 
-
-		
-	}
-	
 	@Test
 	public void testIsEstamosEnHome() { //ASIER 
-
-		
+		cvp.setEstamosEnHome(true);
+		assertEquals(true, cvp.isEstamosEnHome());
+		cvp.setEstamosEnHome(false);
+		assertEquals(false, cvp.isEstamosEnHome());
 	}
-	
-	@Test
-	public void testSetEstamosEnHome() { //ASIER 
-
-		
-	}
-	
 	@Test
 	public void testIsEstamosEnBiblio() { //ASIER 
-
-		
+		cvp.setEstamosEnBiblio(true);
+		assertEquals(true,cvp.isEstamosEnBiblio());
+		cvp.setEstamosEnBiblio(false);
+		assertEquals(false,cvp.isEstamosEnBiblio());
 	}
-	
-	@Test
-	public void testSetEstamosEnBiblio() {  //ASIER 
-
-		
-	}    
-	
-	@Test
-	public void testMostrarHomeVideojuegos() {  //JAVI 
-		
-		
-	}
-	
-	@Test
-	public void testMostrarBibliotecaVideojuegos() { //JAVI 
-		
-
-		
-	}
-	
-	@Test
-	public void testAccionBotonBuscar() {  //ASIER 
-
-		
-	}
-	
-
 }
