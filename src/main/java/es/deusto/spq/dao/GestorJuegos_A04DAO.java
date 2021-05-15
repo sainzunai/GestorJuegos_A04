@@ -64,16 +64,18 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		 VideoJuego videojuego=null;
 		 
 			System.out.println("Obteniendo el Videojuego con id: "+id);
-	        Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
-	        q.setUnique(true);
-	        q.setFilter("videojuego_id == idParam");
-	        q.declareParameters("String idParam");
+			Query<VideoJuego> q = pm.newQuery(VideoJuego.class);
 
 	        try {
+	        	
+		        q.setUnique(true);
+		        q.setFilter("videojuego_id == idParam");
+		        q.declareParameters("String idParam");
 	        	videojuego = (VideoJuego) q.execute(id);
 	           
 	        } finally {
 	            q.closeAll();
+	            
 	            pm.close();
 	        }
 
@@ -157,7 +159,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 	}
 	}
-	
 	/**
 	 * Descripción del método
 	 * Se elimina todo de la base de datos
