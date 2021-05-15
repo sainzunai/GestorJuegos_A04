@@ -93,7 +93,7 @@ public class Biblioteca implements Serializable{
 		
 		for(int i = 0; i < listaJuegos.size(); i ++) {
 			
-			if (listaJuegos.get(i).getId() == v.getId()) {
+			if (listaJuegos.get(i).getId().equals(v.getId())) {
 				
 				add = false; 
 				

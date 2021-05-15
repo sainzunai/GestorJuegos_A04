@@ -127,7 +127,7 @@ public class VideoJuego implements Serializable{
 	
 	public double calculoNotaMedia() {
 		
-		return sumaNotas / numeroNotas; 
+		return (double)sumaNotas / numeroNotas; 
 	}
 	
 	public void addNota(int nota) {
@@ -200,7 +200,7 @@ public class VideoJuego implements Serializable{
 	
 	public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
 
-	  if(caratula == " ") {
+	  if(caratula.equals(" ")) {
 		  j = new JPanelVideojuego(this, 1, b); 		  
 	  }
 	  
