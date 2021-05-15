@@ -16,38 +16,34 @@ import es.deusto.spq.ventanas.JPanelVideojuego;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.Extension;
 
-
 @PersistenceCapable
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
-public class VideoJuego implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
-	@PrimaryKey 
-	private String videojuego_id; 
-	
-	private String nombre;
-	
-	private String compania;
-	
-	private String caratula; 
-	
-	private int sumaNotas; 
-	
-	private int numeroNotas; 
-	
-	private int edadRecomendada; 
-	@Persistent
-	private Plataforma plataforma; 
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
+public class VideoJuego implements Serializable {
 
-	//Hace falta un array de Reviews y otro de Comentarios! OJO BD. 
-	@Persistent(defaultFetchGroup="true")
-    @Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="biblioteca_id ASC"))
-    private List<Biblioteca> biblioteca= new ArrayList<>();
-    
-    
+	private static final long serialVersionUID = 1L;
+
+	@PrimaryKey
+	private String videojuego_id;
+
+	private String nombre;
+
+	private String compania;
+
+	private String caratula;
+
+	private int sumaNotas;
+
+	private int numeroNotas;
+
+	private int edadRecomendada;
+	@Persistent
+	private Plataforma plataforma;
+
+	@Persistent(defaultFetchGroup = "true")
+	@Order(extensions = @Extension(vendorName = "datanucleus", key = "list-ordering", value = "biblioteca_id ASC"))
+	private List<Biblioteca> biblioteca = new ArrayList<>();
+
 	JPanelVideojuego j;
-	
 
 	@Override
 	public int hashCode() {
@@ -76,68 +72,66 @@ public class VideoJuego implements Serializable{
 	/**
 	 * Prueba para ver si la documentacion funciona
 	 */
-	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma, String caratula ) {
-		
-		
-		this.nombre = nombre; 
-		
-		this.videojuego_id = id; 
-		
-		this.compania = company; 
-		
-		this.edadRecomendada = edadRecomendada; 
-		
-		this.plataforma=plataforma;
-		
-		this.caratula = caratula; 
-		
+	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma,
+			String caratula) {
+
+		this.nombre = nombre;
+
+		this.videojuego_id = id;
+
+		this.compania = company;
+
+		this.edadRecomendada = edadRecomendada;
+
+		this.plataforma = plataforma;
+
+		this.caratula = caratula;
+
 	}
-	
-	
+
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma) {
-		
-		
-		this.nombre = nombre; 
-		
-		this.videojuego_id = id; 
-		
-		this.compania = company; 
-		
-		this.edadRecomendada = edadRecomendada; 
-		
-		this.plataforma=plataforma;
-		
-		this.caratula = " "; 
-		
+
+		this.nombre = nombre;
+
+		this.videojuego_id = id;
+
+		this.compania = company;
+
+		this.edadRecomendada = edadRecomendada;
+
+		this.plataforma = plataforma;
+
+		this.caratula = " ";
+
 	}
-	
+
 	public VideoJuego() {
-				
-		this.nombre = ""; 
-		
-		this.videojuego_id = ""; 
-		
-		this.compania = ""; 
-		
+
+		this.nombre = "";
+
+		this.videojuego_id = "";
+
+		this.compania = "";
+
 		this.edadRecomendada = 0;
-		
-		this.caratula = " "; 
-			
+
+		this.caratula = " ";
+
 	}
-	
+
 	public double calculoNotaMedia() {
-		
-		return (double)sumaNotas / numeroNotas; 
+
+		return (double) sumaNotas / numeroNotas;
 	}
-	
+
 	public void addNota(int nota) {
-		
+
 		sumaNotas += nota;
-		
-		numeroNotas ++; 
-		
+
+		numeroNotas++;
+
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -145,15 +139,15 @@ public class VideoJuego implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public String getId() {
 		return videojuego_id;
 	}
 
 	public void setId(String id) {
 		this.videojuego_id = id;
-	} 
-	
+	}
+
 	public String getCompania() {
 		return compania;
 	}
@@ -177,7 +171,7 @@ public class VideoJuego implements Serializable{
 	public void setCaratula(String caratula) {
 		this.caratula = caratula;
 	}
-	
+
 	public void addBiblioteca(Biblioteca b) {
 		biblioteca.add(b);
 	}
@@ -193,23 +187,20 @@ public class VideoJuego implements Serializable{
 	public int getNumberOfBiblioteca() {
 		return biblioteca.size();
 	}
+
 	public void setBiblioteca(List<Biblioteca> b) {
-		biblioteca=b;
+		biblioteca = b;
 	}
-	
-	
+
 	public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
 
-	  if(caratula.equals(" ")) {
-		  j = new JPanelVideojuego(this, 1, b); 		  
-	  }
-	  
-	  else {	  
-		  j = new JPanelVideojuego(this, b);	  
-	  }
-	  	  
-	  return j;
-	  
+		if (caratula.equals(" ")) {
+			j = new JPanelVideojuego(this, 1, b);
+		}
+		else {
+			j = new JPanelVideojuego(this, b);
+		}
+		return j;
 	}
 
 	public int getSumaNotas() {
@@ -227,5 +218,5 @@ public class VideoJuego implements Serializable{
 	public void setNumeroNotas(int numeroNotas) {
 		this.numeroNotas = numeroNotas;
 	}
-	 
+
 }

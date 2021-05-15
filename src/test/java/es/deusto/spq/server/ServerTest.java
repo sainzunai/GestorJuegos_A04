@@ -21,8 +21,9 @@ import es.deusto.spq.dao.GestorJuegos_A04DAO;
 
 @Category(IntegrationTest.class)
 public class ServerTest {
-	
-	@Rule public ContiPerfRule rule = new ContiPerfRule();
+
+	@Rule
+	public ContiPerfRule rule = new ContiPerfRule();
 	static UsuarioResource usr;
 	static VideojuegosResource vr;
 	static Usuario user;
@@ -32,63 +33,65 @@ public class ServerTest {
 	static Biblioteca biblio1;
 	static GestorJuegos_A04DAO dao;
 	static Plataforma p1;
+
 	@BeforeClass
 	public static void setup() {
 		dao = new GestorJuegos_A04DAO();
 		usr = new UsuarioResource();
 		vr = new VideojuegosResource();
-		user = new Usuario("test@gmail.com","Test", "test");
+		user = new Usuario("test@gmail.com", "Test", "test");
 		biblio = new Biblioteca();
 		biblio1 = new Biblioteca();
 		biblio.setUser(user);
 		user.setBiblioteca(biblio);
 		dao.introducirObjeto(user);
-		
-		
+
 		p1 = new Plataforma("PS4", "1");
-		v1=new VideoJuego("Battlefield V", "1", "EA", 18, p1);
+		v1 = new VideoJuego("Battlefield V", "1", "EA", 18, p1);
 	}
+
 	@AfterClass
 	public static void setermino() {
-		
+
 		dao.deleteUsuario(test);
-		
+
 		dao.deleteUsuario(user);
 	}
+
 	@Before
 	public void setit() {
 		test = new Usuario("test@com", "12345", "test1");
 		biblio1.setUser(test);
 		test.setBiblioteca(biblio1);
 		dao.introducirObjeto(test);
-		test=dao.getUsuario("test@com");
+		test = dao.getUsuario("test@com");
 	}
+
 	@After
 	public void finalizar() {
 		dao.deleteUsuario(test);
-		
+
 	}
-	
-	
-	
+
 	@Test
 	public void testaddUser() {
 		usr.addUser(user);
 		user = dao.getUsuario(user.getGmail());
 	}
-	
+
 	@Test
 	public void testUpdateUser() {
-		
+
 		test.getBiblioteca().addJuego(v1);
 		usr.updateUser(test.getBiblioteca());
 	}
-	
+
 	@PerfTest(invocations = 500, threads = 20)
 	@Test
 	public void testGetAllVideojuego() {
 		assertEquals(10, vr.getVideojuegos().size());
 	}
+
 	@PerfTest(invocations = 500, threads = 20)
 	@Test
 	public void testGetUsuario() {
