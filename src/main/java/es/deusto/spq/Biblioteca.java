@@ -17,6 +17,14 @@ import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+/**
+ * @author javil
+ *
+ */
+/**
+ * @author javil
+ *
+ */
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Biblioteca implements Serializable{
@@ -26,10 +34,6 @@ public class Biblioteca implements Serializable{
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private String biblioteca_id; 
 	
-	//Que van a ir directamente a un USUARIO; 
-
-
-
 	@Column(name="gmail")
     Usuario user;
 	
@@ -66,6 +70,10 @@ public class Biblioteca implements Serializable{
 		return true;
 	}
 
+	/**
+	 * Biblioteca con una lista de juegos 
+	 * @param listaJuegos lista de VideoJuego que está en la Biblioteca
+	 */
 	public Biblioteca(List<VideoJuego> listaJuegos ) {
 		
 		this.user = null;  
@@ -74,19 +82,31 @@ public class Biblioteca implements Serializable{
 		
 	}
 	
-	public Biblioteca() {  //Creamos solo con un id; 
+	/**
+	 * Biblioteca con una lista de juegos vacía y sólo id
+	 */
+	public Biblioteca() { 
 		
 		this.user = null; 
 		this.listaJuegos = new ArrayList<>(); 
 		
 	}
 	
-	public int numeroDeJuegos() {  //Devuelve el numero de juegos en la biblioteca. 
+	/**
+	 * Devuelve el numero de juegos en la Biblioteca
+	 * @return tamanyo de la lista de juegos de la Biblioteca
+	 */
+	public int numeroDeJuegos() {   
 		
 		return listaJuegos.size(); 
 		
 	}
 	
+	/**
+	 * Anyade un objeto VideoJuego a la lista de la Biblioteca
+	 * Comprueba si el VideoJuego esta duplicado o no antes de meterlo
+	 * @param v objeto VideoJuego a introducir
+	 */
 	public void addJuego(VideoJuego v) {
 		
 		boolean add = true; 
@@ -107,30 +127,60 @@ public class Biblioteca implements Serializable{
 		}
 	}
 	
+	/**
+	 * Elimina un VideoJuego de la lista de la Biblioteca
+	 * @param v objeto VideoJuego a eliminar
+	 */
 	public void remJuego(VideoJuego v) {
 		
 		listaJuegos.remove(v); 
 		
 	}
+	
+	/**
+	 * Devuelve la id de la Biblioteca
+	 * @return String id de la Biblioteca
+	 */
 	public String getId() {
 		return biblioteca_id;
 	}
 
+	/**
+	 * Establece un nuevo id para la Biblioteca
+	 * @param id String nuevo id
+	 */
 	public void setId(String id) {
 		this.biblioteca_id = id;
 	}
 
+	/**
+	 * Devuelve la lista de juegos de la Biblioteca
+	 * @return List de VideoJuegos de la Biblioteca
+	 */
 	public List<VideoJuego> getListaJuegos() {
 		return listaJuegos;
 	}
 
+	/**
+	 * Establece una nueva lista de juegos para la Biblioteca
+	 * @param listaJuegos List de VideoJuegos nuevo
+	 */
 	public void setListaJuegos(List<VideoJuego> listaJuegos) {
 		this.listaJuegos = listaJuegos;
 	}
+	
+	/**
+	 * Devuelve el usuario de la Biblioteca
+	 * @return objeto User de la Biblioteca
+	 */
 	public Usuario getUser() {
 		return user;
 	}
 
+	/**
+	 * Establece el usuario para la Biblioteca
+	 * @param user objeto User para establecer en la Biblioteca
+	 */
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
