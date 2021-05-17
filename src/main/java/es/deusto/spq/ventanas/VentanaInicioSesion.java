@@ -142,20 +142,20 @@ public class VentanaInicioSesion extends JFrame{
 				u = usernameTarget.request(MediaType.APPLICATION_JSON).get(gtUsu);
 				if(u!= null) {
 					System.out.println("usuario correcto: "+u);
-					//System.out.println("biblioteca correcta: "+u.getBiblioteca().getId());
+					
 					VentanaPrincipal v = new VentanaPrincipal(u);//creacion de la ventana principal
 					v.setVisible(true);
 					dispose();
 
 				}
 				else {
-//					System.err.println("Credenciales incorrectas :(");
+				
 					JOptionPane.showMessageDialog( ventana, "Credenciales incorrectas :(");
 					
 					
 				}
 				
-//				dispose();
+
 
 			}
 
@@ -191,7 +191,7 @@ public class VentanaInicioSesion extends JFrame{
 
 			@Override
 			public void windowStateChanged(WindowEvent e) {
-				// TODO Auto-generated method stub
+				
 
 			}
 		});

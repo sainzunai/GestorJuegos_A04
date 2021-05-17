@@ -48,8 +48,8 @@ public class VentanaRegisterTest {
 		v.tfNombre.setText("esto deberia borrarse");
 		v.taAnyadir.setText("y esto tambien");
 		v.resetCampos();
-		assertEquals(v.tfNombre.getText(), "");
-		assertEquals(v.taAnyadir.getText(), "");
+		assertEquals("", v.tfNombre.getText());
+		assertEquals("", v.taAnyadir.getText());
 
 	}
 
@@ -66,7 +66,7 @@ public class VentanaRegisterTest {
 //		v.cbAnyo.setSelectedIndex(0);
 //		v.resadd.setText("");
 		v.crearUsuario();
-		assertEquals(v.newUser.getNombre(), "Unai");
+		assertEquals("Unai", v.newUser.getNombre());
 	}
 
 	/**

@@ -7,12 +7,10 @@ import java.util.List;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.Extension;
-import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Join;
-import javax.jdo.annotations.Key;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -40,7 +38,7 @@ public class Biblioteca implements Serializable{
     @Join(column="biblioteca_id")
     @Element(column="videojuego_id")
 	@Order(extensions=@Extension(vendorName="datanucleus", key="list-ordering", value="videojuego_id ASC"))
-	private List<VideoJuego> listaJuegos= new ArrayList<>();  //arraylist de videojeugos. que van a ir directamente a un USUARIO; 
+	private List<VideoJuego> listaJuegos= new ArrayList<>();   
 	
 	@Override
 	public int hashCode() {

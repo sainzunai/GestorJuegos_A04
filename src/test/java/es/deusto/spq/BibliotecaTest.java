@@ -155,7 +155,8 @@ public class BibliotecaTest {
 		b.setId(null);
 		Biblioteca b1 = new Biblioteca();
 		b1.setId(null);
-		assertTrue(b.equals(b1));
+		assertEquals(true, b.equals(b1));
+		
 
 	}
 

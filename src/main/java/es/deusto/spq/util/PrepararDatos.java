@@ -1,6 +1,5 @@
 package es.deusto.spq.util;
 
-import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Plataforma;
 import es.deusto.spq.VideoJuego;
 import es.deusto.spq.dao.GestorJuegos_A04DAO;

@@ -1,7 +1,5 @@
 package es.deusto.spq.server;
 
-import java.util.List;
-
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -74,7 +72,7 @@ public class UsuarioResource {
 	 try {
 		 dao.introducirObjeto(user);
 	} catch (Exception e) {
-		// TODO: handle exception
+		
 	}
 	
 	}

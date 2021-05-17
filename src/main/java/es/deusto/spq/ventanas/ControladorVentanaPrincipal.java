@@ -2,9 +2,7 @@ package es.deusto.spq.ventanas;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import es.deusto.spq.Biblioteca;
-import es.deusto.spq.Plataforma;
 import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import jakarta.ws.rs.client.Client;
@@ -19,7 +17,7 @@ VentanaPrincipal miVentana;
 
 //----------------------------------------------------------------------
 //--------------CONEXION AL SERVIDOR-----------------------------------
-final long serialVersionUID = 1L;
+static final long serialVersionUID = 1L;
 Client client = ClientBuilder.newClient();
 final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 final WebTarget videoJuegosTarget = appTarget.path("videojuegos");

@@ -50,7 +50,7 @@ public class VideoJuegoTest {
 
 		v.setCaratula("foto_caratula.png");
 
-		assertEquals(v.getCaratula(), "foto_caratula.png");
+		assertEquals("foto_caratula.png", v.getCaratula());
 
 	}
 
@@ -202,7 +202,7 @@ public class VideoJuegoTest {
 
 		v.addNota(10);
 		v.addNota(3);
-		assertEquals(v.calculoNotaMedia(), 6.5, 1.0);
+		assertEquals(6.5,v.calculoNotaMedia(), 1.0);
 	}
 
 	@Test
@@ -228,7 +228,7 @@ public class VideoJuegoTest {
 
 		v.setSumaNotas(0);
 
-		assertEquals(v.getSumaNotas(), 0);
+		assertEquals( 0,v.getSumaNotas());
 
 	}
 
@@ -247,26 +247,26 @@ public class VideoJuegoTest {
 		VideoJuego v2 = new VideoJuego("Fifa21", "F21", "Ubisoft", 3, null);
 
 		VideoJuego v3 = new VideoJuego("a21", "Fss21", "Ubisoft", 3, null);
-
-		assertTrue(v.equals(v));
-
-		assertFalse(v.equals(null));
-
-		assertFalse(v.equals(b));
-
-		assertTrue(v.equals(v2));
-
-		assertFalse(v.equals(v3));
+		
+		assertEquals(v, v);
+		
+		assertNotEquals(v, null);
+		
+		assertNotEquals(v, b);
+		
+		assertEquals(v, v2);
+		
+		assertNotEquals(v, v3);
 
 		v2.setId(null);
-
-		assertFalse(v.equals(v2));
+		
+		assertNotEquals(v, v2);
 
 		v.setId(null);
+		
+		assertNotEquals(v, v3);
 
-		assertFalse(v.equals(v3));
-
-		assertTrue(v.equals(v2));
+		assertEquals(v, v2);
 
 	}
 
