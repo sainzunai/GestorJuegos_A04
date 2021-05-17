@@ -29,16 +29,13 @@ import javax.jdo.annotations.PrimaryKey;
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Biblioteca implements Serializable{
 
-	
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private String biblioteca_id; 
-	
+
 	@Column(name="gmail")
     Usuario user;
 	
-	
-
 	@Persistent(table="Biblioteca_VideoJuego",defaultFetchGroup="true",dependentElement="true")
     @Join(column="biblioteca_id")
     @Element(column="videojuego_id")
@@ -78,8 +75,7 @@ public class Biblioteca implements Serializable{
 		
 		this.user = null;  
 		this.listaJuegos = listaJuegos;  
-		
-		
+
 	}
 	
 	/**
@@ -108,22 +104,22 @@ public class Biblioteca implements Serializable{
 	 * @param v objeto VideoJuego a introducir
 	 */
 	public void addJuego(VideoJuego v) {
-		
-		boolean add = true; 
-		
-		for(int i = 0; i < listaJuegos.size(); i ++) {
-			
-			if (listaJuegos.get(i).getId() == v.getId()) {
-				
-				add = false; 
-				
-			} 
-			
+
+		boolean add = true;
+
+		for (int i = 0; i < listaJuegos.size(); i++) {
+
+			if (listaJuegos.get(i).getId().equals(v.getId())) {
+
+				add = false;
+
+			}
+
 		}
-		
-		if(add == true) {
-			listaJuegos.add(v); 
-		
+
+		if (add == true) {
+			listaJuegos.add(v);
+
 		}
 	}
 	
