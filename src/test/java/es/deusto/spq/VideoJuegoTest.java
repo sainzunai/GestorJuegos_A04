@@ -187,13 +187,13 @@ public class VideoJuegoTest {
 	@Test
 	public void testGetJpanelVideojuegos() {
 
-		JPanelVideojuego jp1 = new JPanelVideojuego(v5, b);
+		JPanelVideojuego jp1 = new JPanelVideojuego(v5, b, true);
 
-		assertEquals(jp1.cambioConstructor, v5.getJPanelVideojuego(b).cambioConstructor);
+		assertEquals(jp1.cambioConstructor, v5.getJPanelVideojuego(b, true).cambioConstructor);
 
-		JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b);
+		JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b, true);
 
-		assertEquals(jp2.cambioConstructor, v3.getJPanelVideojuego(b).cambioConstructor);
+		assertEquals(jp2.cambioConstructor, v3.getJPanelVideojuego(b, true).cambioConstructor);
 
 	}
 

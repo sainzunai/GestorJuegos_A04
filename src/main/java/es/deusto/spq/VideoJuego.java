@@ -224,13 +224,13 @@ public class VideoJuego implements Serializable {
 		biblioteca = b;
 	}
 
-	public JPanelVideojuego getJPanelVideojuego(Biblioteca b) {
+	public JPanelVideojuego getJPanelVideojuego(Biblioteca b , boolean stamosHome) {
 
 		if (caratula.equals(" ")) {
-			j = new JPanelVideojuego(this, 1, b);
+			j = new JPanelVideojuego(this, 1, b, stamosHome);
 		}
 		else {
-			j = new JPanelVideojuego(this, b);
+			j = new JPanelVideojuego(this, b, stamosHome);
 		}
 		return j;
 	}

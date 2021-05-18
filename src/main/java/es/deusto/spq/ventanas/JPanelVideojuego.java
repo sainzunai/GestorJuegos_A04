@@ -23,7 +23,7 @@ public class JPanelVideojuego extends JPanel {
 	
 	public int cambioConstructor; 
 
-	public JPanelVideojuego(final VideoJuego v, final Biblioteca b) {
+	public JPanelVideojuego(final VideoJuego v, final Biblioteca b, final boolean stamosHome) {
 		this.cambioConstructor = 0; 
 		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
 		this.setLayout(new BorderLayout());
@@ -45,7 +45,7 @@ public class JPanelVideojuego extends JPanel {
 		});
 	}
 
-	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b) {
+	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b, final boolean stamosHome) {
 		this.cambioConstructor = cambioConstructor; 
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(13 * 20, 15 * 20));
@@ -78,7 +78,7 @@ public class JPanelVideojuego extends JPanel {
 		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
 		Biblioteca b = new Biblioteca(); 
-		JPanelVideojuego p = v.getJPanelVideojuego(b); 
+		JPanelVideojuego p = v.getJPanelVideojuego(b, true); 
 		ventana.add(p);
 		ventana.revalidate();
 
