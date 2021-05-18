@@ -29,7 +29,7 @@ public class VentanaInicioSesion extends JFrame{
 	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
 	final WebTarget usersTarget = appTarget.path("usuarios");
 	JFrame ventana;
-	
+
 	public VentanaInicioSesion() {
 
 		/////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ public class VentanaInicioSesion extends JFrame{
 		////////////////////////////////////////////////
 
 		ventana = this;
-		
+
 		JPanel pPrincipal = new JPanel();
 		JPanel pUsuario = new JPanel();
 		JPanel pContrasenya = new JPanel();
@@ -90,13 +90,13 @@ public class VentanaInicioSesion extends JFrame{
 		pEntrarMini.add(lEntrar);
 		pNuevoUserMini.add(lNuevoUsuario);
 
-	
+
 		pNuevoUserMini.addMouseListener(new MouseAdapter() {
 
-			 @Override
-			 public void mouseReleased(MouseEvent e) {
-			 // abrir panel creacion de usuario
-			 }
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// abrir panel creacion de usuario
+			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -130,7 +130,7 @@ public class VentanaInicioSesion extends JFrame{
 		});
 
 		pEntrarMini.addMouseListener(new MouseAdapter() {
-			
+
 
 			@SuppressWarnings({ "unlikely-arg-type", "deprecation" })
 			@Override
@@ -142,19 +142,19 @@ public class VentanaInicioSesion extends JFrame{
 				u = usernameTarget.request(MediaType.APPLICATION_JSON).get(gtUsu);
 				if(u!= null) {
 					System.out.println("usuario correcto: "+u);
-					
+
 					VentanaPrincipal v = new VentanaPrincipal(u);//creacion de la ventana principal
 					v.setVisible(true);
 					dispose();
 
 				}
 				else {
-				
+
 					JOptionPane.showMessageDialog( ventana, "Credenciales incorrectas :(");
-					
-					
+
+
 				}
-				
+
 
 
 			}
@@ -191,14 +191,14 @@ public class VentanaInicioSesion extends JFrame{
 
 			@Override
 			public void windowStateChanged(WindowEvent e) {
-				
+
 
 			}
 		});
 
-	
 
-}
+
+	}
 	// ----------- TEST DE LA VENTANA -----------
 	public static void main(String[] args) {
 		VentanaInicioSesion v = new VentanaInicioSesion();

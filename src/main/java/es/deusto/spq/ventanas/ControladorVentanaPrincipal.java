@@ -13,28 +13,28 @@ import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 
 public class ControladorVentanaPrincipal {
-VentanaPrincipal miVentana;
+	VentanaPrincipal miVentana;
 
-//----------------------------------------------------------------------
-//--------------CONEXION AL SERVIDOR-----------------------------------
-static final long serialVersionUID = 1L;
-Client client = ClientBuilder.newClient();
-final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
-final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
-final WebTarget usersTarget = appTarget.path("usuarios");
-//----------------------------------------------------------------------
+	//----------------------------------------------------------------------
+	//--------------CONEXION AL SERVIDOR-----------------------------------
+	static final long serialVersionUID = 1L;
+	Client client = ClientBuilder.newClient();
+	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");
+	final WebTarget videoJuegosTarget = appTarget.path("videojuegos");
+	final WebTarget usersTarget = appTarget.path("usuarios");
+	//----------------------------------------------------------------------
 
-	
+
 	private boolean carga = true; 
-	
+
 	private boolean estamosEnHome = false;
-	
+
 	private boolean estamosEnBiblio = false;
-	
+
 	private Usuario u; 
 
 	private ArrayList<VideoJuego> v = new ArrayList<>(); 
-	
+
 	public ControladorVentanaPrincipal(VentanaPrincipal miVentana, Usuario u){
 		this.miVentana = miVentana;	
 		this.u = u; 
@@ -93,12 +93,12 @@ final WebTarget usersTarget = appTarget.path("usuarios");
 		miVentana.panelCentralCaratulas.setVisible(true);
 
 	}
-	
+
 	public void accionCerrarVentana() {
 		System.out.println("ESTE ES MI ID FINAL:" + u.getBiblioteca().getId());
 		usersTarget.request(MediaType.APPLICATION_JSON).put(Entity.entity(u.getBiblioteca(), MediaType.APPLICATION_JSON));
 	}
-	
+
 	// Método para el filtrado de juegos al pulsar al boton Buscar
 	public void accionBotonBuscar(String textoBuscar) {
 		// Se genera una lista donde vamos a guardar todas las que coincidan con el

@@ -34,60 +34,60 @@ public class JLabelGraficoAjustado extends JLabel {
 		setImagen( nombreImagenObjeto ); // Cargamos el icono
 		setSize( anchura, altura );
 	}
-	
+
 	@Override
 	public void setSize(int anchura, int altura) {
-        if (anchura <= 0 && imagenObjeto!=null) anchura = imagenObjeto.getWidth();
-        if (altura <= 0 && imagenObjeto!=null) altura = imagenObjeto.getHeight();
+		if (anchura <= 0 && imagenObjeto!=null) anchura = imagenObjeto.getWidth();
+		if (altura <= 0 && imagenObjeto!=null) altura = imagenObjeto.getHeight();
 		anchuraObjeto = anchura;
 		alturaObjeto = altura;
-    	super.setSize( anchura, altura );
-    	setPreferredSize( new Dimension( anchura, altura ));
+		super.setSize( anchura, altura );
+		setPreferredSize( new Dimension( anchura, altura ));
 	}
-	
+
 	/** Cambia la imagen del objeto
 	 * @param nomImagenObjeto	Nombre fichero donde está la imagen del objeto. Puede ser también un nombre de recurso desde el paquete de esta clase.
 	 */
 	public void setImagen( String nomImagenObjeto ) {
 		File f = new File(nomImagenObjeto);
-        URL imgURL = null;
-        try {
-        	imgURL = f.toURI().toURL();
-    		if (!f.exists()) {
-    			imgURL = JLabelGraficoAjustado.class.getResource( nomImagenObjeto ).toURI().toURL();
-    		}
-        } catch (Exception e) {}  // Cualquier error de carga, la imagen se queda nula
-        if (imgURL == null) {
-        	imagenObjeto = null;
-        } else {
-        	try {  // guarda la imagen para dibujarla de forma escalada después
-    			imagenObjeto = ImageIO.read(imgURL);
-    		} catch (IOException e) {}  // Error al leer la imagen
-        }
-        if (imagenObjeto==null) {
+		URL imgURL = null;
+		try {
+			imgURL = f.toURI().toURL();
+			if (!f.exists()) {
+				imgURL = JLabelGraficoAjustado.class.getResource( nomImagenObjeto ).toURI().toURL();
+			}
+		} catch (Exception e) {}  // Cualquier error de carga, la imagen se queda nula
+		if (imgURL == null) {
+			imagenObjeto = null;
+		} else {
+			try {  // guarda la imagen para dibujarla de forma escalada después
+				imagenObjeto = ImageIO.read(imgURL);
+			} catch (IOException e) {}  // Error al leer la imagen
+		}
+		if (imagenObjeto==null) {
 			setOpaque( true );
 			setBackground( Color.red );
 			setForeground( Color.blue );
-	    	setBorder( BorderFactory.createLineBorder( Color.blue ));
-	    	setText( nomImagenObjeto );
-        }
-        repaint();
+			setBorder( BorderFactory.createLineBorder( Color.blue ));
+			setText( nomImagenObjeto );
+		}
+		repaint();
 	}
-	
+
 	/** Devuelve la anchura del rectángulo gráfico del objeto
 	 * @return	Anchura
 	 */
 	public int getAnchuraObjeto() {
 		return anchuraObjeto;
 	}
-	
+
 	/** Devuelve la altura del rectángulo gráfico del objeto
 	 * @return	Altura
 	 */
 	public int getAlturaObjeto() {
 		return alturaObjeto;
 	}
-	
+
 	/** Devuelve la rotación del objeto
 	 * @return	Rotación actual del objeto en radianes
 	 */
@@ -102,7 +102,7 @@ public class JLabelGraficoAjustado extends JLabel {
 		radsRotacion = rotacion;
 		repaint(); // Si no repintamos aquí Swing no sabe que ha cambiado el dibujo
 	}
-	
+
 	/** Devuelve la opacidad del objeto
 	 * @return	Opacidad del objeto (0.0f transparente a 1.0f opaco)
 	 */
@@ -126,7 +126,7 @@ public class JLabelGraficoAjustado extends JLabel {
 	public void setLocation( double x, double y ) {
 		setLocation( (int)Math.round(x), (int)Math.round(y) );
 	}
-	
+
 	// Dibuja este componente de una forma no habitual
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -154,7 +154,7 @@ public class JLabelGraficoAjustado extends JLabel {
 			g2.rotate( radsRotacion, getWidth()/2, getHeight()/2 );  // Incorporar al gráfico la rotación definida
 			// Transparencia
 			g2.setComposite(AlphaComposite.getInstance( AlphaComposite.SRC_OVER, opacidad ) ); // Incorporar la transparencia definida
-	        g2.drawImage(imagenObjeto, iniX, iniY, anc, alt, null);
+			g2.drawImage(imagenObjeto, iniX, iniY, anc, alt, null);
 		}
 	}
 
@@ -164,7 +164,7 @@ public class JLabelGraficoAjustado extends JLabel {
 		JFrame f = new JFrame( "Prueba JLabelGraficoAjustado" );
 		f.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		JLabelGraficoAjustado label = new JLabelGraficoAjustado( "coche.png", 100, 100 );
-			// TODO probar este 300, 300 con diferentes tamaños. Si x<=0 ajusta el ancho y si es y<=0 ajusta el alto
+		// TODO probar este 300, 300 con diferentes tamaños. Si x<=0 ajusta el ancho y si es y<=0 ajusta el alto
 		f.setSize( 600, 400 );
 		f.add( label, BorderLayout.CENTER );
 		f.setVisible( true );
@@ -178,5 +178,5 @@ public class JLabelGraficoAjustado extends JLabel {
 			try { Thread.sleep( 20 ); } catch (Exception e) {}  // Espera dos décimas entre rotación y rotación
 		}
 	}
-	
+
 }

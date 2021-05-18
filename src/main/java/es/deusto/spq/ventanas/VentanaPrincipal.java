@@ -155,17 +155,17 @@ public class VentanaPrincipal extends JFrame {
 
 			}
 		});
-		
+
 		this.addWindowListener(new WindowAdapter() {
-		
-			
+
+
 			@Override
 			public void windowClosed(WindowEvent arg0) {
 				//Al cerrar la ventana guardamos en Server
 				miControlador.accionCerrarVentana();
-				
+
 			}
-			
+
 		});
 	}
 
