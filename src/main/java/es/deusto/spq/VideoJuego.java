@@ -16,6 +16,10 @@ import es.deusto.spq.ventanas.JPanelVideojuego;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.Extension;
 
+/**
+ * @author javil
+ *
+ */
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class VideoJuego implements Serializable {
@@ -24,17 +28,11 @@ public class VideoJuego implements Serializable {
 
 	@PrimaryKey
 	private String videojuego_id;
-
 	private String nombre;
-
 	private String compania;
-
 	private String caratula;
-
 	private int sumaNotas;
-
 	private int numeroNotas;
-
 	private int edadRecomendada;
 	@Persistent
 	private Plataforma plataforma;
@@ -69,8 +67,16 @@ public class VideoJuego implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 	/**
-	 * Prueba para ver si la documentacion funciona
+	 * Objeto VideoJuego que define un juego en la Biblioteca
+	 * @param nombre String de nombre comun del juego
+	 * @param id String identificador del juego
+	 * @param company String nombre de la compania productora del juego
+	 * @param edadRecomendada Integer edad maxima recomendada
+	 * @param plataforma objeto Plataforma asignado al VideoJuego
+	 * @param caratula String path donde se ubica el jpg de la caratula
 	 */
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma,
 			String caratula) {
@@ -88,7 +94,15 @@ public class VideoJuego implements Serializable {
 		this.caratula = caratula;
 
 	}
-
+	
+	/**
+	 * Objeto VideoJuego que define un juego en la Biblioteca, sin cataula
+	 * @param nombre String de nombre comun del juego
+	 * @param id String identificador del juego
+	 * @param company company String nombre de la compania productora del juego
+	 * @param edadRecomendada Integer edad maxima recomendada
+	 * @param plataforma objeto Plataforma asignado al VideoJuego
+	 */
 	public VideoJuego(String nombre, String id, String company, int edadRecomendada, Plataforma plataforma) {
 
 		this.nombre = nombre;
@@ -105,6 +119,9 @@ public class VideoJuego implements Serializable {
 
 	}
 
+	/**
+	 * Objeto VideoJuego que define un juego en la Biblioteca, con todos los elemetos vacios
+	 */
 	public VideoJuego() {
 
 		this.nombre = "";
@@ -119,11 +136,19 @@ public class VideoJuego implements Serializable {
 
 	}
 
+	/**
+	 * Metodo para calcular la nota media del VideoJuego en base a las notas de Usuario
+	 * @return double nota media
+	 */
 	public double calculoNotaMedia() {
 
 		return (double) sumaNotas / numeroNotas;
 	}
 
+	/**
+	 * Suma la nota enviada por el Usuario al total de notas del VideoJuego
+	 * @param nota Integer nota introducida
+	 */
 	public void addNota(int nota) {
 
 		sumaNotas += nota;
@@ -132,10 +157,18 @@ public class VideoJuego implements Serializable {
 
 	}
 
+	/**
+	 * Devuelve el nombre comun del VideoJuego
+	 * @return Strimg nombre del juego
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Establece un nuevo nombre para el VideoJuego
+	 * @param nombre String nombre del juego
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
