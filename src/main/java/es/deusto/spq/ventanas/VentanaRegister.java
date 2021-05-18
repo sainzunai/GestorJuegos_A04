@@ -1,7 +1,6 @@
 package es.deusto.spq.ventanas;
 
 import javax.swing.*;
-
 import es.deusto.spq.Usuario;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -9,7 +8,7 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+
 
 import java.awt.*;
 import java.awt.event.*;

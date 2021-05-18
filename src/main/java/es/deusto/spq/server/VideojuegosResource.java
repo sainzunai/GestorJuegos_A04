@@ -24,9 +24,9 @@ public class VideojuegosResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<VideoJuego> getVideojuegos() {
 		
-		List<VideoJuego> videojuegos = dao.getAllVideojuegos();
 		
-		return videojuegos;
+		
+		return dao.getAllVideojuegos();
 	}
 	
 	public void setDao(IGestorJuegos_A04DAO dao) {

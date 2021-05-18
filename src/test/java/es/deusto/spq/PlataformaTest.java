@@ -29,24 +29,24 @@ public class PlataformaTest { // Si hay metodos nuevos habria que crear la logic
 
 	@Test
 	public void testGetUrlLogo() {
-		assertEquals(p1.getUrlLogo(), "Foto.png");
+		assertEquals("Foto.png", p1.getUrlLogo());
 
-		assertEquals(p2.getUrlLogo(), "");
+		assertEquals("", p2.getUrlLogo());
 
-		assertEquals(p3.getUrlLogo(), "");
+		assertEquals( "", p3.getUrlLogo());
 
 	}
 
 	@Test
 	public void testGetIdPlataforma() {
-		assertEquals(p2.getIdPlataforma(), "Ps4");
-		assertEquals(p3.getIdPlataforma(), "");
+		assertEquals("Ps4", p2.getIdPlataforma());
+		assertEquals("", p3.getIdPlataforma());
 
 	}
 
 	@Test
 	public void testGetNombrePlataforma() {
-		assertEquals(p3.getNombrePlataforma(), "");
+		assertEquals("", p3.getNombrePlataforma());
 	}
 
 	@Test
