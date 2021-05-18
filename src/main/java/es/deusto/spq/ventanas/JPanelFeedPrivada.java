@@ -10,6 +10,8 @@ import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 import es.deusto.spq.ventanas.recursos.StarRater;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -21,18 +23,33 @@ public class JPanelFeedPrivada extends JPanel{
 	 * @param u Usuario que llama a la ventana. Null si es prueba
 	 * @param v Videojuego del que se abre la feed. Null si es prueba
 	 */
-	public JPanelFeedPrivada(Usuario u, VideoJuego v) {
+	public JPanelFeedPrivada(Usuario u, final VideoJuego v) {
 		this.setBorder(new LineBorder(Color.black));
 		StarRater starRater = new StarRater(5, 3, 3);
 		starRater.setBounds(365, 245, 80, 16);
+		
+		final JPanelFeedPrivada jp = this; 
 		starRater.addStarListener(new StarRater.StarListener() {
 
+			boolean votadoPrimeraVez = true; 
 			public void handleSelection(int selection) {
 				System.out.println(selection);
+
+				if(votadoPrimeraVez) {
+
+					v.addNota(selection * 2);
+					System.out.println("Nuestro compadre ha votado con un:" + selection * 2);
+					votadoPrimeraVez = false; 
+				}else {
+
+					JOptionPane.showMessageDialog(jp, "Un solo voto por sesion");
+
+					System.out.println("ya estas avisado"); 
+
+				}
 			}
 		});
 		setLayout(null);
-
 		this.add(starRater);
 
 		JLabel lTitulo = new JLabel("Bienvenido " + u.getNombre() + " a tu feed privada de " + v.getNombre());
