@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 
 import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
-import es.deusto.spq.ventanas.recursos_test.StarRater;
+import es.deusto.spq.ventanas.recursos.StarRater;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
