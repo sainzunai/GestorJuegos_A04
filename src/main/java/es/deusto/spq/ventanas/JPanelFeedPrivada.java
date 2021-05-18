@@ -88,7 +88,7 @@ public class JPanelFeedPrivada extends JPanel{
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		f.getContentPane().add(new JPanelFeedPrivada(new Usuario(null, null, null), new VideoJuego("BF4", "", "Ubisoft", 18, null, null, "/imagenes/Battlefield.jpg")));
+		f.getContentPane().add(new JPanelFeedPrivada(new Usuario(null, null, null), new VideoJuego()));
 		f.setSize(1280, 720);
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
