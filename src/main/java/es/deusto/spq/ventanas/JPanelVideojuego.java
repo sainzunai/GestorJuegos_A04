@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import es.deusto.spq.Biblioteca;
+import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 
 public class JPanelVideojuego extends JPanel {
@@ -23,7 +26,7 @@ public class JPanelVideojuego extends JPanel {
 	
 	public int cambioConstructor; 
 
-	public JPanelVideojuego(final VideoJuego v, final Biblioteca b, final boolean stamosHome) {
+	public JPanelVideojuego(final VideoJuego v, final Biblioteca b, final boolean stamosHome,final Usuario u) {
 		this.cambioConstructor = 0; 
 		lImagen = new JLabelGraficoAjustado(v.getCaratula(), 13 * 20, 15 * 20);
 		this.setLayout(new BorderLayout());
@@ -43,9 +46,50 @@ public class JPanelVideojuego extends JPanel {
 
 			}
 		});
+		
+		lImagen.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(e.getClickCount() == 2) {
+					System.out.println("Doble click efectivo");
+					
+					System.out.println("Estamos en casa: "+ stamosHome);
+					
+					VentanaFeed vF = new VentanaFeed(v, u, stamosHome);
+				}
+				
+			}
+		});
 	}
 
-	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b, final boolean stamosHome) {
+	public JPanelVideojuego(final VideoJuego v, int cambioConstructor, final Biblioteca b, final boolean stamosHome, final Usuario u) {
 		this.cambioConstructor = cambioConstructor; 
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(13 * 20, 15 * 20));
@@ -58,6 +102,47 @@ public class JPanelVideojuego extends JPanel {
 		this.setPreferredSize(new Dimension(13 * 20, 15 * 20));
 		this.setBorder(new LineBorder(Color.black));
 		this.setBackground(Color.white);
+		
+		lImagen.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(e.getClickCount() == 2) {
+					System.out.println("Doble click efectivo");
+					
+					System.out.println("Estamos en casa: "+ stamosHome);
+					
+					VentanaFeed vF = new VentanaFeed(v, u, stamosHome);
+				}
+				
+			}
+		});
 
 		btn.addActionListener(new ActionListener() {
 
@@ -68,19 +153,19 @@ public class JPanelVideojuego extends JPanel {
 
 			}
 		});
+		
+		
 	}
 
-	public static void main(String[] args) {
-		JFrame ventana = new JFrame();
-		ventana.getContentPane().setLayout(new FlowLayout());
-		ventana.setVisible(true);
-		ventana.setSize(500, 500);
-		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		VideoJuego v = new VideoJuego("hola", "d", "sss", 10, null); 
-		Biblioteca b = new Biblioteca(); 
-		JPanelVideojuego p = v.getJPanelVideojuego(b, true); 
-		ventana.add(p);
-		ventana.revalidate();
-
-	}
+	/*
+	 * public static void main(String[] args) { JFrame ventana = new JFrame();
+	 * ventana.getContentPane().setLayout(new FlowLayout());
+	 * ventana.setVisible(true); ventana.setSize(500, 500);
+	 * ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); VideoJuego v = new
+	 * VideoJuego("hola", "d", "sss", 10, null); Biblioteca b = new Biblioteca();
+	 * JPanelVideojuego p = v.getJPanelVideojuego(b, true, ); ventana.add(p);
+	 * ventana.revalidate();
+	 * 
+	 * }
+	 */
 }

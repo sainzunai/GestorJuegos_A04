@@ -14,7 +14,7 @@ import java.awt.Color;
 
 public class VentanaFeed extends JFrame {
 
-	public VentanaFeed(VideoJuego v, Usuario u) {
+	public VentanaFeed(VideoJuego v, Usuario u, boolean stamosHome) {
 
 		/////////////////////////////////////////////////////
 		//creacion de panatalla y centrado de la pantalla //
@@ -79,7 +79,7 @@ public class VentanaFeed extends JFrame {
 		plat.setNombrePlataforma("PC");
 		VideoJuego v = new VideoJuego("Battlefield V", "111", "Ubisoft", 18, plat, "path");
 		Usuario u = new Usuario("", "", "Unaii");
-		VentanaFeed ventana = new VentanaFeed(v, u);
+		VentanaFeed ventana = new VentanaFeed(v, u, false);
 
 	}
 
