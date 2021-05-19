@@ -55,7 +55,10 @@ public class VentanaFeed extends JFrame {
 		/////////////////////////////////////////////////////////////////////////
 
 		//PARTE PUBLICA
-
+		JPanelFeedPublica pFeedP = new JPanelFeedPublica(u, v);
+		pPublica.setLayout(null);
+		pPublica.add(pFeedP);
+		pFeedP.setBounds(0,0,1000,1000);
 
 		//PARTE PRIVADA
 		JPanelFeedPrivada pFeedPriv = new JPanelFeedPrivada(u, v);
