@@ -86,4 +86,4 @@ Si el servidor ha sido iniciado correctamente se pueden obtener los datos de pru
 
     mvn exec:java -Pcliente
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=alert_status)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=alert_status)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=bugs)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=coverage)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)
