@@ -5,13 +5,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-
 import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
-import es.deusto.spq.ventanas.recursos.StarRater;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
