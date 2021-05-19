@@ -85,3 +85,5 @@ Si el servidor ha sido iniciado correctamente se pueden obtener los datos de pru
 **Inicio de la aplicación cliente**
 
     mvn exec:java -Pcliente
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=alert_status)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)
