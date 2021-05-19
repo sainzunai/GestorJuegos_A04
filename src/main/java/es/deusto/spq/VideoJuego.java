@@ -172,58 +172,118 @@ public class VideoJuego implements Serializable {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve el string identificador del VideoJuego
+	 * @return String id
+	 */
 	public String getId() {
 		return videojuego_id;
 	}
 
+	/**
+	 * Establece un nuevo identificador de VideoJuego
+	 * @param id String identificador
+	 */
 	public void setId(String id) {
 		this.videojuego_id = id;
 	}
 
+	/**
+	 * Devuelve el String nombre de compania
+	 * @return String compania
+	 */
 	public String getCompania() {
 		return compania;
 	}
 
+	/**
+	 * Establece un nuevo nombre de compania para el VideoJuego
+	 * @param compania String nombre compania
+	 */
 	public void setCompania(String compania) {
 		this.compania = compania;
 	}
 
+	/**
+	 * Devuelve el Integer edad recomendada
+	 * @return Integer edad recomendada
+	 */
 	public int getEdadRecomendada() {
 		return edadRecomendada;
 	}
-
+	
+	/**
+	 * Establece una nueva edad recomendada para el VideoJuego
+	 * @param edadRecomendada Integer edad maxima recomendada
+	 */
 	public void setEdadRecomendada(int edadRecomendada) {
 		this.edadRecomendada = edadRecomendada;
 	}
 
+	/**
+	 * Devuelve el path de la caratula del VideoJuego
+	 * @return String path de la caratula
+	 */ 
 	public String getCaratula() {
 		return caratula;
 	}
 
+	/**
+	 * Establece un nuevo path para la caratula
+	 * @param caratula String path caratula
+	 */
 	public void setCaratula(String caratula) {
 		this.caratula = caratula;
 	}
 
+	/**
+	 * Anade una Biblioteca a la lista de bibliotecas
+	 * @param b objeto Biblioteca a anadir
+	 */
 	public void addBiblioteca(Biblioteca b) {
 		biblioteca.add(b);
 	}
 
+	/**
+	 * Elimina una Biblioteca de la lista de bibliotecas
+	 * @param b objeto Bibloteca a eliminar
+	 */
 	public void removeBiblioteca(Biblioteca b) {
 		biblioteca.remove(b);
 	}
 
+	/**
+	 * Devuelve la lista de Biblioteca del juego
+	 * @return List de biblioteca
+	 */
 	public List<Biblioteca> getBiblioteca() {
 		return biblioteca;
 	}
 
+	/**
+	 * Devuelve el size de la lista de Biblioteca
+	 * @return Integer size de la lista
+	 */
 	public int getNumberOfBiblioteca() {
 		return biblioteca.size();
 	}
 
+	/**
+	 * Establece una nueva lista de Biblioteca
+	 * @param b List de Biblioteca a establecer
+	 */
 	public void setBiblioteca(List<Biblioteca> b) {
 		biblioteca = b;
 	}
 
+	/**
+	 * Devuelve el JPanelVideojuego asignado al VideoJuego, devuelve uno distinto 
+	 * dependiendo de si el VideoJuego tiene una caratula establecida o no 
+	 * @param b objeto Biblioteca para el panel
+	 * @param stamosHome boolean comprobacion home/biblioteca
+	 * @param u objeto Usuario dueno del panel
+	 * @return objeto JPanelVideojuego devuelto
+	 */
 	public JPanelVideojuego getJPanelVideojuego(Biblioteca b , boolean stamosHome, Usuario u) {
 
 		if (caratula.equals(" ")) {
@@ -235,18 +295,34 @@ public class VideoJuego implements Serializable {
 		return j;
 	}
 
+	/**
+	 * Devuelve el sumatorio de puntuaciones recibidas por un VideoJuego
+	 * @return Integer sumatorio de notas
+	 */
 	public int getSumaNotas() {
 		return sumaNotas;
 	}
 
+	/**
+	 * Establece un nuevo valor para el sumatorio de notas del VideoJuego
+	 * @param sumaNotas Integer valor del sumatorio
+	 */
 	public void setSumaNotas(int sumaNotas) {
 		this.sumaNotas = sumaNotas;
 	}
 
+	/**
+	 * Devuelve el numero de veces que un VideoJuego ha recibido notas
+	 * @return Integer numero total de notas 
+	 */
 	public int getNumeroNotas() {
 		return numeroNotas;
 	}
 
+	/**
+	 * Establece el valor para el numero total de notas 
+	 * @param numeroNotas Integer valor del nuevo numero de notas
+	 */
 	public void setNumeroNotas(int numeroNotas) {
 		this.numeroNotas = numeroNotas;
 	}
