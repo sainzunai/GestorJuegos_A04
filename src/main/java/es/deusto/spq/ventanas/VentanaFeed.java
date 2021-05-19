@@ -40,8 +40,15 @@ public class VentanaFeed extends JFrame {
 		pPrivada.setToolTipText("Feed Privada");
 		ImageIcon icon2 = createImageIcon("stich4.png",
 				"privado");
+		
+		if(stamosHome == false) {
+			
 		tabbedPane.addTab("Feed Privada", icon2, pPrivada, null);
+		
+		}
+		
 		setVisible(true);
+		
 
 		/////////////////////////////////////////////////////////////////////////
 		///_________________GESTION INDIVIDUAL DE PANELES_____________________///
