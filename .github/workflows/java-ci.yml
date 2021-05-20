@@ -37,6 +37,9 @@ jobs:
 
       - name: Install doxygen
         run: sudo apt-get install -y doxygen
+        
+      - name: Install graphViz
+        run: sudo apt-get install -y graphviz
 
       - name: Generate documentation
         run: mvn doxygen:report
