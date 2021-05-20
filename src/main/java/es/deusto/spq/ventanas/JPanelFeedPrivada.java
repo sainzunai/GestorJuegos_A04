@@ -1,6 +1,7 @@
 package es.deusto.spq.ventanas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
@@ -27,7 +29,7 @@ public class JPanelFeedPrivada extends JPanel{
 		this.setBorder(new LineBorder(Color.black));
 		StarRater starRater = new StarRater(5, 3, 3);
 		starRater.setBounds(365, 245, 80, 16);
-		
+
 		final JPanelFeedPrivada jp = this; 
 		starRater.addStarListener(new StarRater.StarListener() {
 
@@ -40,7 +42,7 @@ public class JPanelFeedPrivada extends JPanel{
 					v.addNota(selection * 2);
 					System.out.println("Nuestro compadre ha votado con un:" + selection * 2);
 					votadoPrimeraVez = false; 
-					
+
 					JOptionPane.showMessageDialog(jp, "Acbas de votar con un: " + selection * 2);
 				}else {
 
@@ -97,8 +99,15 @@ public class JPanelFeedPrivada extends JPanel{
 		add(lblNewLabel_1_3);
 
 		JPanel pNovedades = new JPanel();
-		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Mis ultimas novedades", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Mis comentarios sobre el juego: PROXIMAMENTE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		pNovedades.setBounds(531, 107, 448, 325);
+
+		JTextField jp2 = new JTextField(); 
+
+		jp2.setBounds(535, 108, 440, 320);
+
+		jp2.setPreferredSize(new Dimension(350, 250));
+		pNovedades.add(jp2); 
 		add(pNovedades);
 
 		//		}

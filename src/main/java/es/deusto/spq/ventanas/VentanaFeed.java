@@ -22,8 +22,10 @@ public class VentanaFeed extends JFrame {
 
 		setTitle("Comunidad de " + v.getNombre());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(1280, 720);
+		setSize(1020, 720);
 		setLocationRelativeTo(null);
+
+		setResizable(false);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -40,15 +42,15 @@ public class VentanaFeed extends JFrame {
 		pPrivada.setToolTipText("Feed Privada");
 		ImageIcon icon2 = createImageIcon("stich4.png",
 				"privado");
-		
+
 		if(stamosHome == false) {
-			
-		tabbedPane.addTab("Feed Privada", icon2, pPrivada, null);
-		
+
+			tabbedPane.addTab("Feed Privada", icon2, pPrivada, null);
+
 		}
-		
+
 		setVisible(true);
-		
+
 
 		/////////////////////////////////////////////////////////////////////////
 		///_________________GESTION INDIVIDUAL DE PANELES_____________________///

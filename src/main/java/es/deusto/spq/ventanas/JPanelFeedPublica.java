@@ -21,10 +21,10 @@ public class JPanelFeedPublica extends JPanel{
 	 */
 	public JPanelFeedPublica(Usuario u, final VideoJuego v) {
 		this.setBorder(new LineBorder(Color.black));
-		
+
 		JLabel rater = new JLabel("media: " + v.calculoNotaMedia());
 		rater.setBounds(365, 245, 80, 16);
-		
+
 		final JPanelFeedPublica jp = this; 
 		setLayout(null);
 		this.add(rater);
@@ -67,19 +67,19 @@ public class JPanelFeedPublica extends JPanel{
 		lblNewLabel_1_2.setBounds(365, 199, 200, 13);
 		add(lblNewLabel_1_2);
 
-		JLabel lblNewLabel_1_3 = new JLabel("Mi puntuacion: ");
+		JLabel lblNewLabel_1_3 = new JLabel("Num votos: " + v.getNumeroNotas());
 		lblNewLabel_1_3.setBounds(365, 222, 200, 13);
 		add(lblNewLabel_1_3);
 
 		JPanel pNovedades = new JPanel();
-		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Juegos Similares:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Juegos de salida proximamente: :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		pNovedades.setBounds(531, 107, 448, 355);
-		
+
 		JLabelGraficoAjustado lCaratula1 = new JLabelGraficoAjustado(v.getCaratula(), 300, 500);
 		add(lCaratula1);
 		lCaratula1.setBounds(37, 108, 300, 335);
 		lCaratula1.setBorder(LineBorder.createBlackLineBorder());
-		
+
 		pNovedades.add(lCaratula1);
 		add(pNovedades);
 
