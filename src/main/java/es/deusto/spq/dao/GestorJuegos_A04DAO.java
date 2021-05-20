@@ -297,4 +297,27 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}
 		}
 	}
+
+	@Override
+	public void updateVideoJuego(VideoJuego videojuego) {
+		VideoJuego auxiliar = videojuego;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		Query<VideoJuego> query = pm.newQuery(VideoJuego.class);
+		query.extension("datanucleus.query.flushBeforeExecution", "true");
+		query.setUnique(true);
+		query.setFilter("videojuego_id == id1Param");
+		query.declareParameters("String id1Param");
+		try {
+			tx.begin();
+			videojuego = (VideoJuego) query.execute(videojuego.getId());
+			videojuego.setNumeroNotas(auxiliar.getNumeroNotas());
+			videojuego.setSumaNotas(auxiliar.getSumaNotas());
+			tx.commit();
+		} finally {
+			query.closeAll();
+			pm.close();
+		}
+		
+	}
 }
