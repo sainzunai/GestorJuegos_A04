@@ -171,8 +171,8 @@ public class VentanaPrincipal extends JFrame {
 
 	// ----------- TEST DE LA VENTANA -----------
 	public static void main(String[] args) {
-		//JFrame ventana = new VentanaPrincipal();
-		//ventana.setVisible(true);
+//		JFrame ventana = new VentanaPrincipal(null);
+//		ventana.setVisible(true);
 
 	}
 

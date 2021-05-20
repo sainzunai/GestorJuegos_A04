@@ -72,10 +72,10 @@ public class JPanelFeedPublica extends JPanel{
 		add(lblNewLabel_1_3);
 
 		JPanel pNovedades = new JPanel();
-		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Juegos de salida proximamente: :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		pNovedades.setBorder(new TitledBorder(new LineBorder(null), "Juegos de salida proximamente:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		pNovedades.setBounds(531, 107, 448, 355);
 
-		JLabelGraficoAjustado lCaratula1 = new JLabelGraficoAjustado(v.getCaratula(), 300, 500);
+		JLabelGraficoAjustado lCaratula1 = new JLabelGraficoAjustado("/images/proximamente.jpg", 300, 500);
 		add(lCaratula1);
 		lCaratula1.setBounds(37, 108, 300, 335);
 		lCaratula1.setBorder(LineBorder.createBlackLineBorder());

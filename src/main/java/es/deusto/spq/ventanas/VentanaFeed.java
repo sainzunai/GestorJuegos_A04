@@ -33,14 +33,14 @@ public class VentanaFeed extends JFrame {
 		JPanel pPublica = new JPanel();
 		pPublica.setBorder(new LineBorder(Color.ORANGE, 3));
 		pPublica.setToolTipText("Comunidad");
-		ImageIcon icon1 = createImageIcon("publico.png",
+		ImageIcon icon1 = createImageIcon("/publico.png",
 				"publico");
 		tabbedPane.addTab("Comunidad Publica", icon1, pPublica, null);
 
 		JPanel pPrivada = new JPanel();
 		pPrivada.setBorder(new LineBorder(Color.GREEN, 3));
 		pPrivada.setToolTipText("Feed Privada");
-		ImageIcon icon2 = createImageIcon("stich4.png",
+		ImageIcon icon2 = createImageIcon("/stich4.png",
 				"privado");
 
 		if(stamosHome == false) {
