@@ -170,6 +170,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 	 */
 	@Override
 	public void updateBiblioteca_Videojuego(Biblioteca biblioteca, VideoJuego videojuego) {
+		VideoJuego auxiliar = videojuego;
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		Query<Biblioteca> q = pm.newQuery(Biblioteca.class);
@@ -189,6 +190,8 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			videojuego = (VideoJuego) query.execute(videojuego.getId());
 			biblioteca.addJuego(videojuego);
 			videojuego.addBiblioteca(biblioteca);
+			videojuego.setNumeroNotas(auxiliar.getNumeroNotas());
+			videojuego.setSumaNotas(auxiliar.getSumaNotas());
 			tx.commit();
 		} finally {
 			q.closeAll();
