@@ -46,5 +46,5 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2.3.0
         with:
           build_dir: target/doxygen/html
-		env:
+	env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
