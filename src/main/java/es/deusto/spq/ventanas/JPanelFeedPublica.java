@@ -18,6 +18,7 @@ public class JPanelFeedPublica extends JPanel{
 	/**
 	 * @param u Usuario que llama a la ventana. Null si es prueba
 	 * @param v Videojuego del que se abre la feed. Null si es prueba
+	 * @author Unai
 	 */
 	public JPanelFeedPublica(Usuario u, final VideoJuego v) {
 		this.setBorder(new LineBorder(Color.black));
