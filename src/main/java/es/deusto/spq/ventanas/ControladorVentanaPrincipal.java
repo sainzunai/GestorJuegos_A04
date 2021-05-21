@@ -12,6 +12,11 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 
+/**
+ * Reune todas las funcionalidades de la vetnana principal.
+ * @author Unai
+ *
+ */
 public class ControladorVentanaPrincipal {
 	VentanaPrincipal miVentana;
 
@@ -40,6 +45,10 @@ public class ControladorVentanaPrincipal {
 		this.u = u; 
 	}
 
+	/**
+	 * Muestra fisicamente Home-> Videojuegos en la ventana principal.
+	 * Se muestran todos los videojuegos disponibles en esta seccion.
+	 */
 	public void mostrarHomeVideojuegos() {
 
 		estamosEnBiblio = false;
@@ -77,6 +86,10 @@ public class ControladorVentanaPrincipal {
 
 	}
 
+	/**
+	 * Muestra fisicamente Bibliotca-> Videojuegos en la ventana principal.
+	 * Se muestran unicamente los videojuegos que ha anyadido el usuario a la biblioteca.
+	 */
 	public void mostrarBibliotecaVideojuegos() {
 
 		estamosEnBiblio = true;
@@ -94,12 +107,19 @@ public class ControladorVentanaPrincipal {
 
 	}
 
+	/**
+	 * Al cerrar la ventana es necesario llamar a este metodo.
+	 * Actualiza los ultimos cambios en el servidor.
+	 */
 	public void accionCerrarVentana() {
 		System.out.println("ESTE ES MI ID FINAL:" + u.getBiblioteca().getId());
 		usersTarget.request(MediaType.APPLICATION_JSON).put(Entity.entity(u.getBiblioteca(), MediaType.APPLICATION_JSON));
 	}
 
-	// Método para el filtrado de juegos al pulsar al boton Buscar
+	// 
+	/**Método para el filtrado de juegos al pulsar al boton Buscar
+	 * @param textoBuscar
+	 */
 	public void accionBotonBuscar(String textoBuscar) {
 		// Se genera una lista donde vamos a guardar todas las que coincidan con el
 		// nombre

@@ -9,9 +9,9 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-/** Clase mejorada de JLabel para gestionar imágenes ajustadas al JLabel
+/** 
+ * Clase mejorada de JLabel para gestionar imágenes ajustadas al JLabel
  * 
- * looooolll
  */
 public class JLabelGraficoAjustado extends JLabel {
 	// la posición X,Y se hereda de JLabel
