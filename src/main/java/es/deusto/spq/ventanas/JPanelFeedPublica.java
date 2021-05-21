@@ -13,12 +13,17 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+/**
+ * JPanel para incluir en la ventana Feed.
+ * Se muestra la feed publica (igual para todos los usuarios)
+ * @author Unai
+ *
+ */
 public class JPanelFeedPublica extends JPanel{
 
 	/**
 	 * @param u Usuario que llama a la ventana. Null si es prueba
 	 * @param v Videojuego del que se abre la feed. Null si es prueba
-	 * @author Unai
 	 */
 	public JPanelFeedPublica(Usuario u, final VideoJuego v) {
 		this.setBorder(new LineBorder(Color.black));

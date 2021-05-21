@@ -18,6 +18,12 @@ import javax.swing.border.LineBorder;
 import es.deusto.spq.VideoJuego;
 
 
+/**Panel que reune todas las caratulas a mostrar.
+ * Las caratulas se situan automaticamente.
+ * El panel incluye un scrollbar para poder navegar por la ventana.
+ * @author Unai
+ *
+ */
 public class PanelCentralCaratulas extends JPanel{
 	public JTextField tfBuscador;
 	JPanel panelVideojuegosConLayout;

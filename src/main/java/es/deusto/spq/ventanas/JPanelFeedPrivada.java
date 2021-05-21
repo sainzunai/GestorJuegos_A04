@@ -19,8 +19,17 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+/**
+ * Panel para la FeedPrivada, que va incluida en VentanaFeed.
+ * @author Unai
+ *
+ */
 public class JPanelFeedPrivada extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * @param u Usuario que llama a la ventana. Null si es prueba
 	 * @param v Videojuego del que se abre la feed. Null si es prueba

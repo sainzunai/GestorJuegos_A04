@@ -19,7 +19,17 @@ import es.deusto.spq.Biblioteca;
 import es.deusto.spq.Usuario;
 import es.deusto.spq.VideoJuego;
 
+/**
+ * Panel de un videojuego, que incluye un boton para anyadirlo a la biblioteca personal del usuario
+ * El panel muestra la caratula del videojuego
+ * @author Unai
+ *
+ */
 public class JPanelVideojuego extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JLabelGraficoAjustado lImagen;
 	JButton btn;
 	String textoBtn = "Add";
