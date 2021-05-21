@@ -164,7 +164,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 
 	/**
 	 * Descripción del método Actualiza la biblioteca en la base de datos
-	 * 
 	 * @param Se le pasa una biblioteca, la objetivo.
 	 * @param Se le pasa el elemento a meter en la biblioteca
 	 */
@@ -199,7 +198,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			pm.close();
 		}
 	}
-	
+	/**
+	 * Descripcion del metodo para obtener el Usuario con la biblioteca y los videojuegos
+	 * @param email, identificador usado para recoger el usuario de la base de datos
+	 * @return Nos devuelve el usuario.
+	 */
 	@Override
 	public Usuario getUsuario(String email) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -222,7 +225,11 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		users.setBiblioteca(this.getBiblioteca_Usuario(users));
 		return (users);
 	}
-
+	/**
+	 * Descripcion del metodo para recoger la biblioteca del usuario
+	 * @param user, identificador usado para saber todos los datos necesarios de biblioteca
+	 * @return Nos devuelve la Biblioteca actualizada
+	 */
 	@Override
 	public Biblioteca getBiblioteca_Usuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -241,7 +248,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 		return (biblioteca);
 	}
-	
+	/**
+	 * Descripcion del metodo para la actualizacion de la relacion biblioteca videojuego
+	 * @param biblioteca, variable usada para acceder a la biblioteca a actualizar
+	 */
 	@Override
 	public void updateBiblioteca(Biblioteca biblioteca) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -261,7 +271,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			pm.close();
 		}
 	}
-	
+	/**
+	 * Descripcion del metodo para eliminar el usuario deseado
+	 * @param user, variable usada para identificar el usuario a eliminar
+	 */
 	@Override
 	public void deleteUsuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -297,7 +310,10 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}
 		}
 	}
-
+	/**
+	 * Descripcion del metodo para actualizar los atributos del videojuego
+	 * @param videojuego, variable para actualizar el videojuego
+	 */
 	@Override
 	public void updateVideoJuego(VideoJuego videojuego) {
 		VideoJuego auxiliar = videojuego;

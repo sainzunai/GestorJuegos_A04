@@ -197,7 +197,7 @@ public class VideoJuegoTest {
 		//JPanelVideojuego jp2 = new JPanelVideojuego(v5, 1, b, true, null);
 
 		//assertEquals(jp.cambioConstructor, v3.getJPanelVideojuego(b, true, null).cambioConstructor);
-
+	
 	}
 
 	@Test
