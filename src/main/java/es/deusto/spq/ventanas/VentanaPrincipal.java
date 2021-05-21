@@ -17,7 +17,19 @@ import javax.swing.border.LineBorder;
 
 import es.deusto.spq.Usuario;
 
+/**
+ * Ventana principal del programa.
+ * Reune todos los paneles a mostrar.
+ * Incluye un selector / menu para seleccionar que apartado se desea mostrar.
+ * Requiere de controlador ventana pricnipal para poder funcionar.
+ * @author Unai
+ *
+ */
 public class VentanaPrincipal extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ControladorVentanaPrincipal miControlador;
 	JPanel panelMenuHomeVideojuegos;
 	JPanel panelMenuBibliotecaVideojuegos;

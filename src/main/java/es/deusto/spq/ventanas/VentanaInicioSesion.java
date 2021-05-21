@@ -23,7 +23,18 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 
+/**
+ * Ventana para iniciar sesion en el programa.
+ * Comunica con el servidor y verifica las credencciales.
+ * Da la oportunidad al usuario de registrarse, lanzando la ventana de registro si asi se solicita.
+ * @author Unai
+ *
+ */
 public class VentanaInicioSesion extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Variables Server
 	Client client = ClientBuilder.newClient();
 	final WebTarget appTarget = client.target("http://localhost:8080/gestorJuegos");

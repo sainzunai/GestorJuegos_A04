@@ -12,7 +12,20 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
+/**
+ * Ventana que reune las dos feeds; publica y privada.
+ * Incluye un selector de feed.
+ * Solo se iniciara la parte privada si se lanza desde la biblioteca.
+ * 
+ * @author Unai
+ *
+ */
 public class VentanaFeed extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public VentanaFeed(VideoJuego v, Usuario u, boolean stamosHome) {
 

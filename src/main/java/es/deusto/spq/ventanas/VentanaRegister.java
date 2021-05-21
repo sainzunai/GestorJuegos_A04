@@ -13,7 +13,19 @@ import jakarta.ws.rs.core.MediaType;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Ventana formulario para registrar nuevo usuario.
+ * Comunica con el servidor las credenciales introducidas, y crea el usuario si el servidor responde diciendo que no existe ese usuario.
+ * Una vez creado el usuario se cierra la ventana para volver a la ventana de inicio de sesion.
+ * @author Unai
+ *
+ */
 public class VentanaRegister extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	//Variables Server
 	Client client = ClientBuilder.newClient();
