@@ -52,7 +52,7 @@ public class JPanelFeedPrivada extends JPanel{
 					System.out.println("Nuestro compadre ha votado con un:" + selection * 2);
 					votadoPrimeraVez = false; 
 
-					JOptionPane.showMessageDialog(jp, "Acbas de votar con un: " + selection * 2);
+					JOptionPane.showMessageDialog(jp, "Acabas de votar con un: " + selection * 2);
 				}else {
 
 					JOptionPane.showMessageDialog(jp, "Un solo voto por sesion");
