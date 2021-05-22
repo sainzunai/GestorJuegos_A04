@@ -19,12 +19,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
 	
-	/**
-	 * Descripción del método
-	 * Introducimos una clase dentro de la base de datos.Con las correspondientes anotaciones y atributos.
-	 * @param nos pide un Objecto cualquiera
-	 * @return No devuelve nada
-	 */
 	@Override
 	public void introducirObjeto(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -45,12 +39,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}	
 	    }
 	}
-	/**
-	 * Descripción del método
-	 * Coger un videojuego de la base de datos pasando el parametro primary key
-	 * @param Se pide el id del objeto
-	 * @return Se devuelve el videojuego pedido a la base de datos
-	 */
+	
 	@Override
 	public VideoJuego getVideojuego(String id) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -69,11 +58,6 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		return(videojuego);
 	}
 	
-	/**
-	 * Descripción del método
-	 * Le pedimos a la base de datos todos los videojuegos de la base de datos
-	 * @return Devuelve una lista de videojuegos
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<VideoJuego> getAllVideojuegos() {
@@ -102,10 +86,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 		return (listavideojuego);
 	}
-	/**
-	 * Descripción del método
-	 * Se elimina todos los videojuegos de la base de datos
-	 */
+	
 	@Override
 	public void deleteAllVideojuegos() {
 		System.out.println("- Borrando los videojuegos de la base de datos...");
@@ -129,9 +110,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}
 		}
 	}
-	/**
-	 * Descripción del método Se elimina todo de la base de datos
-	 */
+	
 	@Override
 	public void deleteAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -162,11 +141,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 	}
 
-	/**
-	 * Descripción del método Actualiza la biblioteca en la base de datos
-	 * @param Se le pasa una biblioteca, la objetivo.
-	 * @param Se le pasa el elemento a meter en la biblioteca
-	 */
+	
 	@Override
 	public void updateBiblioteca_Videojuego(Biblioteca biblioteca, VideoJuego videojuego) {
 		VideoJuego auxiliar = videojuego;
@@ -198,11 +173,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			pm.close();
 		}
 	}
-	/**
-	 * Descripcion del metodo para obtener el Usuario con la biblioteca y los videojuegos
-	 * @param email, identificador usado para recoger el usuario de la base de datos
-	 * @return Nos devuelve el usuario.
-	 */
+	
 	@Override
 	public Usuario getUsuario(String email) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -225,11 +196,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		users.setBiblioteca(this.getBiblioteca_Usuario(users));
 		return (users);
 	}
-	/**
-	 * Descripcion del metodo para recoger la biblioteca del usuario
-	 * @param user, identificador usado para saber todos los datos necesarios de biblioteca
-	 * @return Nos devuelve la Biblioteca actualizada
-	 */
+
 	@Override
 	public Biblioteca getBiblioteca_Usuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -248,10 +215,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 		}
 		return (biblioteca);
 	}
-	/**
-	 * Descripcion del metodo para la actualizacion de la relacion biblioteca videojuego
-	 * @param biblioteca, variable usada para acceder a la biblioteca a actualizar
-	 */
+	
 	@Override
 	public void updateBiblioteca(Biblioteca biblioteca) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -271,10 +235,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			pm.close();
 		}
 	}
-	/**
-	 * Descripcion del metodo para eliminar el usuario deseado
-	 * @param user, variable usada para identificar el usuario a eliminar
-	 */
+	
 	@Override
 	public void deleteUsuario(Usuario user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -310,10 +271,7 @@ public class GestorJuegos_A04DAO implements IGestorJuegos_A04DAO{
 			}
 		}
 	}
-	/**
-	 * Descripcion del metodo para actualizar los atributos del videojuego
-	 * @param videojuego, variable para actualizar el videojuego
-	 */
+	
 	@Override
 	public void updateVideoJuego(VideoJuego videojuego) {
 		VideoJuego auxiliar = videojuego;
