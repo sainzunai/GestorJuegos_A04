@@ -1,6 +1,8 @@
 Gestor Juegos Grupo A04
 ===============================
 
+![java ci workflow](https://github.com/unaguil/spq-simple-service/actions/workflows/java-ci.yml/badge.svg) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=bugs)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=coverage)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04) 
+
 Configuración
 ------------- 
 
@@ -85,6 +87,18 @@ Si el servidor ha sido iniciado correctamente se pueden obtener los datos de pru
 **Inicio de la aplicación cliente**
 
     mvn exec:java -Pcliente
-**SonarCloud**
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=alert_status)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=bugs)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sainzunai_GestorJuegos_A04&metric=coverage)](https://sonarcloud.io/dashboard?id=sainzunai_GestorJuegos_A04)
+Documentación
+------------- 
+**Doxygen**
+
+Se puede generar la documentación de forma local usando el siguiente comando
+
+	mvn doxygen:report
+
+**Github Pages**
+
+La funcionalidad de generar la documentación de forma automática ha sido también implementada como parte de CI.
+La documentación se encuentra (y se irá actualizando) en el siguiente enlace:
+
+https://sainzunai.github.io/GestorJuegos_A04/
