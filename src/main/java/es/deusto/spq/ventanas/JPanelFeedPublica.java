@@ -91,7 +91,7 @@ public class JPanelFeedPublica extends JPanel{
 		pNovedades.setBounds(681, 149, 461, 365);
 		pNovedades.setLayout(null);
 
-		JLabelGraficoAjustado lCaratula1 = new JLabelGraficoAjustado("/images/proximamente.jpg", 13 * 19, 15 * 20);
+		JLabelGraficoAjustado lCaratula1 = new JLabelGraficoAjustado("/images/Silksong_cover.jpg", 13 * 19, 15 * 20);
 		//add(lCaratula1);
 		lCaratula1.setBounds(29, 20, 247, 300);
 		lCaratula1.setBorder(LineBorder.createBlackLineBorder());
