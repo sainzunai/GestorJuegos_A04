@@ -167,30 +167,60 @@ public class ControladorVentanaPrincipal {
 
 	}
 
+	/**
+	 * Devuelve el objeto Biblioteca asignado al ControladorVentanaPrincipal
+	 * @return objeto Biblioteca
+	 */
 	public Biblioteca getB() {
 		return u.getBiblioteca();
 	}
 
+	/**
+	 * Devuelve el valor booleano de la variable para la carga de la lista de VideoJuego en el panel
+	 * @return boolean valor de carga
+	 */
 	public boolean isCarga() {
 		return carga;
 	}
 
+	/**
+	 * Estblece un valor para el parametro carga del controlador
+	 * @param carga valor booleano que se quiera establecer
+	 */
 	public void setCarga(boolean carga) {
 		this.carga = carga;
 	}
 
+	/**
+	 * Devuelve el valor booleano de la variable que indica si actualmente 
+	 * el Usuario esta situado en el panel de home
+	 * @return valor booleano de estamosEnHome
+	 */
 	public boolean isEstamosEnHome() {
 		return estamosEnHome;
 	}
 
+	/**
+	 * Establece un valor para el parametro estamosEnHome
+	 * @param estamosEnHome valor booleano a establecer
+	 */
 	public void setEstamosEnHome(boolean estamosEnHome) {
 		this.estamosEnHome = estamosEnHome;
 	}
 
+	/**
+	 * Devuelve el valor booleano de la variable que indica si el Usuario
+	 * esta situado en el panel de biblioteca
+	 * @return valor booleano de estamosEnBiblio
+	 */
 	public boolean isEstamosEnBiblio() {
 		return estamosEnBiblio;
 	}
 
+	/**
+	 * Establece un valor booleano para el parametro estamosEnBiblio
+	 * @param estamosEnBiblio valor booleano a establecer
+	 */
 	public void setEstamosEnBiblio(boolean estamosEnBiblio) {
 		this.estamosEnBiblio = estamosEnBiblio;
 	}
