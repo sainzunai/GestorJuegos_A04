@@ -15,12 +15,11 @@ import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
 /**
- * @author javil
- *
- */
-/**
- * @author javil
+ * Clase Biblioteca principalmente creada para tener ser un array de Videojuegos. 
+ * Tendra Una relacion con el resto de las claes de la logica. 
+ * @author Asier
  *
  */
 @PersistenceCapable

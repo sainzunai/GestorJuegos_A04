@@ -16,7 +16,9 @@ import javax.jdo.annotations.Order;
 import javax.jdo.annotations.Extension;
 
 /**
- * @author javil
+ * 
+ * Clase Videojuego, todos los atributos correspondientes a un videojuego 
+ * @author Asier
  *
  */
 @PersistenceCapable

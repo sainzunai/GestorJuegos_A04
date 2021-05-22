@@ -16,7 +16,7 @@ import javax.swing.border.TitledBorder;
 /**
  * JPanel para incluir en la ventana Feed.
  * Se muestra la feed publica (igual para todos los usuarios)
- * @author Unai
+ * @author Asier
  *
  */
 public class JPanelFeedPublica extends JPanel{

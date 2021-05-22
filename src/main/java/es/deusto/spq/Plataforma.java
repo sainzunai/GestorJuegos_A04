@@ -1,6 +1,7 @@
 package es.deusto.spq;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
 import java.util.List;
@@ -9,6 +10,14 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+
+
+/**
+ * Clase para ver la plataforma de cada videojuego, con todos los atributos correspondientes
+ * 
+ * @author Asier
+ *
+ */
 @PersistenceCapable
 public class Plataforma implements Serializable{  
 	

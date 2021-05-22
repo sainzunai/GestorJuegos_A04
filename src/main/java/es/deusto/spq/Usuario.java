@@ -9,7 +9,9 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * @author javil
+ * Clase Usuario con todos sus atributos y metodos.
+ * Sera utilizado para guardar datos referidos a personas y bibliotecas con videojuegos dentro. 
+ * @author Asier
  *
  */
 @PersistenceCapable
