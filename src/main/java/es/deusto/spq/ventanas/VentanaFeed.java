@@ -35,10 +35,10 @@ public class VentanaFeed extends JFrame {
 
 		setTitle("Comunidad de " + v.getNombre());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(1020, 720);
+		setSize(1280, 720);
 		setLocationRelativeTo(null);
 
-		setResizable(false);
+		setResizable(true);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -73,13 +73,14 @@ public class VentanaFeed extends JFrame {
 		JPanelFeedPublica pFeedP = new JPanelFeedPublica(u, v);
 		pPublica.setLayout(null);
 		pPublica.add(pFeedP);
-		pFeedP.setBounds(0,0,1000,1000);
+//		pFeedP.setBounds(0,0,pFeedP.getSize().width,pFeedP.getSize().height);
+		pFeedP.setBounds(0,0,1280,720);
 
 		//PARTE PRIVADA
 		JPanelFeedPrivada pFeedPriv = new JPanelFeedPrivada(u, v);
 		pPrivada.setLayout(null);
 		pPrivada.add(pFeedPriv);
-		pFeedPriv.setBounds(0,0,1000,1000);
+		pFeedPriv.setBounds(0,0,1280,720);
 
 	}
 
