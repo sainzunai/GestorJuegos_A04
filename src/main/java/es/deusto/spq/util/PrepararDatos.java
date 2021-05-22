@@ -6,7 +6,11 @@ import es.deusto.spq.dao.GestorJuegos_A04DAO;
 
 public class PrepararDatos {
 
-	//Introduce todos los datos necesarios en la BD
+	
+	/**
+	 * Metodo principal de la clase encargada de introducir todos los datos 
+	 * de prueba en la BD para probar el funcionamiento de la aplicacion
+	 */
 	public static void main(String[] args) {
 		System.out.println("Creando Plataformas...");
 		Plataforma p1 = new Plataforma("PS4", "1");
