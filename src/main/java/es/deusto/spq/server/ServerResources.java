@@ -12,6 +12,7 @@ public class ServerResources {
 	/**
 	 * Metodo encargado de gestionar las HTTP GET para la clase Server Resources. 
 	 * Se devolverá al usuario un texto plano de bienvenida
+	 * @author javil
 	 * @return String en texto plano 
 	 */
 	@GET

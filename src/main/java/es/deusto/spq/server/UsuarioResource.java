@@ -18,10 +18,20 @@ public class UsuarioResource {
 	
 	private IGestorJuegos_A04DAO dao = new GestorJuegos_A04DAO();
 	
+	/**
+	 * Devuelve la interfaz IGestorJuegos_A04DAO establecida
+	 * @author javil
+	 * @return interfaz IGestorJuegos_A04DAO dao
+	 */
 	public IGestorJuegos_A04DAO getDao() {
 		return dao;
 	}
 
+	/**
+	 * Establece una nueva interfaz IGestorJuegos_A04DAO
+	 * @author javil
+	 * @param dao objeto GestorJuegos_A04DAO que implemente la interfaz
+	 */
 	public void setDao(IGestorJuegos_A04DAO dao) {
 		this.dao = dao;
 	}
@@ -29,6 +39,7 @@ public class UsuarioResource {
 	/**
 	 * Metodo REST que pide a BD un usuario, comprueba si coincide con
 	 * la contrasena enviada y lo devuelve
+	 * @author javil
 	 * @param email email del usuario a recoger
 	 * @param pass contrasena introducida por el usuario
 	 * @return Si la contrasena es correcta se devuelve el usuario y si no se devuelve null

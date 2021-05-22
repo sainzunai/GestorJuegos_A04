@@ -18,6 +18,7 @@ public class VideojuegosResource {
 	/**
 	 * Este método devolverá la lista completa de videojuegos que haya en la
 	 * BD al usuario. Se devolverá en formato JSON
+	 * @author javil
 	 * @return List<VideoJuego> Lista de videojuegos 
 	 */
 	@GET
@@ -29,10 +30,20 @@ public class VideojuegosResource {
 		return dao.getAllVideojuegos();
 	}
 	
+	/**
+	 * Establece una nueva interfaz IGestorJuegos_A04DAO
+	 * @author javil
+	 * @param dao objeto GestorJuegos_A04DAO que implemente la interfaz
+	 */
 	public void setDao(IGestorJuegos_A04DAO dao) {
 		this.dao = dao; 
 	}
 	
+	/**
+	 * Devuelve la interfaz IGestorJuegos_A04DAO establecida
+	 * @author javil
+	 * @return interfaz IGestorJuegos_A04DAO dao
+	 */
 	public IGestorJuegos_A04DAO getDao() {
 		return dao;
 	}

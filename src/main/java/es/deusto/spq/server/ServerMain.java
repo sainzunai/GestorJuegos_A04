@@ -12,6 +12,11 @@ public class ServerMain {
 	//URL en la que se encuentra el server
 	public static final String BASE_URI = "http://localhost:8080/gestorJuegos/";
 
+	/**
+	 * Lanza el servidor Rest en la URL especificada en el atributo BASE_URI
+	 * @author javil
+	 * @return objeto HttpServer creado tras inicializacion
+	 */
 	public static HttpServer startServer() {
 		//Lanza el servidor 
 		final ResourceConfig rc = new ResourceConfig().packages("es.deusto.spq.server"); 
@@ -19,7 +24,8 @@ public class ServerMain {
 	}
 	
 	/**
-	 * Main del servidor
+	 * Hilo de ejecucion principal del servidor
+	 * @author javil
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("deprecation")
